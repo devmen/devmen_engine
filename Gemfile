@@ -42,17 +42,14 @@ gem 'haml', '~> 3.1.6'
 group :development, :test do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'capybara', '~> 1.1.2'
-  # If it is a problem with execjs runtimes,
+  # If it is a problem with execjs runtimes after rspec:install,
   # use node.js or uncomment next lines
   #gem 'execjs'
   #gem 'therubyracer'
-end
 
-group :development do  
-  gem 'guard', '~> 1.0.3'
-  gem 'libnotify', '~> 0.7.2'
-end
-
-group :test do  
   gem 'factory_girl_rails', '~> 3.3.0'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec', '~> 0.7.3'
+  gem 'guard-livereload', '~> 0.4.2'
+  gem 'libnotify', '~> 0.7.2'
 end
