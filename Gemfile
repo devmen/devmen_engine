@@ -5,7 +5,7 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'pg', '~> 0.13.2'
 
 
 # Gems used only for assets and not required
@@ -36,3 +36,23 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'haml', '~> 3.1.6'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.10.1'
+  gem 'capybara', '~> 1.1.2'
+  # If it is a problem with execjs runtimes,
+  # use node.js or uncomment next lines
+  #gem 'execjs'
+  #gem 'therubyracer'
+end
+
+group :development do  
+  gem 'guard', '~> 1.0.3'
+  gem 'libnotify', '~> 0.7.2'
+end
+
+group :test do  
+  gem 'factory_girl_rails', '~> 3.3.0'
+end
