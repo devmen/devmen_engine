@@ -4,13 +4,16 @@ class Page < ActiveRecord::Base
   url_regex = /\A[\w+\-_]+\z/i
 
   validates :name, :presence => true, :length => { :maximum => 100 }
-  validates :url, :presence => true,
-  					:format => { :with => url_regex },
+  validates :url, :allow_blank => true, :format => { :with => url_regex },
 						:uniqueness => { :case_sensitive => false }
 
   default_scope :order => 'pages.name'
 
   before_save :check_url
+
+  def to_param
+    url
+  end
 
   private
 

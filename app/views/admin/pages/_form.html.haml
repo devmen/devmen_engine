@@ -1,12 +1,17 @@
-= simple_form_for @page do |form|
+= simple_form_for [:admin, @page] do |form|
 
-  -if @page.errors.any?
-    #errorExplanation
-      %h2= "#{pluralize(@page.errors.count, "error")} prohibited this #{Admin::Page.name.titleize} from being saved:"
-      %ul
-        - @page.errors.full_messages.each do |msg|
-          %li= msg  
+  /
+    -if @page.errors.any?
+      #errorExplanation
+        %h2= "#{pluralize(@page.errors.count, "error")} prohibited this #{Page.name.titleize} from being saved:"
+        %ul
+          - @page.errors.full_messages.each do |msg|
+            %li= msg  
 
+  
+  = form.input :name, :label => t('.Name')
+  = form.input :url, :label => t('.Url')
+  = form.input :body, :as => :text, :label => t('.Content')              
 
   .actions
     = form.button :submit
