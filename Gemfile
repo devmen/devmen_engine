@@ -40,6 +40,9 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'haml', '~> 3.1.6'
+# using haml-rails, because haml gem dosn't give gemerators for rails 3
+gem 'haml-rails', '~> 0.3.4'
+gem 'simple_form', '~> 2.0.2'
 
 gem 'capistrano-unicorn', '~> 0.1.5'
 gem "capistrano", "~> 2.9.0", :require => false

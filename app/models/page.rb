@@ -10,4 +10,13 @@ class Page < ActiveRecord::Base
 
   default_scope :order => 'pages.name'
 
+  before_save :check_url
+
+  private
+
+    def check_url
+      # Russian module add transliteration to parameterize method of strings
+      self.url = self.name.parameterize if self.url.blank?
+    end
+
 end

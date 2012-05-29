@@ -1,8 +1,18 @@
 DevmenEngine::Application.routes.draw do
 
+  resources :pages, :only => [:index, :show]
+
   namespace :admin do
     resources :pages, :except => [:index]
+    match '/', :to => 'base#index'
+    # Handeling routing error for admin namespace, see below
+    match '*a', :to => 'base#index'
   end
+
+  # Handeling routing error by error_controller
+  # It must be a last route
+  # IF your url was /this-url-does-not-exist, then params[:a] equals "/this-url-does-not-exist"
+  match '*a', :to => 'errors#routing'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

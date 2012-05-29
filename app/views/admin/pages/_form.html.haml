@@ -1,0 +1,12 @@
+= simple_form_for @page do |form|
+
+  -if @page.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@page.errors.count, "error")} prohibited this #{Admin::Page.name.titleize} from being saved:"
+      %ul
+        - @page.errors.full_messages.each do |msg|
+          %li= msg  
+
+
+  .actions
+    = form.button :submit
