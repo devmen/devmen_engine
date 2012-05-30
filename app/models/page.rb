@@ -11,9 +11,9 @@ class Page < ActiveRecord::Base
 
   before_save :check_url
 
-  def to_param
-    url
-  end
+  # def to_param
+  #   url
+  # end
 
   private
 

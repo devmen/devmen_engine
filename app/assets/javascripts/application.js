@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require markitup
+//= require markitup-html
 //= require_tree .
+
+// $(document).ready(function() {
+//   $("textarea.markitup").markItUp(mySettings);
+// });

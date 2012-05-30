@@ -36,7 +36,10 @@
             .well.sidebar-nav
               = render 'admin/pages'
           .span9
-            = yield
+            - flash.each do |k, v|
+              = content_tag(:div, v, :class => "flash #{key}")
+            #content-container.content-container
+              = yield
     
       %footer
         %p &copy; Devmen Engine 2012

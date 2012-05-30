@@ -58,6 +58,8 @@ gem 'authlogic', '~> 3.1.0'
 
 gem 'russian', '~> 0.6.0'
 
+gem 'markitup-rails', '~> 0.2.1'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'capybara', '~> 1.1.2'
@@ -87,7 +89,7 @@ group :development, :test do
 
   gem 'database_cleaner'
   gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
-  gem 'factory_girl_rails', '~> 3.3.0'
+  gem 'factory_girl_rails', '~> 3.3.0', :require => false
 
   #for debuging
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'

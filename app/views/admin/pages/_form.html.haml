@@ -11,7 +11,7 @@
   
   = form.input :name, :label => t('.Name')
   = form.input :url, :label => t('.Url')
-  = form.input :body, :as => :text, :label => t('.Content')              
+  = form.input :body, :as => :text, :label => t('.Content'), :input_html => { :class => 'markitup' }         
 
   .actions
     = form.button :submit
