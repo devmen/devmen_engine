@@ -34,7 +34,8 @@
         .row
           .span3
             .well.sidebar-nav
-              = render 'admin/pages'
+              #page_links.page_links
+                = render 'admin/pages'
           .span9
             - flash.each do |k, v|
               = content_tag(:div, v, :class => "flash #{key}")

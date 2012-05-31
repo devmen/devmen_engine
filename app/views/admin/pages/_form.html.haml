@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @page] do |form|
+= simple_form_for [:admin, @page], :html => { :class => 'page_form' }, :remote => true do |form|
 
   /
     -if @page.errors.any?

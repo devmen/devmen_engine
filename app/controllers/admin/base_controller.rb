@@ -1,15 +1,15 @@
 class Admin::BaseController < ApplicationController
   layout 'admin/application'
 
-  before_filter :default_elements
-
   def index
   end
+
+  helper_method :page_list
   
   private
 
-    def default_elements
-      @pages ||= Page.all     
+    def page_list
+      @pages || Page.all
     end
 
 end

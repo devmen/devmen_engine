@@ -1,6 +1,18 @@
 %h3 Pages
 %ul.nav.nav-list                
-  %li= link_to "New page", new_admin_page_path, :remote => true
-  - @pages.each do |page|
-    %li
-    = link_to page.name, admin_page_path(page), :remote => true
+  %li.new_page_link
+    = link_to 'New page', new_admin_page_path, :remote => true
+  - page_list.each do |page|
+    %li#page_link.page_link{:id => page.id, :class => @page == page && 'current'}
+      = link_to page.name, admin_page_path(page), :remote => true
+      .page_link_insider
+        %ul.page_link_actions
+          %li.page_link_action
+            = link_to 'Edit', edit_admin_page_path(page), :remote => true, :class => 'btn btn-mini'
+          %li.page_link_action
+            = link_to 'Remove', admin_page_path(page), :remote => true, :class => 'btn btn-mini',
+                :method => :delete, :confirm => 'Are you shure?'
+        .clear_fix
+        - if @page != page
+          .page_link_info
+            = truncate strip_tags(page.body).strip, :length => 150, :omission => '...'

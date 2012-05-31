@@ -17,6 +17,23 @@
 //= require markitup-html
 //= require_tree .
 
-// $(document).ready(function() {
-//   $("textarea.markitup").markItUp(mySettings);
+// Set header Accept: text/javascript for all ajax requests in application
+// jQuery.ajaxSetup({
+//   'beforeSend': function(xhr) {
+//     xhr.setRequestHeader('Accept', 'text/javascript');
+//   }
 // });
+
+// jQuery function for submitting forms with ajax
+jQuery.fn.ajaxSubmit = function() {
+  $(this).submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: $(this).attr('action'),
+      type: $(this).attr('method'),
+      data: $(this).serialize(),
+      dataType: 'script'
+    });
+    return false;
+  });
+};

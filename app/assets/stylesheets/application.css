@@ -13,3 +13,17 @@
  *= require markitup-html
  *= require_tree .
 */
+
+.clear_fix { clear: both; }
+
+.page_links .page_link.current > a { color: black; }
+.page_links .page_link_insider { display: none; }
+.page_links .page_link.current .page_link_insider { display: block; }
+.page_links .page_link_actions { list-style: none; padding: 0; margin: 0; }
+.page_links .page_link_actions li { float: left; }
+.page_links .page_link_actions li + li { margin-left: 5px; }
+.page_links .page_link_actions a { 
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.page_links .page_link_info { clear: both; color: #666; }
