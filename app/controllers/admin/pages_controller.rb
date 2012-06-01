@@ -23,8 +23,16 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def show
+    if resource.nil?
+      @page = Page.new
+      @page.url = params[:id] unless params[:id] == 'new-page'          
+    end
     show! do |format|
-      format.js { render js_tpl }
+      format.html { render :new if resource.new_record? }
+      format.js do
+        @template = "new" if resource.new_record?
+        render js_tpl
+      end
     end
   end
 
@@ -50,7 +58,7 @@ class Admin::PagesController < Admin::BaseController
   def destroy
     destroy! do |success, failure|
       success.js do
-        @page = Page.first()
+        @page = Page.first() || Page.new
         @template = "show"      
         render js_tpl
       end
@@ -65,13 +73,13 @@ class Admin::PagesController < Admin::BaseController
 
     def resource
       if Page.url?(params[:id])
-        @page = Page.new if params[:id] == 'new-page'
         @page ||= end_of_association_chain.find_by_url(params[:id])        
       end
     end
 
   private
 
+    # Return js template for render, inside render @template html and necessary javascript
     def js_tpl
       h = { :template => 'admin/pages/tpl', :format => :js, :handler => :erb }
     end
