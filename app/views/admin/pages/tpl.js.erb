@@ -2,8 +2,12 @@ $('#content-container').html('<%=
   @template ||= request[:action]
   j render(:template => "admin/pages/#{@template}", :format => :html)
 -%>');
-$('#page_links').html('<%= j render "admin/pages" %>');
-<%-  
+<%-
+# Update page list after changes
+if ['crete', 'update', 'destroy'].include? request[:action] %>
+  $('#page_links').html('<%= j render "admin/pages" %>');
+<% end %>
+<%-
 # Change the browser address accordingly to the page url
   page_title = @page.name || 'New page'
   page_url = '/admin/pages/' + ( @page.url || 'new-page' );
