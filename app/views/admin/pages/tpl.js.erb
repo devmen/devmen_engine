@@ -3,14 +3,24 @@ $('#content-container').html('<%=
   j render(:template => "admin/pages/#{@template}", :format => :html)
 -%>');
 <%-
+# Show flash messages
+unless flash.empty? %>
+  $('#messages').html('<%= j render "admin/messages" %>').show().emptyFadeOut(1000, 5000);
+<% end %>
+<%-
 # Update page list after changes
-if ['crete', 'update', 'destroy'].include? request[:action] %>
-  $('#page_links').html('<%= j render "admin/pages" %>');
+if ['create', 'update', 'destroy'].include? request[:action] %>
+  $('#page_links').html('<%= j render "admin/pages" %>');  
 <% end %>
 <%-
 # Change the browser address accordingly to the page url
-  page_title = @page.name || 'New page'
-  page_url = '/admin/pages/' + ( @page.url || 'new-page' );
+  if @template == 'new'
+    page_title = 'New page'
+    page_url = '/admin/pages/new-page'
+  else    
+    page_title = @page.name
+    page_url = '/admin/pages/' + @page.url
+  end
 -%>
 window.history.replaceState(null, '<%= j page_title %>', '<%= j page_url %>');
 <%

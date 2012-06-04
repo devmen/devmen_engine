@@ -9,9 +9,10 @@
             %li= msg  
 
   
-  = form.input :name, :label => t('.Name')
-  = form.input :url, :label => t('.Url')
-  = form.input :body, :as => :text, :label => t('.Content'), :input_html => { :class => 'markitup' }         
+  = form.input :name, :label => t('.name', :default => 'Name')
+  = form.input :url, :label => t('.url', :default => 'Url')
+  = form.input :body, :as => :text, :label => t('.content', :default => 'Content'),
+      :input_html => { :class => 'markitup' }         
 
   .actions
-    = form.button :submit
+    = form.button :submit, :value => t('.create', :default => 'Create')

@@ -1,7 +1,7 @@
 %h3 Pages
 %ul.nav.nav-list                
   %li.new_page_link
-    = link_to 'New page', new_admin_page_path, :remote => true
+    = link_to t('.new_page', :default => 'New page'), new_admin_page_path, :remote => true
   - page_list.each do |page|
     %li#page_link.page_link{:id => page.id, :class => @page == page && 'current'}
       = link_to page.name, admin_page_path(page), :remote => true

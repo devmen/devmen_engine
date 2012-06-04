@@ -16,6 +16,8 @@
 
 .clear_fix { clear: both; }
 
+#messages { display: none; position: absolute; top: 60px; right: 20px; width: auto; }
+
 .page_links .page_link.current > a { color: black; }
 .page_links .page_link_insider { display: none; }
 .page_links .page_link.current .page_link_insider { display: block; }

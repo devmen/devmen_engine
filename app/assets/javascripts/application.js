@@ -37,3 +37,11 @@ jQuery.fn.ajaxSubmit = function() {
     return false;
   });
 };
+
+jQuery.fn.emptyFadeOut = function(duration, delay) {
+  duration = duration || 500;
+  delay = delay || 500;
+  $(this).delay(delay).fadeOut(duration, function() {
+    $(this).empty();
+  });
+};

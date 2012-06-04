@@ -1,7 +1,7 @@
 class Admin::PagesController < Admin::BaseController
 	inherit_resources
 	actions :all, :exept => [:index]
-	respond_to :html, :js
+	respond_to :html, :js  
 
   def new
     new! do |format|
@@ -44,7 +44,7 @@ class Admin::PagesController < Admin::BaseController
 
   def update
     update! do |success, failure|
-      success.js do 
+      success.js do
         @template = "show"
         render js_tpl
       end

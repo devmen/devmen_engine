@@ -1,0 +1,34 @@
+ru:
+  flash:
+    actions:
+      create:
+        success: "%{resource_name} успешно создан."
+        error: "%{resource_name} не может быть создан."
+      update:
+        success: "%{resource_name} успешно обновлен."
+        error: "%{resource_name} не может быть обновлен."
+      destroy:
+        success: "%{resource_name} успешно удален."
+        error: "%{resource_name} не может быть удален."    
+
+    admin:
+      pages:
+        create:
+          success: "Страница создана."
+          error: "Страница не создана."
+        update:
+          success: "Страница обновлена."
+          error: "Страница не обновлена."
+        destroy:
+          success: "Страница удалена."
+          error: "Страница не удалена."
+
+  admin:
+    pages:
+      new_page: "Новая страница"
+
+      form:
+        name: "Название"
+        url: "Адрес"
+        content: "Содержимое"
+        create: "Создать"
