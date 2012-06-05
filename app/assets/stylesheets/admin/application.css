@@ -1,0 +1,35 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require markitup
+ *= require markitup-html
+ *= require_tree .
+*/
+
+.clear_fix { clear: both; }
+
+.main { position: relative; }
+
+.content-container > h1, h1.page-head { margin-bottom: 20px !important; }
+
+#messages { display: none; position: absolute; top: 0; right: 0; width: auto; }
+
+.page_links .page_link.current > a { color: black; }
+.page_links .page_link_insider { display: none; }
+.page_links .page_link.current .page_link_insider { display: block; }
+.page_links .page_link_actions { list-style: none; padding: 0; margin: 0; }
+.page_links .page_link_actions li { float: left; }
+.page_links .page_link_actions li + li { margin-left: 5px; }
+.page_links .page_link_actions a { 
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.page_links .page_link_info { clear: both; color: #666; }

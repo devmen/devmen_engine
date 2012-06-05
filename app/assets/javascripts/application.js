@@ -16,32 +16,3 @@
 //= require markitup
 //= require markitup-html
 //= require_tree .
-
-// Set header Accept: text/javascript for all ajax requests in application
-// jQuery.ajaxSetup({
-//   'beforeSend': function(xhr) {
-//     xhr.setRequestHeader('Accept', 'text/javascript');
-//   }
-// });
-
-// jQuery function for submitting forms with ajax
-jQuery.fn.ajaxSubmit = function() {
-  $(this).submit(function(e) {
-    e.preventDefault();
-    $.ajax({
-      url: $(this).attr('action'),
-      type: $(this).attr('method'),
-      data: $(this).serialize(),
-      dataType: 'script'
-    });
-    return false;
-  });
-};
-
-jQuery.fn.emptyFadeOut = function(duration, delay) {
-  duration = duration || 500;
-  delay = delay || 500;
-  $(this).delay(delay).fadeOut(duration, function() {
-    $(this).empty();
-  });
-};
