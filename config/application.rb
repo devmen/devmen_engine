@@ -67,7 +67,7 @@ module DevmenEngine
     config.i18n.default_locale = :ru
 
     # Responder types
-    config.responders.flash_keys = [ :success, :error ]
+    config.responders.flash_keys = [ :success, :error, :info ]
 
   end
 end

@@ -1,0 +1,27 @@
+= simple_form_for [:admin, @user], :html => { :class => 'user_form well' } do |form|
+  - if Rails.env.development?
+    .form-errors
+      = render 'shared/error_messages', :object => form.object
+
+  .form-inputs
+    = form.input :name, :label => t('.name', :default => 'Name')
+    = form.input :email, :label => t('.email', :default => 'Email')
+    = form.input :password, :label => t('.password', :default => 'Password')
+
+    - if can? :manage, User
+      .roles.control-group.optional
+        %label.control-label= t('.roles', :default => 'Roles')
+        .controls
+          = form.collection_check_boxes(:roles, User::ROLES.map {|role| [role, role.humanize] }, :first, :last, |
+              { |
+                :checked => @user.roles, |              
+                :item_wrapper_tag => nil |              
+              } |
+            ) do |b| |
+              b.label(:class => 'checkbox inline') { b.check_box + b.text } |        
+            end |
+
+  .form-actions
+    - submit_value = request[:action] == 'new' ? t('.create', :default => 'Create') : t('.update', :default => 'Update')
+    = form.button :submit, :value => submit_value, :class => 'btn-primary'
+    = link_to t('.back', :default => 'Cancel'), :back, :class => 'btn'

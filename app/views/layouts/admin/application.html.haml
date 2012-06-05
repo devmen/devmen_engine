@@ -8,7 +8,7 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "admin/application", :media => "all"
     %link(href="images/favicon.ico" rel="shortcut icon")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
@@ -25,8 +25,14 @@
           %a.brand(href="#") DevmenEngine
           .container.nav-collapse
             %ul.nav.pull-right
-              %li= link_to "Add user", "#"
-              %li= link_to "Logout", "/logout"   
+              - if can? :manage, User
+                %li= link_to "All users", admin_users_path
+                %li= link_to "Add user", new_admin_user_path
+              - if current_user
+                %li= link_to "Edit profile", edit_admin_user_path(current_user)
+                %li= link_to "Sign out", signout_path
+              - else              
+                %li= link_to "Sign in", signin_path
 
     .container
 
@@ -48,5 +54,5 @@
       Javascripts
       \==================================================
     / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
+    = javascript_include_tag "admin/application"
 

@@ -87,13 +87,19 @@ group :development, :test do
   gem 'guard-rspec', '~> 0.7.3'
   gem 'guard-livereload', '~> 0.4.2'  
 
-  gem 'database_cleaner'
-  gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
+  gem 'database_cleaner'  
   gem 'factory_girl_rails', '~> 3.3.0', :require => false
+
+  # It's a problem with rails3-generators and factory_girl_rails.
+  # Fixture generator for factory_girl moved from rails3-generator, but rails3-generator 0.17.4 gem
+  # have factory_girl generator yet (https://github.com/thoughtbot/factory_girl_rails/issues/53)
+  # Use a temporary solution by "https://github.com/neocoin/rails3-generators.git".
+  gem 'rails3-generators', :git => 'https://github.com/neocoin/rails3-generators.git'
 
   #for debuging
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
   gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
   gem 'ruby-debug19'
   gem 'faker'
+  gem 'hirb'
 end

@@ -1,9 +1,16 @@
 DevmenEngine::Application.routes.draw do
 
+  resources :user_sessions, :only => [:new, :create, :destroy] 
+  match '/signin',  :to => 'user_sessions#new'
+  match '/signout', :to => 'user_sessions#destroy'
+
+  resources :users, :only => [:index, :show]
+
   resources :pages, :only => [:index, :show]
 
   namespace :admin do
-    resources :pages, :except => [:index]
+    resources :users
+    resources :pages, :except => [:index]    
     match '/', :to => 'base#index'
     # Handeling routing error for admin namespace, see below
     match '*a', :to => 'base#index'
@@ -13,6 +20,8 @@ DevmenEngine::Application.routes.draw do
   # It must be a last route
   # IF your url was /this-url-does-not-exist, then params[:a] equals "/this-url-does-not-exist"
   match '*a', :to => 'errors#routing'
+
+  root :to => 'pages#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

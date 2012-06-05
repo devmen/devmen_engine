@@ -1,18 +1,15 @@
-= simple_form_for [:admin, @page], :html => { :class => 'page_form' }, :remote => true do |form|
+= simple_form_for [:admin, @page], :html => { :class => 'page_form well' }, :remote => true do |form|
+  - if Rails.env.development?
+    .form-errors
+      = render 'shared/error_messages', :object => form.object
 
-  /
-    -if @page.errors.any?
-      #errorExplanation
-        %h2= "#{pluralize(@page.errors.count, "error")} prohibited this #{Page.name.titleize} from being saved:"
-        %ul
-          - @page.errors.full_messages.each do |msg|
-            %li= msg  
+  .form-inputs
+    = form.input :name, :label => t('.name', :default => 'Name')
+    = form.input :url, :label => t('.url', :default => 'Url')
+    = form.input :body, :as => :text, :label => t('.content', :default => 'Content'),
+        :input_html => { :class => 'markitup' }         
 
-  
-  = form.input :name, :label => t('.name', :default => 'Name')
-  = form.input :url, :label => t('.url', :default => 'Url')
-  = form.input :body, :as => :text, :label => t('.content', :default => 'Content'),
-      :input_html => { :class => 'markitup' }         
-
-  .actions
-    = form.button :submit, :value => t('.create', :default => 'Create')
+  .form-actions
+    - submit_value = request[:action] == 'new' ? t('.create', :default => 'Create') : t('.update', :default => 'Update')
+    = form.button :submit, :value => submit_value, :class => 'btn-primary'
+    = link_to t('.back', :default => 'Cancel'), :back, :class => 'btn'    

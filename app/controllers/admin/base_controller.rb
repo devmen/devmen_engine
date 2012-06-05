@@ -1,6 +1,8 @@
 class Admin::BaseController < ApplicationController
   layout 'admin/application'
 
+  before_filter :restrict_access
+
   def index
   end
 
@@ -10,6 +12,13 @@ class Admin::BaseController < ApplicationController
 
     def page_list
       @pages || Page.all
+    end 
+
+    def restrict_access
+      unless current_user.role? :admin
+        flash[:notice] = 'Please sign in to access this page.'
+        redirect_to signin_path
+      end
     end
 
 end
