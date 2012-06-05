@@ -18,8 +18,8 @@ DevmenEngine::Application.routes.draw do
 
   # Handeling routing error by error_controller
   # It must be a last route
-  # IF your url was /this-url-does-not-exist, then params[:a] equals "/this-url-does-not-exist"
-  match '*a', :to => 'errors#routing'
+  # IF your url was /this-url-does-not-exist, then params[:page] equals "/this-url-does-not-exist"
+  match '*page', :to => 'pages#show'
 
   root :to => 'pages#index'
 
