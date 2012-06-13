@@ -1,32 +1,33 @@
-$('#content-container').html('<%=  
-  @template ||= request[:action]
-  j render(:template => "admin/pages/#{@template}", :format => :html)
--%>');
+$('#page_links').html('<%= j render "admin/pages" %>');
 <%-
 # Show flash messages
 unless flash.empty? %>
   $('#messages').html('<%= j render "admin/messages" %>').show().emptyFadeOut(1000, 5000);
 <% end %>
 <%-
-# Update page list after changes
-if ['create', 'update', 'destroy'].include? request[:action] %>
-  $('#page_links').html('<%= j render "admin/pages" %>');  
-<% end %>
-<%-
-# Change the browser address accordingly to the page url
-  if @template == 'new'
-    page_title = 'New page'
-    page_url = '/admin/pages/new-page'
-  else    
-    page_title = @page.name
-    page_url = '/admin/pages/' + @page.url
-  end
--%>
-window.history.replaceState(null, '<%= j page_title %>', '<%= j page_url %>');
-<%
-# Use this code to aviod the exception raises after remote form submitting
-# uncaught exception: TypeError: window.document.selection is undefined
-if ['new', 'edit'].include? @template
--%>  
-  $.markitup_init(true);
+# Render current template if exist
+@template ||= request[:action] unless ['destroy'].include? request[:action]
+if @template  
+%>
+  $('#content-container').html('<%=    
+    j render(:template => "admin/pages/#{@template}", :format => :html)
+  -%>');
+  <%-
+  # Change the browser address accordingly to the page url
+    if @template == 'new'
+      page_title = 'New page'
+      page_url = '/admin/pages/new-page'
+    else    
+      page_title = @page.name
+      page_url = '/admin/pages/' + @page.url
+    end
+  -%>
+  window.history.replaceState(null, '<%= j page_title %>', '<%= j page_url %>');
+  <%
+  # Use this code to aviod the exception raises after remote form submitting
+  # uncaught exception: TypeError: window.document.selection is undefined
+  if ['new', 'edit'].include? @template
+  -%>  
+    $.markitup_init(true);
+  <% end %>
 <% end %>

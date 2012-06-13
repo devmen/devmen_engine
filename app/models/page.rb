@@ -20,6 +20,10 @@ class Page < ActiveRecord::Base
     def check_url
       # Russian module add transliteration to parameterize method of strings
       self.url = self.name.parameterize if self.url.blank?
+      if self.url.blank?
+        errors[:url] << "couldn't create url for this page name"        
+        return false
+      end
     end
 
   class << self

@@ -63,6 +63,8 @@ gem 'markitup-rails', '~> 0.2.1'
 group :development, :test do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'capybara', '~> 1.1.2'
+  gem "capybara-webkit", "~> 0.12.1" # need install libqt4-dev
+  gem 'launchy', '~> 2.1.0'
   ## If it is a problem with execjs runtimes after rspec:install,
   ## use node.js or uncomment next lines
   #gem 'execjs'

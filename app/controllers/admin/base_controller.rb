@@ -15,7 +15,7 @@ class Admin::BaseController < ApplicationController
     end 
 
     def restrict_access
-      unless current_user.role? :admin
+      unless current_user && current_user.role?(:admin)
         flash[:notice] = 'Please sign in to access this page.'
         redirect_to signin_path
       end

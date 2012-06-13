@@ -21,7 +21,6 @@
               b.label(:class => 'checkbox inline') { b.check_box + b.text } |        
             end |
 
-  .form-actions
-    - submit_value = request[:action] == 'new' ? t('.create', :default => 'Create') : t('.update', :default => 'Update')
+  .form-actions    
     = form.button :submit, :value => submit_value, :class => 'btn-primary'
     = link_to t('.back', :default => 'Cancel'), :back, :class => 'btn'

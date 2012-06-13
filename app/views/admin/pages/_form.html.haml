@@ -10,6 +10,6 @@
         :input_html => { :class => 'markitup' }         
 
   .form-actions
-    - submit_value = request[:action] == 'new' ? t('.create', :default => 'Create') : t('.update', :default => 'Update')
+    - submit_value = view == 'new' ? t('.create', :default => 'Create') : t('.update', :default => 'Update')
     = form.button :submit, :value => submit_value, :class => 'btn-primary'
     = link_to t('.back', :default => 'Cancel'), :back, :class => 'btn'    

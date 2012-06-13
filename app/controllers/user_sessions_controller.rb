@@ -12,12 +12,13 @@ class UserSessionsController < ApplicationController
       flash[:success] = "Successfully signed in."
       redirect_to root_url
     else
-      render :action => :new
+      flash[:error] = "Invalid email/password combination."
+      redirect_to signin_path
     end
   end
   
-  def destroy
-    current_user_session.destroy
+  def destroy    
+    current_user_session.destroy    
     flash[:success] = "Successfully signed out."    
     redirect_to root_url
   end

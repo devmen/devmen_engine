@@ -11,5 +11,5 @@
  *= require_self
  *= require markitup
  *= require markitup-html
- *= require_tree .
+ *= require_directory .
 */

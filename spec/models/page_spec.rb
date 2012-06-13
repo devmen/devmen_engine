@@ -14,9 +14,9 @@ describe Page do
     page.should be_invalid
   end
 
-  it "should require an url" do
+  it "should not require an url" do
   	page = Page.new(@attr.merge(:url => ""))
-    page.should be_invalid
+    page.should be_valid
   end
 
   it "should reject names that are too long" do

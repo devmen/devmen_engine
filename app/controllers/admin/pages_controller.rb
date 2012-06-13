@@ -25,22 +25,24 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def show
-    if resource.nil?
-      @page = Page.new
-      @page.url = params[:id] unless params[:id] == 'new-page'          
-    end
+    @page = new_page if resource.nil?
     show! do |format|
       format.html { render :new if resource.new_record? }
-      format.js do
+      format.js do        
         @template = "new" if resource.new_record?
         render js_tpl
       end
     end
   end
 
-  def edit
+  def edit   
+    @page = new_page if resource.nil?
     edit! do |format|
-      format.js { render js_tpl }
+      format.html { render :new if resource.new_record? }
+      format.js do
+        @template = "new" if resource.new_record?
+        render js_tpl
+      end
     end
   end
 
@@ -60,12 +62,14 @@ class Admin::PagesController < Admin::BaseController
   def destroy
     destroy! do |success, failure|
       success.js do
-        @page = Page.first() || Page.new
-        @template = "show"      
+        # Change page if this is a current        
+        if request.referer == request.url
+          @page = Page.first() || Page.new
+          @template = !@page.new_record? ? "show" : "new"          
+        end
         render js_tpl
       end
       failure.js do        
-        @template = "show"      
         render js_tpl
       end
     end
@@ -84,6 +88,13 @@ class Admin::PagesController < Admin::BaseController
     # Return js template for render, inside render @template html and necessary javascript
     def js_tpl
       h = { :template => 'admin/pages/tpl', :format => :js, :handler => :erb }
+    end
+
+    # Return new page object
+    def new_page
+      page = Page.new
+      page.url = params[:id] if Page.url?(params[:id]) && params[:id] != 'new-page'
+      page
     end
 
 end

@@ -15,4 +15,4 @@
 //= require twitter/bootstrap
 //= require markitup
 //= require markitup-html
-//= require_tree .
+//= require_directory .
