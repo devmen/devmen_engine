@@ -59,6 +59,8 @@ gem 'authlogic', '~> 3.1.0'
 gem 'russian', '~> 0.6.0'
 
 gem 'markitup-rails', '~> 0.2.1'
+gem "el_finder", "~> 1.0.21"
+gem "RedCloth", "~> 4.2.9"
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.10.1'

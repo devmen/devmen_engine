@@ -11,6 +11,7 @@ DevmenEngine::Application.routes.draw do
   namespace :admin do
     resources :users
     resources :pages, :except => [:index]    
+    match '/elfinder', :to => 'base#elfinder'
     match '/', :to => 'base#index'
     # Handeling routing error for admin namespace, see below
     match '*a', :to => 'base#index'

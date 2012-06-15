@@ -15,4 +15,4 @@
         .clear_fix
         - if @page != page
           .page_link_info
-            = truncate strip_tags(page.body).strip, :length => 150, :omission => '...'
+            = truncate strip_tags(page.show_body).strip, :length => 150, :omission => '...'

@@ -1,0 +1,33 @@
+@mixin bgimg($name, $image_path: '/assets/markitup', $ext: 'png') {
+  background-image: url("#{$image_path}/#{$name}.#{$ext}");
+}
+
+.markItUp {
+  .mkitup-h1 a { @include bgimg('h1') }
+  .mkitup-h2 a { @include bgimg('h2') }
+  .mkitup-h3 a { @include bgimg('h3') }
+  .mkitup-h4 a { @include bgimg('h4') }
+  .mkitup-h5 a { @include bgimg('h5') }
+  .mkitup-h6 a { @include bgimg('h6') }
+
+  .mkitup-p a { @include bgimg('paragraph') }
+  .mkitup-b a { @include bgimg('bold') }
+  .mkitup-i a { @include bgimg('italic') }
+  .mkitup-stroke a { @include bgimg('stroke') }
+
+  .mkitup-ul a { @include bgimg('list-bullet') }
+  .mkitup-ol a { @include bgimg('list-numeric') }
+  .mkitup-li a { @include bgimg('list-item') }  
+
+  .mkitup-img a { @include bgimg('picture') }
+  .mkitup-a a { @include bgimg('link') }  
+
+  .mkitup-quotes a { @include bgimg('quotes') }
+  .mkitup-code a { @include bgimg('code') } 
+
+  .clean a { @include bgimg('clean') }
+  .preview a { @include bgimg('preview') } 
+
+  .mkitup-images a { @include bgimg('images', '/assets/admin') }
+  .mkitup-files a { @include bgimg('files', '/assets/admin') }
+}

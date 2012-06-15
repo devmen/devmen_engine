@@ -20,4 +20,10 @@
 *.swp
 *~
 .project
+
+# Ignore rvm settings
 .rvmrc
+
+# Ignore elfinder filemanager uploaded files
+/public/system/elfinder/files/*
+/public/system/elfinder/images/*
