@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :name, :email, :password, :roles
 
+  default_scope :order => 'users.name'
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
   ROLES = %w[admin manager]
@@ -24,6 +25,18 @@ class User < ActiveRecord::Base
 
   def role_symbols
     roles.map(&:to_sym)
+  end
+
+  def role_names
+    roles.map {|role| User.role_name(role) }
+  end
+
+  class << self
+
+    def role_name(role)
+      I18n.t role.to_sym, :scope => 'activerecord.attributes.user.role_values'
+    end
+
   end
 
 end

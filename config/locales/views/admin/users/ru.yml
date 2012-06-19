@@ -1,0 +1,17 @@
+ru:
+  admin:
+    users:
+      index:
+        title: Пользователи        
+        actions: Действия
+
+      form:
+        cancel: "Отмена"
+
+      new:
+        title: "Новый пользователь"
+        create: "Создать"
+
+      edit:        
+        update: "Обновить"
+

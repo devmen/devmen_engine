@@ -1,0 +1,16 @@
+ru:
+  admin:
+    pages:
+      form:
+        name: "Название"
+        url: "Адрес"
+        content: "Содержимое"
+        create: "Создать"
+        update: "Обновить"
+        cancel: "Отмена"
+
+      new:
+        title: Новая страница
+
+      edit:
+        title: "%{page_name}"

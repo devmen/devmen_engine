@@ -4,12 +4,12 @@
       = render 'shared/error_messages', :object => form.object
 
   .form-inputs
-    = form.input :name, :label => t('.name', :default => 'Name')
-    = form.input :url, :label => t('.url', :default => 'Url')
-    = form.input :body, :as => :text, :label => t('.content', :default => 'Content'),
+    = form.input :name, :label => Page.human_attribute_name(:name)
+    = form.input :url, :label => Page.human_attribute_name(:url)
+    = form.input :body, :as => :text, :label => Page.human_attribute_name(:body),
         :input_html => { :class => 'markitup' }         
 
   .form-actions
     - submit_value = view == 'new' ? t('.create', :default => 'Create') : t('.update', :default => 'Update')
     = form.button :submit, :value => submit_value, :class => 'btn-primary'
-    = link_to t('.back', :default => 'Cancel'), :back, :class => 'btn'    
+    = link_to t('.cancel', :default => 'Cancel'), :back, :class => 'btn'    

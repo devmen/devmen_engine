@@ -1,0 +1,9 @@
+ru:
+  layouts:
+    admin:
+      application:
+        all_users: Пользователи
+        add_user: Добавить пользователя
+        edit_profile: Профиль
+        signout: Выйти
+        signin: Войти

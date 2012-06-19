@@ -1,4 +1,6 @@
 ru:
+
+  # Inherited Resourced gem translations
   flash:
     actions:
       create:
@@ -23,12 +25,37 @@ ru:
           success: "Страница удалена."
           error: "Страница не удалена."
 
-  admin:
-    pages:
-      new_page: "Новая страница"
+  # Authlogic gem translations
+  authlogic:
+    error_messages:
+      login_blank: не может быть пустым
+      login_not_found: указан не верно
+      login_invalid: может состоять только из латинских букв, цифр, пробелов и символов .-_@.
+      consecutive_failed_logins_limit_exceeded: Превышен лимит попыток входа, учетная запись заблокирована.
+      email_invalid: должен выглядеть как адрес эл. почты (email@example.com).
+      password_blank: не может быть пустым
+      password_invalid: указан не верно
+      not_active: Ваш аккаунт отключен
+      not_confirmed: Ваш аккаунт не подтвержден
+      not_approved: Ваш аккаунт не утвержден
+      no_authentication_details: Вы не предоставили никаких подробностей для аутентификации.
+      general_credentials_error: Логин и/или пароль указаны не верно
+    models:
+      user_session: Сессия
+    attributes:
+      user_session:
+        login: Логин
+        name: Логин
+        email: Адрес эл. почты
+        password: Пароль
+        remember_me: Запомнить меня
 
-      form:
-        name: "Название"
-        url: "Адрес"
-        content: "Содержимое"
-        create: "Создать"
+  # Authlogic session form translations
+  user_sessions:
+    flash:
+      signin: Здравствуйте, %{user_name}!
+      signout: До свидания, %{user_name}.
+      credentials_error: Логин и/или пароль указаны не верно
+    new:
+      title: Вход
+      signin: Войти

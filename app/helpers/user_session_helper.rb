@@ -14,4 +14,16 @@ module UserSessionHelper
     current_user_session && current_user_session.user
   end
 
+  def user_session_start_url
+    if current_user.role? :admin
+      admin_url
+    else
+      root_url
+    end
+  end
+
+  def user_session_end_url
+    root_url
+  end
+
 end

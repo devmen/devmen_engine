@@ -1,3 +1,13 @@
-%p= "Name: #{@user.name}"
-%p= "Email: #{@user.email}"
+%h1= @user.name
 
+.btn-toolbar
+  = link_to edit_admin_user_path(@user), :class => 'btn btn-mini' do
+    %i.icon-pencil
+    = t('actions.edit', :default => 'Edit')
+  = link_to admin_user_path(@user), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete, :class => 'btn btn-mini' do
+    %i.icon-trash
+    = t('actions.remove', :default => 'Remove')
+
+%p= User.human_attribute_name(:name) + ': ' + @user.name
+%p= User.human_attribute_name(:email) + ': ' + @user.email
+%p= User.human_attribute_name(:roles) + ': ' + @user.role_names.join(', ')

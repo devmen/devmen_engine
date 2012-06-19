@@ -22,7 +22,8 @@ if @template
       page_url = '/admin/pages/' + @page.url
     end
   -%>
-  window.history.replaceState(null, '<%= j page_title %>', '<%= j page_url %>');
+  if (window.history.replaceState)
+    window.history.replaceState(null, '<%= j page_title %>', '<%= j page_url %>');
   <%
   # Use this code to aviod the exception raises after remote form submitting
   # uncaught exception: TypeError: window.document.selection is undefined

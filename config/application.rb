@@ -30,8 +30,8 @@ module DevmenEngine
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :ru
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -62,9 +62,6 @@ module DevmenEngine
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.template_engine :haml
     end
-
-    # Locale by default
-    config.i18n.default_locale = :ru
 
     # Responder types
     config.responders.flash_keys = [ :success, :error ]

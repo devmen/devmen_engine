@@ -1,17 +1,23 @@
-%h3 Pages
-%ul.nav.nav-list                
-  %li.new_page_link
-    = link_to t('.new_page', :default => 'New page'), new_admin_page_path, :remote => true
+%h3= t('.title', :default => 'Pages')
+.add_btn
+  = link_to new_admin_page_path, :remote => true, :class => 'btn btn-mini' do
+    %i.icon-plus-sign
+    = t('.actions.add', :default => 'Add')
+%ul.nav.nav-list  
   - page_list.each do |page|
     %li#page_link.page_link{:id => page.id, :class => @page == page && 'current'}
       = link_to page.name, admin_page_path(page), :remote => true
       .page_link_insider
         %ul.page_link_actions
           %li.page_link_action
-            = link_to 'Edit', edit_admin_page_path(page), :remote => true, :class => 'btn btn-mini'
+            = link_to edit_admin_page_path(page), :remote => true, :class => 'btn btn-mini' do
+              %i.icon-pencil
+              = t('.actions.edit', :default => 'Edit')
           %li.page_link_action
-            = link_to 'Remove', admin_page_path(page), :remote => true, :class => 'btn btn-mini',
-                :method => :delete, :confirm => 'Are you shure?'
+            = link_to admin_page_path(page), :remote => true, :class => 'btn btn-mini',
+                :method => :delete, :confirm => 'Are you shure?' do
+              %i.icon-remove
+              = t('.actions.remove', :default => 'Remove')
         .clear_fix
         - if @page != page
           .page_link_info

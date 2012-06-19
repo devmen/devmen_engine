@@ -1,0 +1,22 @@
+ru:
+  # Admin partials
+  admin:
+    pages:
+      title: Страницы
+      actions:
+        add: Добавить
+        edit: Изменить
+        remove: Удалить
+
+  # Common actions
+  actions:
+    add: Добавить        
+    show: Показать
+    edit: Изменить
+    update: Обновить
+    remove: Удалить
+    cancel: Отменить
+
+  # Confirmation questions
+  confirm:
+    sure: Вы уверены?

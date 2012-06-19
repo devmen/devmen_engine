@@ -21,6 +21,7 @@
 
 #messages { display: none; position: absolute; top: 0; right: 0; width: auto; }
 
+.page_links .add_btn { margin-left: 15px; }
 .page_links .page_link.current > a { color: black; }
 .page_links .page_link_insider { display: none; }
 .page_links .page_link.current .page_link_insider { display: block; }

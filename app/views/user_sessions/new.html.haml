@@ -1,12 +1,12 @@
-%h1= t('.signin', :default => 'Sign in')
+%h1= t('.title', :default => 'Sign in')
 
 = simple_form_for @user_session, :url => user_sessions_path, :html => { :class => 'signin_form well' } do |form|
 
   .form-inputs
-    = form.input :name, :label => t('.login', :default => 'Login')    
-    = form.input :password, :label => t('.password', :default => 'Password')
+    = form.input :name, :label => UserSession.human_attribute_name(:name), :required => false
+    = form.input :password, :label => UserSession.human_attribute_name(:password), :required => false
     = form.input :remember_me, :as => :boolean, :label => false,
-        :inline_label => t('.remember_me', :default => 'Yes, remember me'),
+        :inline_label => UserSession.human_attribute_name(:remember_me),
         :input_html => { :value => 1 }
 
   .form-actions
