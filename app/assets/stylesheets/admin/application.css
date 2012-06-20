@@ -21,15 +21,47 @@
 
 #messages { display: none; position: absolute; top: 0; right: 0; width: auto; }
 
-.page_links .add_btn { margin-left: 15px; }
+.page_links .nav-list { padding: 0; }
+/*.page_links .nav-list > li > a { margin: 0; padding: 3px 0; }*/
 .page_links .page_link.current > a { color: black; }
 .page_links .page_link_insider { display: none; }
 .page_links .page_link.current .page_link_insider { display: block; }
-.page_links .page_link_actions { list-style: none; padding: 0; margin: 0; }
-.page_links .page_link_actions li { float: left; }
-.page_links .page_link_actions li + li { margin-left: 5px; }
+.page_links .page_link_actions { display: none; list-style: none; padding: 0; margin: 0; }
+.page_links .page_link:hover .page_link_actions { display: block; }
+/*.page_links .page_link_actions li { float: left; }
+.page_links .page_link_actions li + li { margin-left: 5px; }*/
 .page_links .page_link_actions a { 
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .page_links .page_link_info { clear: both; color: #666; }
+
+/* Twitter Bootstrap Dropdown menu on mouseover  */
+.dropdown-menu .sub-menu {
+  left: 100%;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  margin-top: -1px;
+}
+
+.dropdown-menu li:hover .sub-menu {
+  visibility: visible;
+}
+
+.dropdown-menu li:first-child {
+  margin-top: -6px;
+  padding-top: 6px;
+}
+
+.navbar .dropdown-menu li:first-child {
+  margin-top: -12px;
+  padding-top: 12px;
+}
+
+.navbar .dropdown-menu:before {
+  display:none;
+}
+.navbar .dropdown-menu:after {
+  display:none;
+}
