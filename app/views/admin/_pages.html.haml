@@ -3,21 +3,33 @@
   = link_to new_admin_page_path, :remote => true, :class => 'btn btn-mini' do
     %i.icon-plus-sign
     = t('.actions.add', :default => 'Add')
+
 %ul.nav.nav-list  
   - page_list.each do |page|
-    %li#page_link.page_link{:id => page.id, :class => @page == page && 'current'}
+    %li#page_link.page_link{:id => page.id, :class => @page == page && 'current',
+        :data => {:content => truncate(strip_tags(page.show_body.gsub(/<h1>[^<]+<\/h1>/i, '')).strip, :length => 150, :omission => '...'),
+          :title => page.show_body[/<h1>([^<]+)<\/h1>/i, 1],
+        },
+      }
+            
+      %ul.page_link_actions.pull-right
+        %li.page_link_action.btn-group
+          = link_to t('.actions.edit', :default => 'Edit'), edit_admin_page_path(page), :remote => true, :class => 'btn btn-mini'
+          %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to edit_admin_page_path(page), :remote => true do
+                %i.icon-pencil
+                = t('actions.edit', :default => 'Edit')
+            %li 
+              = link_to admin_page_path(page), :remote => true, :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+                %i.icon-trash
+                = t('actions.remove', :default => 'Remove')
+
       = link_to page.name, admin_page_path(page), :remote => true
-      .page_link_insider
-        %ul.page_link_actions
-          %li.page_link_action
-            = link_to edit_admin_page_path(page), :remote => true, :class => 'btn btn-mini' do
-              %i.icon-pencil
-              = t('.actions.edit', :default => 'Edit')
-          %li.page_link_action
-            = link_to admin_page_path(page), :remote => true, :class => 'btn btn-mini',
-                :method => :delete, :confirm => 'Are you shure?' do
-              %i.icon-remove
-              = t('.actions.remove', :default => 'Remove')
+
+      .page_link_insider        
         .clear_fix
         - if @page != page
           .page_link_info
