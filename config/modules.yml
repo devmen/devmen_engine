@@ -1,0 +1,17 @@
+# List of enabled modules
+modules:
+   - news
+   - catalog
+
+# News module parameters
+news:
+  name: "Новости"
+
+# # Modules parameters in fit environment
+# development:
+#   news:
+#     name: "Новости"
+
+# production:
+#   news:
+    # name: "Новости"
