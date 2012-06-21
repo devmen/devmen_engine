@@ -1,21 +1,29 @@
 namespace :modules do
   # Install modules by copying files to corresponding application directories
   desc "Install modules"
+  # Modules param should be a string with module names separated by spaces
   task :install, [:modules] => :environment do |t, args|
     modules = module_list(args[:modules])
-    puts modules
-
+    puts "Modules to install: #{modules.join(', ')}"
+    
     modules.each do |module_name|   
 
       dirs = module_dirs(module_name)
       # Nothing to install
-      next unless dirs.size
+      unless dirs.size
+        puts "Can't install module '#{module_name}', there is no module directory"
+        next
+      end
 
       dirs.each do |dir|
         # Create app dirs
         app_path = module_app_dir_path(module_name, dir)
-        Dir.mkdir(app_path) unless File.exists?(app_path)
-        puts "Create dir: #{app_path}"
+        unless File.exists?(app_path)
+          Dir.mkdir(app_path) unless File.exists?(app_path)
+          puts "create: #{app_path.sub Rails.root.to_s, ''}"
+        else
+          puts "exists: #{app_path.sub Rails.root.to_s, ''}"
+        end
 
         # Copy files to corresponding application directories
         dir_full_path = File.join(module_full_path(module_name), dir)
@@ -23,8 +31,13 @@ namespace :modules do
           next unless File.file?(path)
           # file = Pathname.new(path).relative_path_from(dir_full_path)
           file = path.sub dir_full_path, ""
-          FileUtils.copy_file path, File.join(app_path, file)
-          puts "Copy file\n  from #{path}\n  to #{File.join(app_path, file)}"
+          app_file_path = File.join(app_path, file)
+          unless File.exists?(app_file_path)
+            FileUtils.copy_file path, app_file_path
+            puts "  create: #{app_file_path.sub Rails.root.to_s, ''}"
+          else
+            puts "  exists: #{app_file_path.sub Rails.root.to_s, ''}"
+          end
         end
       end
     end
@@ -33,30 +46,40 @@ namespace :modules do
   desc "Uninstall modules"
   task :uninstall, [:modules] => :environment do |t, args|
     modules = module_list(args[:modules])
-    puts modules
+    puts "Modules to uninstall: #{modules.join(', ')}"
 
     modules.each do |module_name|
       
-      dirs = module_dirs(module_name, false)
-      # Nothing to install
-      next unless dirs.size
+      dirs = module_dirs(module_name)
+      # Nothing to uninstall
+      unless dirs.size
+        puts "Can't uninstall module '#{module_name}', there is no module directory"
+        next
+      end
 
       dirs.each do |dir|
         # Remove app dirs
         app_path = module_app_dir_path(module_name, dir)
-        FileUtils.remove_dir(app_path, true) if File.exists?(app_path)
-        puts "Remove dir: #{app_path}"
+        if File.exists?(app_path)
+          FileUtils.remove_dir(app_path, true)
+          puts "remove: #{app_path.sub Rails.root.to_s, ''}"
+        else
+          puts "no directory: #{app_path.sub Rails.root.to_s, ''}"
+        end
       end
     end
   end 
 end
 
 def module_list(string)
-  if string
-    modules = string.split
-  elsif args[:modules].nil? || args[:modules] == 'all'
+  modules = string.split if string and string != 'all'
+  
+  if modules && modules.size
+    modules = modules.select { |m| MODULES.include? m }
+  else
     modules = MODULES
   end
+
   modules
 end
 
