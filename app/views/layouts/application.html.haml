@@ -26,9 +26,9 @@
           .container.nav-collapse
             %ul.nav
               - if current_user                
-                %li= link_to "Sign out", signout_path, :method => :delete
+                %li= link_to t('.signout', :default => 'Sign out'), signout_path, :method => :delete
               - else              
-                %li= link_to "Sign in", signin_path
+                %li= link_to t('.signin', :default => 'Sign in'), signin_path
 
     .container
 
