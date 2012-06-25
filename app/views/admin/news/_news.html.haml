@@ -1,20 +1,20 @@
 %ul.nav.nav-list
-  %li.page_link.head_link    
-    .add_btn.pull-right.page_link_actions
+  %li.sidebar-link.head_link    
+    .add_btn.pull-right.sidebar-link_actions
       = link_to new_admin_news_entry_path, :class => 'btn btn-mini' do
         %i.icon-plus-sign
         = t('actions.add', :default => 'Add')
     %h3= link_to t('.title', :default => 'News'), admin_news_path
 
   - News::Entry.list.each do |news_entry|
-    %li#news_entry_link.page_link{:id => news_entry.id, :class => @news_entry == news_entry && 'current',
+    %li#news_entry_link.sidebar-link{:id => news_entry.id, :class => @news_entry == news_entry && 'current',
         :data => {:content => news_entry.teaser,
           :title => news_entry.date,
         },
       }
             
-      %ul.page_link_actions.pull-right
-        %li.page_link_action.btn-group
+      %ul.sidebar-link_actions.pull-right
+        %li.sidebar-link_action.btn-group
           = link_to t('actions.edit', :default => 'Edit'), edit_admin_news_entry_path(news_entry), :class => 'btn btn-mini'
           %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
             %span.caret
