@@ -151,10 +151,33 @@ function dropdown_hover_add(all) {
   });
 };
 
+// Show teaser content (data-content) in popover window when sidebar item hovered
+function sidebar_popover_init() {
+  $('.sidebar').on('mouseenter', '.sidebar-link', function() {
+    var $this = $(this);
+    if ($this.hasClass('current'))
+      return;
+    if (!$this.data('popover')) {
+      $this.popover({
+        trigger: 'manual',        
+        placement: 'right',        
+        delay: 0        
+      });
+    };
+    $this.delay(1000, 'fx').queue('fx', function() { $(this).popover('show'); $(this).dequeue(); });
+  }).on('mouseleave click keydown', '.sidebar-link', function(event) {
+    var $this = $(this);
+    if ($this.hasClass('current'))
+      return;
+    $this.stop('fx', true, true).popover('hide');
+  });
+};
+
 // Dom ready initializer
 $(function() {
   // Show message block if there is some messages
   $('#messages:has(:first-child)').show().emptyFadeOut();
 
-  dropdown_hover_add(true);  
+  dropdown_hover_add(true);
+  sidebar_popover_init(); 
 });

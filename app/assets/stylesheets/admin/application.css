@@ -39,6 +39,16 @@
 }
 .page_links .page_link_info { clear: both; color: #666; }
 
+.sidebar-links .nav-list { padding: 0; }
+.sidebar-links .sidebar-head-link { line-height: 27px; }
+.sidebar-links .sidebar-link.current > a { color: black; }
+.sidebar-links .sidebar-link_actions { display: none; list-style: none; padding: 0; margin: 0; }
+.sidebar-links .sidebar-link:hover .sidebar-link_actions { display: block; }
+.sidebar-links .sidebar-link_actions a { 
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
 /* Twitter Bootstrap Dropdown menu on mouseover  */
 .dropdown-menu .sub-menu {
   left: 100%;
