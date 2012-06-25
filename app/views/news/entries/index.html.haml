@@ -1,0 +1,10 @@
+%h1= t('.title', :default => 'News')
+%ul.news
+  - @news.each do |news_entry|
+    %li
+      %h3.name= news_entry.name
+      .date= news_entry.date
+      .text= news_entry.teaser
+      .link
+        %a{:href => news_path(news_entry)}
+          = t('.more', :default => 'More')

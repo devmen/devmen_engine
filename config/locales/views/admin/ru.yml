@@ -10,7 +10,9 @@ ru:
 
   # Common actions
   actions:
-    add: Добавить        
+    title: Действия
+    add: Добавить
+    create: Создать       
     show: Показать
     edit: Изменить
     update: Обновить

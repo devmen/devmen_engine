@@ -1,0 +1,16 @@
+= simple_form_for [:admin, @news_entry], :url => @news_entry.new_record? ? admin_news_path : admin_news_entry_path(@news_entry),
+  :html => { :class => 'news_form well' } do |form|
+  - if Rails.env.development?
+    .form-errors
+      = render 'shared/error_messages', :object => form.object
+
+  .form-inputs
+    = form.input :name, :label => ::News::Entry.human_attribute_name(:name)
+    = form.input :date, :label => ::News::Entry.human_attribute_name(:date)
+    = form.input :text, :as => :text, :label => ::News::Entry.human_attribute_name(:text),
+        :input_html => { :class => 'markitup' }         
+
+  .form-actions
+    - submit_value = view == 'new' ? t('actions.create', :default => 'Create') : t('actions.update', :default => 'Update')
+    = form.button :submit, :value => submit_value, :class => 'btn-primary'
+    = link_to t('actions.cancel', :default => 'Cancel'), :back, :class => 'btn'    

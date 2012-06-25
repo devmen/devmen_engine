@@ -1,5 +1,16 @@
 DevmenEngine::Application.routes.draw do
 
+  scope :module => 'news' do
+    resources :news, :only => [:index, :show], :controller => 'entries'
+  end
+  namespace :admin do
+    scope :module => 'news' do
+      resources :news, :except => [:index, :create], :as => 'news_entry', :controller => 'entries'
+      match 'news', :to => 'entries#index', :as => 'news', :via => :get
+      match 'news', :to => 'entries#create', :as => 'news', :via => :post
+    end
+  end
+
   resources :user_sessions, :only => [:new, :create, :destroy] 
   match '/signin',  :to => 'user_sessions#new'
   match '/signout', :to => 'user_sessions#destroy'
@@ -8,13 +19,13 @@ DevmenEngine::Application.routes.draw do
 
   resources :pages, :only => [:index, :show]
 
-  namespace :admin do
+  namespace :admin do    
     resources :users
     resources :pages, :except => [:index]    
     match '/elfinder', :to => 'base#elfinder'
     match '/', :to => 'base#index'
     # Handeling routing error for admin namespace, see below
-    match '*a', :to => 'base#index'
+    # match '*a', :to => 'base#index'
   end
 
   # Handeling routing error by error_controller
