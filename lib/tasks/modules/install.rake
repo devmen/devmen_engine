@@ -27,39 +27,96 @@ namespace :modules do
       dirs.each do |dir|
 
         dir_full_path = File.join(module_full_path(module_name), dir)
+        app_path = module_app_dir_path(module_name, dir)
 
         # It is the directory wich have to create
         if creatable_dir?(dir)
-          # Create app dirs
-          app_path = module_app_dir_path(module_name, dir)
+          # Create app dirs          
+          app_rel_path = app_path.sub Rails.root.to_s, ''
           unless File.exists?(app_path)
-            Dir.mkdir(app_path) unless File.exists?(app_path)
-            puts "create: #{app_path.sub Rails.root.to_s, ''}"
+            Dir.mkdir(app_path)
+            puts "create: #{app_rel_path}"
           else
-            puts "exists: #{app_path.sub Rails.root.to_s, ''}"
+            puts "exists: #{app_rel_path}"
           end
 
-          # Copy files to corresponding application directories          
-          Dir[File.join(dir_full_path, '*')].each do |path|
-            next unless File.file?(path)
-            # file = Pathname.new(path).relative_path_from(dir_full_path)
-            file = path.sub dir_full_path, ""
-            app_file_path = File.join(app_path, file)
-            unless File.exists?(app_file_path)
-              FileUtils.copy_file path, app_file_path
-              puts "  create: #{app_file_path.sub Rails.root.to_s, ''}"
-            else
-              puts "  exists: #{app_file_path.sub Rails.root.to_s, ''}"
+          # If it is a path in other creatable dir, process it in another iteration
+          dir_paths = Dir[File.join(dir_full_path, '**', '*')].select do |path|
+            selected = true            
+            rel_path = File.join(dir, path.sub(dir_full_path, ''))
+            i = 0
+            while rel_path > dir && i < 20 do              
+              if creatable_dir?(rel_path)
+                selected = false
+                break
+              end
+              rel_path.slice!(rel_path.rindex('/')..-1)
+              i += 1
+            end
+            selected
+          end
+
+          # Copy files and subdirectories from current module dir to corresponding application directory        
+          dir_paths.each do |path|
+            if File.directory?(path)
+              app_dir_path = File.join(app_path, path.sub(dir_full_path, ''))
+              app_rel_dir_path = app_path.sub Rails.root.to_s, ''
+              unless File.exists?(app_dir_path)
+                Dir.mkdir(app_dir_path)
+                puts "  create: #{app_rel_dir_path}"
+              else
+                puts "  exists: #{app_rel_dir_path}"
+              end
+            elsif File.file?(path)
+              # file = Pathname.new(path).relative_path_from(dir_full_path)
+              file = path.sub dir_full_path, ""
+              app_file_path = File.join(app_path, file)
+              app_rel_file_path = app_file_path.sub Rails.root.to_s, ''
+              unless File.exists?(app_file_path)
+                FileUtils.copy_file path, app_file_path
+                puts "  create: #{app_rel_file_path.sub Rails.root.to_s, ''}"
+              else
+                puts "  exists: #{app_rel_file_path.sub Rails.root.to_s, ''}"
+              end
             end
           end
 
-        # Check special files, like routes.rb
+        # Check special files and dirs, like routes.rb
         else
-          # if module routes.rb exists, write its content to application routes.rb
-          if dir == 'config' && File.exists?(file = File.join(dir_full_path, "routes.rb"))            
-            if module_write_routes module_name, file 
+          case          
+          # Create module dir and copy all files in root module dir to application module dir
+          when dir == ""
+            # Create app module dir
+            app_rel_path = app_path.sub Rails.root.to_s, ''
+            unless File.exists?(app_path)
+              Dir.mkdir(app_path)
+              puts "create: #{app_rel_path}"
+            else
+              puts "exists: #{app_rel_path}"
+            end
+
+            Dir[File.join(dir_full_path, '*')].each do |path|
+              if File.file?(path)                
+                file = path.sub dir_full_path, ""
+                app_file_path = File.join(app_path, file)
+                app_rel_file_path = app_file_path.sub Rails.root.to_s, ''
+                unless File.exists?(app_file_path)
+                  FileUtils.copy_file path, app_file_path
+                  puts "  create: #{app_rel_file_path.sub Rails.root.to_s, ''}"
+                else
+                  puts "  exists: #{app_rel_file_path.sub Rails.root.to_s, ''}"
+                end
+              end
+            end
+
+          # If module routes.rb exists, write its content to application routes.rb
+          when dir == 'config' && File.exists?(file = File.join(dir_full_path, "routes.rb"))
+            res = module_write_routes module_name, file
+            if res
               puts "Routes successfully recorded"
               puts "  change: config/routes.rb"
+            elsif res.nil?
+              puts "Routes already exist"
             else
               puts "Routes recording has failed!"
             end
@@ -87,7 +144,7 @@ namespace :modules do
       dirs.each do |dir|
 
         # It is the directory wich was created
-        if creatable_dir?(dir)
+        if creatable_dir?(dir) || dir == ""
           # Remove app dirs
           app_path = module_app_dir_path(module_name, dir)
           if File.exists?(app_path)
@@ -99,30 +156,32 @@ namespace :modules do
         
         # Check special files, like routes.rb
         else
-          # if module routes.rb exists, write its content to application routes.rb
-          if dir == 'config' && File.exists?(file = File.join(dir_full_path, "routes.rb"))
-            res = module_remove_routes module_name, file         
+          if dir == 'config'
+            # Remove module routes from application routes.rb          
+            res = module_remove_routes module_name    
             if res
               puts "Routes successfully removed"
               puts "  change: config/routes.rb"
             elsif res.nil?
-              puts "No routes was removed"
+              puts "No routes have been removed"
             else              
               puts "Routes removing has failed!"
             end
-          end          
+          end
         end
 
       end
     end
 
-    # Remove modules directory in app
-    app_modules_path = File.join(Rails.root, "app", "modules")
-    if File.exists?(app_modules_path)
-      FileUtils.remove_dir(app_modules_path, true)
-      puts "remove: #{app_modules_path.sub Rails.root.to_s, ''}"
-    else
-      puts "no directory: #{app_modules_path.sub Rails.root.to_s, ''}"
+    # Remove modules directory in app, if all modules was removed
+    if args[:modules] || args[:modules] == 'all'
+      app_modules_path = File.join(Rails.root, "app", "modules")
+      if File.exists?(app_modules_path)
+        FileUtils.remove_dir(app_modules_path, true)
+        puts "remove: #{app_modules_path.sub Rails.root.to_s, ''}"
+      else
+        puts "no directory: #{app_modules_path.sub Rails.root.to_s, ''}"
+      end
     end
   end 
 end
@@ -211,17 +270,19 @@ def module_write_routes(module_name, module_file)
     draw_pos = lines.index { |str| str =~ /\.routes\.draw/ }
     module_route_lines.unshift("\n").push("\n")
     lines.insert draw_pos + 1, module_route_lines.join('')
+
+    File.open(routes_file, 'w') do|f| 
+      lines.each { |line| f.write line }
+    end
+
+    return true
+
   else
     # Replace existing routes
-    lines.slice! start_pos, end_pos - start_pos + 1
-    lines.insert start_pos, module_route_lines.push("\n").join('')
-  end
-  
-  File.open(routes_file, 'w') do|f| 
-    lines.each { |line| f.write line }
-  end
-
-  return true
+    # lines.slice! start_pos, end_pos - start_pos + 1
+    # lines.insert start_pos, module_route_lines.push("\n").join('')
+    return nil
+  end  
 end
 
 def module_remove_routes(module_name)
