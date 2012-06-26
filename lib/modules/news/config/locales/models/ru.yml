@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    
+    models:
+      news/entry: "Новость"
+
+    attributes:
+      news/entry:
+        name: "Заголовок"
+        date: "Дата"
+        text: "Текст"

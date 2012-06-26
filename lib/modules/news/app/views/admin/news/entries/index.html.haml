@@ -1,0 +1,36 @@
+%h1= t('.title', :default => 'News')
+
+.btn-toolbar
+  = link_to new_admin_news_entry_path, :class => 'btn btn-mini' do
+    %i.icon-plus-sign
+    = t('actions.add', :default => 'Add')
+
+- if !@news.empty?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= News::Entry.human_attribute_name(:name)
+        %th= News::Entry.human_attribute_name(:date)
+        %th= News::Entry.human_attribute_name(:text)
+        %th= t('actions.title', :default => 'Actions')
+
+    %tbody
+      - @news.each do |news_entry|
+        %tr
+          %td= link_to news_entry.name, admin_news_entry_path(news_entry)
+          %td= news_entry.date
+          %td= news_entry.teaser
+          %td
+            .btn-group
+              = link_to t('actions.edit', :default => 'Edit'), edit_admin_news_entry_path(news_entry), :class => 'btn btn-mini'              
+              %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to edit_admin_news_entry_path(news_entry) do
+                    %i.icon-pencil
+                    = t('actions.edit', :default => 'Edit')
+                %li 
+                  = link_to admin_news_entry_path(news_entry), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+                    %i.icon-trash
+                    = t('actions.remove', :default => 'Remove')

@@ -1,0 +1,13 @@
+%h1= @news_entry.name
+
+.btn-toolbar
+  = link_to edit_admin_news_entry_path(@news_entry), :class => 'btn btn-mini' do
+    %i.icon-pencil
+    = t('actions.edit', :default => 'Edit')
+  = link_to admin_news_entry_path(@news_entry), :confirm => t('confirm.sure', :default => 'Are you sure?'),
+    :method => :delete, :class => 'btn btn-mini' do
+    %i.icon-trash
+    = t('actions.remove', :default => 'Remove')
+
+%p= News::Entry.human_attribute_name(:date) + ': ' + @news_entry.date.to_s
+%p= @news_entry.text

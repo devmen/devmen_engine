@@ -1,0 +1,21 @@
+ru:
+  admin:
+    news:
+      entries:
+        form:
+          name: "Заголовок"
+          date: "Дата"
+          text: "Текст"          
+
+        index:
+          title: Новости
+
+        new:
+          title: Новая новость
+
+        edit:
+          title: "%{news_entry_name}"
+
+      # News partial
+      news:
+        title: Новости
