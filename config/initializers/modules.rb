@@ -2,22 +2,19 @@
 
 ym = YAML.load_file("#{::Rails.root}/config/modules.yml")
 
-cfg = Hash.new
-MODULES = cfg['modules'] = ym['modules'] || []
+CFG = Hash.new
+MODULES = CFG['modules'] = ym['modules'] || []
 MODULES.each do |mod|
   # Create module const
   # Object.const_set(mod.camelize.to_sym, Module.new)
 
-  cfg[mod] = ym[mod] if ym[mod]
-  if cfg[mod] && ym[Rails.env]
-    env_cfg = ym[Rails.env]
-    env_cfg.each do |m, params|
-      cfg[mod].merge params
+  CFG[mod] = ym[mod] if ym[mod]
+  if CFG[mod] && ym[Rails.env]    
+    ym[Rails.env].each do |m, params|
+      CFG[mod].merge params
     end
   end
 end
-
-CFG = cfg
 
 # Add app/modules dir and all subdirs to load paths
 # Somehow this code don't require module files
