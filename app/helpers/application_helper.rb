@@ -10,4 +10,17 @@ module ApplicationHelper
     end
   end
 
+  # Return content converted from format to html
+  def self.to_html(content, format = :textile)    
+    if format == :textile      
+      RedCloth.new(content).to_html
+    else      
+      content
+    end
+  end
+
+  def to_html(content, format = :textile)
+  	ApplicationHelper.to_html(content, format)
+  end
+
 end

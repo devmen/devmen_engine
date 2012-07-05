@@ -7,8 +7,8 @@
 %ul.nav.nav-list  
   - page_list.each do |page|
     %li#page_link.page_link{:id => page.id, :class => @page == page && 'current',
-        :data => {:content => truncate(strip_tags(page.show_body.gsub(/<h1>[^<]+<\/h1>/i, '')).strip, :length => 150, :omission => '...'),
-          :title => page.show_body[/<h1>([^<]+)<\/h1>/i, 1],
+        :data => {:content => truncate(strip_tags(to_html(page.body).gsub(/<h1>[^<]+<\/h1>/i, '')).strip, :length => 150, :omission => '...'),
+          :title => to_html(page.body)[/<h1>([^<]+)<\/h1>/i, 1],
         },
       }
             
@@ -33,4 +33,4 @@
         .clear_fix
         - if @page != page
           .page_link_info
-            = truncate strip_tags(page.show_body).strip, :length => 150, :omission => '...'
+            = truncate strip_tags(to_html(page.body)).strip, :length => 150, :omission => '...'

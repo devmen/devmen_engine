@@ -10,4 +10,4 @@
     = t('actions.remove', :default => 'Remove')
 
 %p= News::Entry.human_attribute_name(:date) + ': ' + @news_entry.date.to_s
-%p= @news_entry.text
+%p!= to_html(@news_entry.text)

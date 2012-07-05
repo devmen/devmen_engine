@@ -14,7 +14,7 @@ module News
     def teaser(options={})
       options = { :length => 150, :omission => '...' } if options.empty?
       helpers = ActionController::Base.helpers
-      helpers.truncate(helpers.strip_tags(self.text).strip, options)      
+      helpers.truncate(helpers.strip_tags(ApplicationHelper.to_html(self.text)).strip, options)
     end
 
     class << self

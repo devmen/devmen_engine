@@ -15,15 +15,6 @@ class Page < ActiveRecord::Base
     url
   end
 
-  def show_body(format = 'textile')    
-    if format == 'textile'
-      # Use tixtile preprocessing
-      RedCloth.new(self.body).to_html
-    else      
-      self.body
-    end
-  end
-
   private
 
     def check_url
