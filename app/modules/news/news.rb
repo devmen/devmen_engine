@@ -1,2 +1,2 @@
-module News  
+module News
 end
