@@ -1,0 +1,31 @@
+%ul.nav.nav-list
+  %li.sidebar-link.head_link
+    .add_btn.pull-right.sidebar-link_actions
+      = link_to new_admin_realty_entry_path, :class => 'btn btn-mini' do
+        %i.icon-plus-sign
+        = t('actions.add', :default => 'Add')
+    %h3= link_to t('.title', :default => 'realty'), admin_realty_path
+
+  - Realty::Entry.list.each do |realty_entry|
+    %li#realty_entry_link.sidebar-link{:id => realty_entry.id, :class => @realty_entry == realty_entry && 'current',
+          :data => {:content => realty_entry.teaser,
+          :title => "#{realty_entry.name}, #{realty_entry.price}",
+        },
+      }
+
+      %ul.sidebar-link_actions.pull-right
+        %li.sidebar-link_action.btn-group
+          = link_to t('actions.edit', :default => 'Edit'), edit_admin_realty_entry_path(realty_entry), :class => 'btn btn-mini'
+          %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to edit_admin_realty_entry_path(realty_entry) do
+                %i.icon-pencil
+                = t('actions.edit', :default => 'Edit')
+            %li
+              = link_to admin_realty_entry_path(realty_entry), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+                %i.icon-trash
+                = t('actions.remove', :default => 'Remove')
+
+      = link_to realty_entry.name, admin_realty_entry_path(realty_entry)

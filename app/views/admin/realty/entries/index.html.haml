@@ -1,0 +1,37 @@
+%h1= t('.title', :default => 'Realty')
+
+.btn-toolbar
+  = link_to new_admin_realty_entry_path, :class => 'btn btn-mini' do
+    %i.icon-plus-sign
+    = t('actions.add', :default => 'Add')
+
+- if !@realty.empty?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Realty::Entry.human_attribute_name(:name)
+        %th= Realty::Entry.human_attribute_name(:price)
+        %th= Realty::Entry.human_attribute_name(:address)
+        %th= Realty::Entry.human_attribute_name(:description)
+        %th= t('actions.title', :default => 'Actions')
+
+    %tbody
+      - @realty.each do |realty_entry|
+        %tr
+          %td= link_to realty_entry.name, admin_realty_entry_path(realty_entry)
+          %td= realty_entry.price
+          -#%td= realty_entry.teaser
+          %td
+            .btn-group
+              = link_to t('actions.edit', :default => 'Edit'), edit_admin_realty_entry_path(realty_entry), :class => 'btn btn-mini'
+              %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to edit_admin_realty_entry_path(realty_entry) do
+                    %i.icon-pencil
+                    = t('actions.edit', :default => 'Edit')
+                %li
+                  = link_to admin_realty_entry_path(realty_entry), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+                    %i.icon-trash
+                    = t('actions.remove', :default => 'Remove')

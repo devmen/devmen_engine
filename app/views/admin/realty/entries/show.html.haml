@@ -1,0 +1,14 @@
+%h1= @realty_entry.name
+
+.btn-toolbar
+  = link_to edit_admin_realty_entry_path(@realty_entry), :class => 'btn btn-mini' do
+    %i.icon-pencil
+    = t('actions.edit', :default => 'Edit')
+  = link_to admin_realty_entry_path(@realty_entry), :confirm => t('confirm.sure', :default => 'Are you sure?'),
+    :method => :delete, :class => 'btn btn-mini' do
+    %i.icon-trash
+    = t('actions.remove', :default => 'Remove')
+
+%p= Realty::Entry.human_attribute_name(:price) + ': ' + @realty_entry.price.to_s
+%p= @realty_entry.address
+%p= @realty_entry.description

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621172500) do
+ActiveRecord::Schema.define(:version => 20120703155836) do
 
   create_table "news", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20120621172500) do
   end
 
   add_index "pages", ["url"], :name => "index_pages_on_url", :unique => true
+
+  create_table "realty", :force => true do |t|
+    t.string   "name"
+    t.integer  "price",       :default => 0, :null => false
+    t.text     "address"
+    t.text     "description"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

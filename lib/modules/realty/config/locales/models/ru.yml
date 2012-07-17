@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+
+    models:
+      realty/entry: "Недвижимость"
+
+    attributes:
+      realty/entry:
+        name: "Наименование"
+        price: "Цена"
+        address: "Адрес"
+        description: "Описание"

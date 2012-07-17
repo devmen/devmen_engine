@@ -2,11 +2,13 @@
 modules:
    - news
    - catalog
+   - realty
 
 # News module parameters
 news:
   name: "Новости"
-
+realty:
+  name: "Недвижимость"
 # # Modules parameters in fit environment
 # development:
 #   news:

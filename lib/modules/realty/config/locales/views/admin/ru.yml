@@ -1,0 +1,22 @@
+ru:
+  admin:
+    realty:
+      entries:
+        form:
+          name: "Наименование"
+          price: "Цена"
+          address: "Адрес"
+          description: "Описание"
+
+        index:
+          title: Недвижимость
+
+        new:
+          title: Добавить
+
+        edit:
+          title: "%{realty_entry_name}"
+
+      # Realty partial
+      realty:
+        title: Недвижимость

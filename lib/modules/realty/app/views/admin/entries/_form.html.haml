@@ -1,0 +1,16 @@
+= simple_form_for [:admin, @realty_entry], :url => @realty_entry.new_record? ? admin_realty_path : admin_realty_entry_path(@realty_entry),
+  :html => { :class => 'realty_form well' } do |form|
+  - if Rails.env.development?
+    .form-errors
+      = render 'shared/error_messages', :object => form.object
+
+  .form-inputs
+    = form.input :name, :label => ::Realty::Entry.human_attribute_name(:name)
+    = form.input :price, :label => ::Realty::Entry.human_attribute_name(:price)
+    = form.input :address, :as => :text, :label => ::Realty::Entry.human_attribute_name(:address), :input_html => { :class => 'markitup', :style => 'height: 100px;' }
+    = form.input :description, :as => :text, :label => ::Realty::Entry.human_attribute_name(:description), :input_html => { :class => 'markitup', :style => 'height: 100px;' }
+
+  .form-actions
+    - submit_value = view == 'new' ? t('actions.create', :default => 'Create') : t('actions.update', :default => 'Update')
+    = form.button :submit, :value => submit_value, :class => 'btn-primary'
+    = link_to t('actions.cancel', :default => 'Cancel'), :back, :class => 'btn'
