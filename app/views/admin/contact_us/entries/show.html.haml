@@ -1,0 +1,20 @@
+.page
+  %p
+    %strong
+      = succeed ":" do
+        = ContactUs::Entry.human_attribute_name(:name)
+    = @contact_us.name
+
+  %p
+    %strong
+      = succeed ":" do
+        = ContactUs::Entry.human_attribute_name(:email)
+    = @contact_us.email
+
+  %p
+    %strong
+      = succeed ":" do
+        = ContactUs::Entry.human_attribute_name(:phone)
+    = @contact_us.phone
+  .well
+    = simple_format @contact_us.content

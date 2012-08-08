@@ -1,0 +1,10 @@
+.wrapper
+  .content
+    .post
+      %h3= t(:contact_us)
+      = simple_form_for @contact_us, url: contact_us_path, method: :post do |form|
+        = form.input :name
+        = form.input :email
+        = form.input :phone
+        = form.input :content
+        = form.button :submit

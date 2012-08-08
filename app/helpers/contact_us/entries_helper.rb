@@ -1,0 +1,2 @@
+module ContactUs::EntriesHelper
+end

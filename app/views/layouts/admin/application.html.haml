@@ -41,6 +41,7 @@
                     = t('.signout', :default => 'Sign out')
           .container.nav-collapse
             %ul.nav.pull-right
+              %li= link_to t(:contact_us), admin_contact_us_entry_index_path
               - if can? :manage, User
                 %li= link_to t('.all_users', :default => 'Users'), admin_users_path
               - if !current_user

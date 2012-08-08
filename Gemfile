@@ -107,3 +107,7 @@ group :development, :test do
   gem 'faker'
   gem 'hirb'
 end
+
+group :test do
+  gem "shoulda", "~> 3.1.1"
+end

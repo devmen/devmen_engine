@@ -26,6 +26,15 @@ DevmenEngine::Application.routes.draw do
   end
   # News module routes end
 
+  scope module: 'contact_us' do
+    resources :contact_us, only: [:new, :create], controller: "entries"
+  end
+  namespace :admin do
+    scope module: "contact_us" do
+      resources :contact_us, only: [:index, :show, :destroy], as: "contact_us_entry", controller: "entries"
+    end
+  end
+
   resources :user_sessions, :only => [:new, :create, :destroy] 
   match '/signin',  :to => 'user_sessions#new'
   match '/signout', :to => 'user_sessions#destroy'

@@ -1,0 +1,25 @@
+%h1= t('.title', :default => 'Contact Us')
+
+- if @contacts_us.present?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= ContactUs::Entry.human_attribute_name(:name)
+        %th= ContactUs::Entry.human_attribute_name(:email)
+        %th= ContactUs::Entry.human_attribute_name(:phone)
+        %th= ContactUs::Entry.human_attribute_name(:created_at)
+        %th= t('actions.title', :default => 'Actions')
+
+    %tbody
+      - @contacts_us.each do |contact|
+        %tr
+          %td= link_to contact.name, admin_contact_us_entry_path(contact)
+          %td= contact.email
+          %td= contact.phone
+          %td= l contact.created_at, format: :long
+          %td
+            .btn-group
+              = link_to admin_contact_us_entry_path(contact), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete, class: "btn btn-danger btn-mini" do
+                %i.icon-trash.icon-white
+                = t('actions.remove', :default => 'Remove')
+
