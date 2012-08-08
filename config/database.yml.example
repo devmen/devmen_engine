@@ -1,0 +1,22 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *common
+  database: devmen_engine_development
+  username: postgres
+  password: '123'
+
+test:
+  <<: *common
+  database: devmen_engine_test
+  username: postgres
+  password: '123'
+
+production:
+  <<: *common
+  database: devmen_engine_production
+  username: postgres
+  password: '123'
