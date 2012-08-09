@@ -1,0 +1,2 @@
+module Sitemap::EntriesHelper
+end

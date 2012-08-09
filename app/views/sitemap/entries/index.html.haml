@@ -1,0 +1,25 @@
+.wrapper
+  .content
+    .page
+      %ul
+        %li
+          = link_to t(:homepage), root_url
+          - if @pages.present?
+            %ul
+              - @pages.each do |page|
+                %li= link_to page.name, page.url
+        - if Realty.present?
+          %li
+            = link_to t("realty.entries.index.title"), realty_index_path
+            - if @realties.present?
+              %ul
+                - @realties.each do |realty|
+                  %li= link_to realty.name, realty_path(realty)
+        - if News.present?
+          %li
+            = link_to t("news.entries.index.title"), news_index_path
+            - if @news.present?
+              %ul
+                - @news.each do |entry|
+                  %li= link_to entry.name, news_path(entry)
+
