@@ -1,0 +1,13 @@
+.wrapper
+  .content
+    .page
+      - flash.each do |name, message|
+        %div= message
+
+      %ul.news
+        - @reviews.each do |review|
+          %p
+            %h3= review.name
+            %p= simple_format review.content
+
+

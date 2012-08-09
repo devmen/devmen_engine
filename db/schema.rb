@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808173742) do
+ActiveRecord::Schema.define(:version => 20120809081909) do
 
   create_table "contact_us_entries", :force => true do |t|
     t.string   "name"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20120808173742) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
+
+  create_table "review_entries", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.boolean  "visible",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "review_entries", ["visible"], :name => "index_review_entries_on_visible"
 
   create_table "users", :force => true do |t|
     t.string   "name"

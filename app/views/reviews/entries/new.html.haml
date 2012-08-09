@@ -1,0 +1,9 @@
+.wrapper
+  .content
+    .post
+      %h3= t(:new_review)
+      = simple_form_for @review, url: reviews_path, method: :post do |form|
+        = form.input :name, label: t(:review_name)
+        = form.input :content, label: t(:review_content)
+        = form.button :submit, t(:new_review)
+

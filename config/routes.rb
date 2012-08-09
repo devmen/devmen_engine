@@ -39,6 +39,17 @@ DevmenEngine::Application.routes.draw do
     resources :sitemap, only: [:index], controller: "entries"
   end
 
+  scope module: "reviews" do
+    resources :reviews, only: [:index, :new, :create], controller: "entries"
+  end
+  namespace :admin do
+    scope module: "reviews" do
+      resources :reviews, only: [:index, :show, :destroy], as: "reviews", controller: "entries" do
+        post :visible, on: :member
+      end
+    end
+  end
+
   resources :user_sessions, :only => [:new, :create, :destroy] 
   match '/signin',  :to => 'user_sessions#new'
   match '/signout', :to => 'user_sessions#destroy'

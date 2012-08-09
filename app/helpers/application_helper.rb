@@ -23,4 +23,8 @@ module ApplicationHelper
   	ApplicationHelper.to_html(content, format)
   end
 
+  def to_yes_no(value)
+    value == true ? I18n.t("yes") : I18n.t("no")
+  end
+
 end

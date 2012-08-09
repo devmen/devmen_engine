@@ -1,0 +1,31 @@
+%h1= t('.title', :default => 'Reviews')
+
+- if @reviews.present?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Review::Entry.human_attribute_name(:name)
+        %th= Review::Entry.human_attribute_name(:content)
+        %th= Review::Entry.human_attribute_name(:visible)
+        %th= t('actions.title', :default => 'Actions')
+
+    %tbody
+      - @reviews.each do |review|
+        %tr
+          %td= review.name
+          %td= simple_format review.content
+          %td= to_yes_no review.visible?
+          %td
+            .btn-group
+              - if review.visible?
+                = link_to visible_admin_review_path(review, type: "off"), method: :post, class: "btn btn-danger btn-mini" do
+                  %i.icon-white.icon-eye-close
+                  = t(:make_invisible)
+              - else
+                = link_to visible_admin_review_path(review, type: "on"), method: :post, class: "btn btn-success btn-mini" do
+                  %i.icon-white.icon-eye-open
+                  = t(:make_visible)
+              = link_to admin_review_path(review), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete, class: "btn btn-danger btn-mini" do
+                %i.icon-trash.icon-white
+                = t('actions.remove', :default => 'Remove')
+

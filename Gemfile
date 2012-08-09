@@ -55,6 +55,7 @@ gem 'rvm-capistrano', '~> 1.2.2'
 gem 'cancan', '~> 1.6.7'
 gem 'inherited_resources', '~> 1.3.1'
 gem 'authlogic', '~> 3.1.0'
+gem "has_scope"
 
 gem 'russian', '~> 0.6.0'
 

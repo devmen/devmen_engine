@@ -1,0 +1,9 @@
+
+ru:
+  review_name: Имя
+  review_content: Отзыв
+  reviews: Отзывы клиентов
+  new_review: Оставить отзыв
+  review_was_sent: Ваш отзыв отправлен на модерацию. Спасибо.
+  make_visible: Отображать
+  make_invisible: Скрывать
