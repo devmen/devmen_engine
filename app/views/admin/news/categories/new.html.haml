@@ -1,0 +1,5 @@
+%h1= t(".title", default: "Add news category")
+
+= simple_form_for @category, url: admin_news_categories_path do |form|
+  = form.input :name
+  = form.button :submit

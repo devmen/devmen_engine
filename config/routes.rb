@@ -20,6 +20,7 @@ DevmenEngine::Application.routes.draw do
   namespace :admin do
     scope :module => 'news' do
       resources :news, :except => [:index, :create], :as => 'news_entry', :controller => 'entries'
+      resources :news_categories, as: "news_categories", controller: "categories"
       match 'news', :to => 'entries#index', :as => 'news', :via => :get
       match 'news', :to => 'entries#create', :as => 'news', :via => :post
     end

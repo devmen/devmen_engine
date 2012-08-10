@@ -1,0 +1,32 @@
+%h1= t('.title', :default => 'News Categories')
+
+.btn-toolbar
+  = link_to new_admin_news_category_path, :class => 'btn btn-mini' do
+    %i.icon-plus-sign
+    = t('actions.add', :default => 'Add')
+
+- if @categories.present?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= News::Category.human_attribute_name(:name)
+        %th= t('actions.title', :default => 'Actions')
+
+    %tbody
+      - @categories.each do |category|
+        %tr
+          %td= category.name
+          %td
+            .btn-group
+              = link_to t('actions.edit', :default => 'Edit'), edit_admin_news_category_path(category), :class => 'btn btn-mini'
+              %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to edit_admin_news_category_path(category) do
+                    %i.icon-pencil
+                    = t('actions.edit', :default => 'Edit')
+                %li
+                  = link_to admin_news_category_path(category), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+                    %i.icon-trash
+                    = t('actions.remove', :default => 'Remove')

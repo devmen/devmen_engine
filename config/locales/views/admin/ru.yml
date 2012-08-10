@@ -22,3 +22,5 @@ ru:
   # Confirmation questions
   confirm:
     sure: Вы уверены?
+
+  news_categories: Категории новостей
