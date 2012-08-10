@@ -17,6 +17,16 @@ ru:
         edit:
           title: "%{realty_entry_name}"
 
+      categories:
+        index:
+          title: Категории недвижимости
+
+        new:
+          title: Новая категория
+
+        edit:
+          title: Редактировать категорию
+
       # Realty partial
       realty:
         title: Недвижимость

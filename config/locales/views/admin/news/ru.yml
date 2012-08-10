@@ -15,6 +15,15 @@ ru:
 
         edit:
           title: "%{news_entry_name}"
+      categories:
+        index:
+          title: Категории новостей
+
+        new:
+          title: Новая категория
+
+        edit:
+          title: Редактирование категории
 
       # News partial
       news:

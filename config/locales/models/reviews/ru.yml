@@ -1,0 +1,8 @@
+
+ru:
+  activerecord:
+    attributes:
+      review/entry:
+        name: Имя
+        content: Отзыв
+        visible: Отображать?

@@ -4,6 +4,8 @@ module Realty
 
     attr_accessible :name, :price, :address, :description
 
+    belongs_to :category, class_name: "Category"
+
     #URL_FORMAT = /\A[\w+\-_]+\z/i
 
     validates :name, :price, :address, :description, :presence => true

@@ -1,0 +1,5 @@
+%h1= t(".title", default: "Add realty category")
+
+= simple_form_for @category, url: admin_realty_categories_path do |form|
+  = form.input :name
+  = form.button :submit

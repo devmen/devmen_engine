@@ -3,6 +3,7 @@ ru:
 
     models:
       realty/entry: "Недвижимость"
+      realty/category: Категория
 
     attributes:
       realty/entry:
@@ -10,3 +11,6 @@ ru:
         price: "Цена"
         address: "Адрес"
         description: "Описание"
+
+      realty/category:
+        name: Название

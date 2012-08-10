@@ -41,6 +41,7 @@
                     = t('.signout', :default => 'Sign out')
           .container.nav-collapse
             %ul.nav.pull-right
+              %li= link_to t(:realty_categories), admin_realty_categories_path
               %li= link_to t(:news_categories), admin_news_categories_path
               %li= link_to t(:reviews), admin_reviews_path
               %li= link_to t(:contact_us), admin_contact_us_entry_index_path

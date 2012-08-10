@@ -5,10 +5,10 @@ ru:
       messages:
         valid_email: Должен быть валидный Email адрес.
     attributes:
-      model:
-        contact_us_entry:
-          name: Имя
-          email: Email
-          phone: Контактный телефон
-          content: Сообщение
-          submit: Отправить
+      contact_us/entry:
+        name: Имя
+        email: Email
+        phone: Контактный телефон
+        content: Сообщение
+        submit: Отправить
+        created_at: Дата

@@ -7,6 +7,7 @@ DevmenEngine::Application.routes.draw do
   namespace :admin do
     scope :module => 'realty' do
       resources :realty, :except => [:index, :create], :as => 'realty_entry', :controller => 'entries'
+      resources :realty_categories, as: "realty_categories", controller: "categories"
       match 'realty', :to => 'entries#index', :as => 'realty', :via => :get
       match 'realty', :to => 'entries#create', :as => 'realty', :via => :post
     end
