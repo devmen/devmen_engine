@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require markitup
+//= require fancybox
 //= require ./markitup/textile
 //= require_directory ./elfinder
 //= require_directory .
@@ -180,4 +181,12 @@ $(function() {
 
   dropdown_hover_add(true);
   sidebar_popover_init(); 
+
+  $("a[rel=photo_group]").fancybox({
+    titlePosition: "over",
+    titleFormat: function(title, currentArray, currentIndex, currentOps) {
+      return "<span id='fancybox-title-over'>" + (currentIndex + 1) + " из " + currentArray.length + "</span>"
+    }
+  });
+
 });

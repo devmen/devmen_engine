@@ -56,6 +56,9 @@ gem 'cancan', '~> 1.6.7'
 gem 'inherited_resources', '~> 1.3.1'
 gem 'authlogic', '~> 3.1.0'
 gem "has_scope"
+gem "carrierwave", "~> 0.6.2"
+gem "mini_magick", "~> 3.4"
+gem "fancybox-rails", "~> 0.1.4"
 
 gem 'russian', '~> 0.6.0'
 

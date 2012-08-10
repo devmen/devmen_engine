@@ -2,9 +2,11 @@ module Realty
   class Entry < ActiveRecord::Base
     self.table_name = "realty"
 
-    attr_accessible :name, :price, :address, :description
+    attr_accessible :name, :price, :address, :description, :photos_attributes
 
     belongs_to :category, class_name: "Category"
+    has_many :photos, class_name: "Photo"
+    accepts_nested_attributes_for :photos, allow_destroy: true
 
     #URL_FORMAT = /\A[\w+\-_]+\z/i
 
@@ -21,11 +23,9 @@ module Realty
     end
 
     class << self
-
       def list(count = 5)
         self.limit(count).all
       end
-
     end
   end
 end

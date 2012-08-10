@@ -10,5 +10,9 @@
     = t('actions.remove', :default => 'Remove')
 
 %p= Realty::Entry.human_attribute_name(:price) + ': ' + @realty_entry.price.to_s
-%p= @realty_entry.address
-%p= @realty_entry.description
+- if @realty_entry.photos.present?
+  %p
+    - @realty_entry.photos.each do |photo|
+      = link_to image_tag(photo.image_url(:thumb)), photo.image_url, rel: "photo_group"
+%p= simple_format @realty_entry.address
+%p= simple_format @realty_entry.description

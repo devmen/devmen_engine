@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810095224) do
+ActiveRecord::Schema.define(:version => 20120810125337) do
 
   create_table "contact_us_entries", :force => true do |t|
     t.string   "name"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(:version => 20120810095224) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "realty_photos", :force => true do |t|
+    t.integer  "entry_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "realty_photos", ["entry_id"], :name => "index_realty_photos_on_entry_id"
 
   create_table "review_entries", :force => true do |t|
     t.string   "name"
