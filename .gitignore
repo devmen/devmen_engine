@@ -27,6 +27,8 @@ config/database.yml
 
 # Ignore elfinder filemanager uploaded files
 /public/system/elfinder/files/*
+!/public/system/elfinder/files/.gitkeep
 /public/system/elfinder/images/*
+!/public/system/elfinder/images/.gitkeep
 
 /public/uploads
