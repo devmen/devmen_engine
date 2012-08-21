@@ -22,7 +22,7 @@ mySettings = {
     {separator:'---------------' },
     {name:'Images', className:'mkitup-images'},
     {name:'Files', className:'mkitup-files'},    
-    {separator:'---------------' },    
-    {name:'Preview', className:'preview', call:'preview' }
+    // {separator:'---------------' },    
+    // {name:'Preview', className:'preview', call:'preview' }
   ]
 }

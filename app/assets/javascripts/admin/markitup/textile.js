@@ -3,8 +3,8 @@ mySettings = {
   previewParserPath:   "/admin/preview.textile",
   onShiftEnter:        {keepDefault:false, replaceWith:'\n\n'},
   markupSet: [
-    {name:'Heading 2', className:'mkitup-h2', key:'2', openWith:'h2(!(([![Class]!]))!). ', placeHolder:'Здесь ваш текст...' },
-    {name:'Heading 3', className:'mkitup-h3', key:'3', openWith:'h3(!(([![Class]!]))!). ', placeHolder:'Здесь ваш текст...' },
+    {name:'Heading 2', className:'mkitup-h2', key:'2', openWith:'h2(!(([![Class]!]))!). ', placeHolder:'Введите текст... (после заголовка оставьте пустую строку)' },
+    {name:'Heading 3', className:'mkitup-h3', key:'3', openWith:'h3(!(([![Class]!]))!). ', placeHolder:'Введите текст... (после заголовка оставьте пустую строку)' },
     {name:'Paragraph', className:'mkitup-p', key:'P', openWith:'p(!(([![Class]!]))!). '}, 
     {separator:'---------------' },
     {name:'Bold', className:'mkitup-b', key:'B', closeWith:'*', openWith:'*'}, 
@@ -22,7 +22,7 @@ mySettings = {
     {separator:'---------------' },
     {name:'Quotes', className:'mkitup-quotes', openWith:'bq(!(([![Class]!]))!). '}, 
     {name:'Code', className:'mkitup-code', openWith:'@', closeWith:'@'}, 
-    {separator:'---------------' },       
-    {name:'Preview', className:'preview', call:'preview'}
+    // {separator:'---------------' },       
+    // {name:'Preview', className:'preview', call:'preview'}
   ]
 }
