@@ -1,5 +1,9 @@
 DevmenEngine::Application.routes.draw do
 
+  namespace :shop do resources :categories end
+
+  namespace :shop do resources :products end
+
   # Realty module routes start
   scope :module => 'realty' do
     resources :realty, :only => [:index, :show], :controller => 'entries'

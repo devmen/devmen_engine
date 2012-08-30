@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @shop_product.name
+%p
+  %b Description:
+  = @shop_product.description
+%p
+  %b Sku:
+  = @shop_product.sku
+%p
+  %b Price:
+  = @shop_product.price
+%p
+  %b Old price:
+  = @shop_product.old_price
+%p
+  %b In stock:
+  = @shop_product.in_stock
+%p
+  %b Category:
+  = @shop_product.category_id
+
+= link_to 'Edit', edit_shop_product_path(@shop_product)
+\|
+= link_to 'Back', shop_products_path

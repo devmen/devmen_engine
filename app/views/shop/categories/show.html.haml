@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Parent:
+  = @shop_category.parent_id
+%p
+  %b Name:
+  = @shop_category.name
+%p
+  %b Description:
+  = @shop_category.description
+%p
+  %b Depth:
+  = @shop_category.depth
+%p
+  %b Sort:
+  = @shop_category.sort
+
+= link_to 'Edit', edit_shop_category_path(@shop_category)
+\|
+= link_to 'Back', shop_categories_path

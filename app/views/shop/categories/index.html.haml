@@ -1,0 +1,27 @@
+%h1 Listing shop_categories
+
+%table
+  %tr
+    %th Parent
+    %th Name
+    %th Description
+    %th Depth
+    %th Sort
+    %th
+    %th
+    %th
+
+  - @shop_categories.each do |shop_category|
+    %tr
+      %td= shop_category.parent_id
+      %td= shop_category.name
+      %td= shop_category.description
+      %td= shop_category.depth
+      %td= shop_category.sort
+      %td= link_to 'Show', shop_category
+      %td= link_to 'Edit', edit_shop_category_path(shop_category)
+      %td= link_to 'Destroy', shop_category, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Category', new_shop_category_path

@@ -1,0 +1,12 @@
+= simple_form_for(@shop_category) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :parent_id
+    = f.input :name
+    = f.input :description
+    = f.input :depth
+    = f.input :sort
+
+  .form-actions
+    = f.button :submit
