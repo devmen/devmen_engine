@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830085836) do
+ActiveRecord::Schema.define(:version => 20120830092159) do
 
   create_table "contact_us_entries", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,42 @@ ActiveRecord::Schema.define(:version => 20120830085836) do
 
   add_index "pages", ["url"], :name => "index_pages_on_url", :unique => true
 
+  create_table "product_categories", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "depth"
+    t.integer  "sort"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "product_categories", ["parent_id"], :name => "index_shop_categories_on_parent_id"
+
+  create_table "product_pictures", :force => true do |t|
+    t.string   "image"
+    t.integer  "product_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "product_pictures", ["product_id"], :name => "index_product_pictures_on_product_id"
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "sku"
+    t.decimal  "price"
+    t.decimal  "old_price"
+    t.integer  "in_stock"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "products", ["category_id"], :name => "index_shop_products_on_category_id"
+
   create_table "realty", :force => true do |t|
     t.string   "name"
     t.integer  "price",       :default => 0, :null => false
@@ -85,32 +121,6 @@ ActiveRecord::Schema.define(:version => 20120830085836) do
   end
 
   add_index "review_entries", ["visible"], :name => "index_review_entries_on_visible"
-
-  create_table "shop_categories", :force => true do |t|
-    t.integer  "parent_id"
-    t.string   "name"
-    t.text     "description"
-    t.integer  "depth"
-    t.integer  "sort"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "shop_categories", ["parent_id"], :name => "index_shop_categories_on_parent_id"
-
-  create_table "shop_products", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "sku"
-    t.decimal  "price"
-    t.decimal  "old_price"
-    t.integer  "in_stock"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "shop_products", ["category_id"], :name => "index_shop_products_on_category_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
