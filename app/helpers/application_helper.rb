@@ -10,23 +10,21 @@ module ApplicationHelper
     end
   end
 
-  # Return content converted from format to html
-  def self.to_html(content, format = :textile)    
-    if format == :textile      
-      RedCloth.new(content).to_html
+  # Return text converted from format to html
+  def to_html(text, format = nil)
+    format ||= :textile
+  	if format == :textile      
+      RedCloth.new(text).to_html
     else      
-      content
+      text
     end
   end
 
-  def to_html(content, format = :textile)
-  	ApplicationHelper.to_html(content, format)
-  end
-
-  def teaser(options = {})
+  # Return html sanitized teaser for text, if format option is defined, text will be converted from format to html
+  def teaser(text, options = {})
     options.reverse_merge!(:length => 150, :omission => '...')
     format = options.delete(:format) if options[:format]
-    truncate(strip_tags(to_html(self.text, format)).strip, options)
+    truncate(strip_tags(to_html(text, format)).strip, options)
   end
 
   def to_yes_no(value)

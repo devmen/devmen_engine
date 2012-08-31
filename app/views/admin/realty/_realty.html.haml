@@ -8,7 +8,7 @@
 
   - Realty::Entry.list.each do |realty_entry|
     %li#realty_entry_link.sidebar-link{:id => realty_entry.id, :class => @realty_entry == realty_entry && 'current',
-          :data => {:content => realty_entry.teaser,
+          :data => {:content => teaser(realty_entry.address),
           :title => "#{realty_entry.name}, #{realty_entry.price}",
         },
       }

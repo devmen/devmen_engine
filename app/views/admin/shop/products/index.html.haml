@@ -19,7 +19,7 @@
         %tr
           %td= link_to news_entry.name, admin_news_entry_path(news_entry)
           %td= news_entry.date
-          %td= news_entry.teaser
+          %td= teaser(news_entry.text)
           %td
             .btn-group
               = link_to t('actions.edit', :default => 'Edit'), edit_admin_news_entry_path(news_entry), :class => 'btn btn-mini'              

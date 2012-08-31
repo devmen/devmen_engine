@@ -5,7 +5,7 @@
         - category.level.times do
           %span.list-row-margin
       = category.name
-    .list-col.description= category.description
+    .list-col.description= truncate(category.description)
     .list-col.actions
       .btn-group
         = link_to t('actions.edit', :default => 'Edit'), edit_admin_product_category_path(category), :class => 'btn btn-mini'
