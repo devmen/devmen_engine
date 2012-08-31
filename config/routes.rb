@@ -1,8 +1,17 @@
 DevmenEngine::Application.routes.draw do
 
-  namespace :shop do resources :categories end
-
-  namespace :shop do resources :products end
+  # News module routes start
+  scope :module => 'shop' do
+    resources :products, :only => [:index, :show]
+    resources :categories, :only => [:index, :show]    
+  end
+  namespace :admin do
+    scope :module => 'shop' do
+      resources :products
+      resources :product_categories, as: "product_categories", controller: "categories"
+    end
+  end
+  # News module routes end
 
   # Realty module routes start
   scope :module => 'realty' do

@@ -59,6 +59,7 @@ gem "has_scope"
 gem "carrierwave", "~> 0.6.2"
 gem "mini_magick", "~> 3.4"
 gem "fancybox-rails", "~> 0.1.4"
+gem 'awesome_nested_set', '~> 2.1.4'
 
 gem 'russian', '~> 0.6.0'
 

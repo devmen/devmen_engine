@@ -53,13 +53,17 @@ ActiveRecord::Schema.define(:version => 20120830092159) do
     t.integer  "parent_id"
     t.string   "name"
     t.text     "description"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.integer  "depth"
-    t.integer  "sort"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "product_categories", ["parent_id"], :name => "index_shop_categories_on_parent_id"
+  add_index "product_categories", ["depth"], :name => "index_product_categories_on_depth"
+  add_index "product_categories", ["lft"], :name => "index_product_categories_on_lft"
+  add_index "product_categories", ["parent_id"], :name => "index_product_categories_on_parent_id"
+  add_index "product_categories", ["rgt"], :name => "index_product_categories_on_rgt"
 
   create_table "product_pictures", :force => true do |t|
     t.string   "image"

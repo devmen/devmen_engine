@@ -1,0 +1,3 @@
+%h1= t('.title', :default => 'Editing news entry', :news_entry_name => @news_entry.name)
+
+= render :partial => 'form', :locals => {:view => 'edit'}

@@ -14,7 +14,16 @@
  *= require_tree .
 */
 
-.clear_fix { clear: both; }
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: block;
+}
 
 .main { position: relative; }
 .sidebar h3 a { color: black; }
@@ -81,3 +90,35 @@
 }
 
 table.table th, td { min-width: 100px; }
+
+/* Use table style for nested list */
+.list .list-col {
+  float: left;
+  min-width: 100px;  
+  line-height: 18px;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.list .list-head .list-col {
+  vertical-align: bottom;
+  font-weight: bold;
+  border-top: none;
+}
+
+.list .list-row {
+  border-top: 1px solid #DDDDDD;
+}
+
+.list .list-row-margin {
+  display: inline-block;
+  width: 25px;  
+}
+
+.list ul { margin-left: 0; }
+.list ul ul { margin: 0; }
+
+.list-striped .list-row.odd {
+  background-color: #F9F9F9;
+}

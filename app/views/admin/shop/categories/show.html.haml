@@ -1,0 +1,12 @@
+%h1= @category.name
+
+.btn-toolbar
+  = link_to edit_admin_product_category_path(@category), :class => 'btn btn-mini' do
+    %i.icon-pencil
+    = t('actions.edit', :default => 'Edit')
+  = link_to admin_product_category_path(@category), :confirm => t('confirm.sure', :default => 'Are you sure?'),
+    :method => :delete, :class => 'btn btn-mini' do
+    %i.icon-trash
+    = t('actions.remove', :default => 'Remove')
+
+%p!= to_html(@category.description)
