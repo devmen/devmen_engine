@@ -4,8 +4,8 @@ class CreateShopProducts < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :sku
-      t.decimal :price
-      t.decimal :old_price
+      t.decimal :price, :precision => 10, :scale => 2
+      t.decimal :old_price, :precision => 10, :scale => 2
       t.integer :in_stock
       t.integer :category_id
 

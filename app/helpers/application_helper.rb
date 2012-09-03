@@ -31,10 +31,29 @@ module ApplicationHelper
     value == true ? I18n.t("yes") : I18n.t("no")
   end
 
-  def human_attribute_name(object, attribute)
+  def human_attribute_name(object, attribute, options = {})
     obj = object.is_a?(Array) ? object.first : object
     klass = obj.respond_to?(:klass) ? obj.klass : obj.class
-    klass.respond_to?(:human_attribute_name) ? klass.human_attribute_name(attribute) : t(".#{attribute}")
+    name = klass.respond_to?(:human_attribute_name) ? klass.human_attribute_name(attribute, options) : t(".#{attribute}")
+    name || ''
   end
 
+  def haml_tag_if(condition, *args, &block)
+    if condition
+      haml_tag *args, &block
+     else
+       yield
+     end
+  end
+
+end
+
+class Float
+  def to_money
+    sprintf("%0.0f", self)
+  end
+
+  def to_percent
+    sprintf("%0.2f", self)
+  end
 end

@@ -1,36 +1,49 @@
-%h1= t('.title', :default => 'News')
+%h1= t('.title', :default => 'Products')
 
 .btn-toolbar
-  = link_to new_admin_news_entry_path, :class => 'btn btn-mini' do
+  = link_to new_admin_product_path, :class => 'btn btn-mini' do
     %i.icon-plus-sign
     = t('actions.add', :default => 'Add')
 
-- if !@news.empty?
-  %table.table.table-striped
+- if !@products.empty?
+  %table.products.table.table-striped
     %thead
       %tr
-        %th= News::Entry.human_attribute_name(:name)
-        %th= News::Entry.human_attribute_name(:date)
-        %th= News::Entry.human_attribute_name(:text)
+        %th= ::Shop::Picture.human_attribute_name(:image)
+        %th= human_attribute_name(@products, :name)
+        %th= human_attribute_name(@products, :sku)
+        %th= human_attribute_name(@products, :price)
+        %th= human_attribute_name(@products, :old_price)
+        %th= human_attribute_name(@products, :in_stock)
+        / %th= human_attribute_name(@products, :description)
+        %th= human_attribute_name(@products, :updated_at)
         %th= t('actions.title', :default => 'Actions')
 
     %tbody
-      - @news.each do |news_entry|
+      - @products.each do |product|        
         %tr
-          %td= link_to news_entry.name, admin_news_entry_path(news_entry)
-          %td= news_entry.date
-          %td= teaser(news_entry.text)
+          %td
+            - if product.pictures.present?
+              - picture = product.pictures.first
+              = image_tag picture.image_url(:thumb50), size: '50x50', alt: picture.image.identifier
+          %td= link_to product.name, admin_product_path(product)
+          %td= product.sku
+          %td= number_to_currency(product.price, :unit => '')
+          %td= number_to_currency(product.old_price)
+          %td= product.in_stock
+          / %td= teaser(product.description)
+          %td= l(product.updated_at.to_date, format: :long)          
           %td
             .btn-group
-              = link_to t('actions.edit', :default => 'Edit'), edit_admin_news_entry_path(news_entry), :class => 'btn btn-mini'              
+              = link_to t('actions.edit', :default => 'Edit'), edit_admin_product_path(product), :class => 'btn btn-mini'              
               %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
                 %span.caret
               %ul.dropdown-menu
                 %li
-                  = link_to edit_admin_news_entry_path(news_entry) do
+                  = link_to edit_admin_product_path(product) do
                     %i.icon-pencil
                     = t('actions.edit', :default => 'Edit')
                 %li 
-                  = link_to admin_news_entry_path(news_entry), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+                  = link_to admin_product_path(product), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
                     %i.icon-trash
                     = t('actions.remove', :default => 'Remove')

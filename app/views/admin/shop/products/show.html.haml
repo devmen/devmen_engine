@@ -1,13 +1,25 @@
-%h1= @news_entry.name
+%h1= @product.name
 
 .btn-toolbar
-  = link_to edit_admin_news_entry_path(@news_entry), :class => 'btn btn-mini' do
+  = link_to edit_admin_product_path(@product), :class => 'btn btn-mini' do
     %i.icon-pencil
     = t('actions.edit', :default => 'Edit')
-  = link_to admin_news_entry_path(@news_entry), :confirm => t('confirm.sure', :default => 'Are you sure?'),
+  = link_to admin_product_path(@product), :confirm => t('confirm.sure', :default => 'Are you sure?'),
     :method => :delete, :class => 'btn btn-mini' do
     %i.icon-trash
     = t('actions.remove', :default => 'Remove')
 
-%p= News::Entry.human_attribute_name(:date) + ': ' + @news_entry.date.to_s
-%p!= to_html(@news_entry.text)
+.product
+  %p= human_attribute_name(@product, :sku) + ': ' + @product.sku
+  %p= human_attribute_name(@product, :price) + ': ' + number_to_currency(@product.price).to_s
+  %p= human_attribute_name(@product, :old_price) + ': ' + number_to_currency(@product.old_price).to_s
+  %p= human_attribute_name(@product, :in_stock) + ': ' + @product.in_stock.to_s
+  %p= human_attribute_name(@product, :updated_at) + ': ' + l(@product.updated_at, format: :long)
+  - if @product.pictures.present?
+    .pictures.clearfix
+      - @product.pictures.each do |picture|
+        .picture
+          = link_to image_tag(picture.image_url(:thumb200)), picture.image_url, rel: "photo_group", :title => picture.name
+          %br
+          = picture.name
+  %p!= @product.description

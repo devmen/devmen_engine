@@ -1,0 +1,31 @@
+// Place all the styles related to the admin/shop/categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Categories styles */
+.categories {  
+  .name { width: 250px; }
+  .description { width: 450px; }
+  .actions { float: right; }  
+}
+
+/* Products styles */
+.product {
+  .pictures {
+    margin-bottom: 9px;
+
+    .picture { float: left; margin: 0 9px 9px 0; padding: 9px; border: 1px solid #CCC; text-align: center; }    
+  }
+}
+
+.product_form {
+  .pictures {
+    margin-bottom: 9px;
+
+    .picture { float: left; margin: 0 9px 9px 0; padding: 9px; border: 1px solid #CCC; }    
+  }
+
+  .new_pictures {
+    .new_picture label { display: inline-block; margin: 0 1em; }
+  }
+}

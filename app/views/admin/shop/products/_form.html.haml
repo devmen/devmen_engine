@@ -1,17 +1,45 @@
-= simple_form_for [:admin, @news_entry], :url => @news_entry.new_record? ? admin_news_path : admin_news_entry_path(@news_entry),
-  :html => { :class => 'news_form well' } do |form|
+= simple_form_for [:admin, @product], :url => @product.new_record? ? admin_products_path : admin_product_path(@category),
+  :html => { :class => 'product_form well' } do |form|
   - if Rails.env.development?
     .form-errors
       = render 'shared/error_messages', :object => form.object
 
   .form-inputs
-    = form.input :name, :label => ::News::Entry.human_attribute_name(:name)
-    = form.association :category, collection: ::News::Category.all, label: ::News::Entry.human_attribute_name(:category)
-    = form.input :date, :label => ::News::Entry.human_attribute_name(:date)
-    = form.input :text, :as => :text, :label => ::News::Entry.human_attribute_name(:text),
+    = form.input :category, :label => human_attribute_name(@product, :category) do
+      = form.select :category_id,
+        nested_set_options(::Shop::Category) {|i| "#{'-' * i.level} #{i.name}" },
+        :include_blank => true
+    = form.input :name, :label => human_attribute_name(@product, :name)    
+    = form.input :sku, :label => human_attribute_name(@product, :sku) 
+    = form.input :price, :label => human_attribute_name(@product, :price) 
+    = form.input :old_price, :label => human_attribute_name(@product, :old_price) 
+    = form.input :in_stock, :label => human_attribute_name(@product, :in_stock)
+    = form.input :description, :label => human_attribute_name(@product, :description),
         :input_html => { :class => 'markitup' }
 
+  .form-inputs
+    - pictures = @product.pictures.select {|pic| pic.image.url.present? }
+    - if pictures.length > 0
+      .pictures.clearfix
+        %label= t('.images')
+        = form.simple_fields_for :pictures, pictures do |field|
+          .picture
+            = link_to image_tag(field.object.image_url(:thumb200)), field.object.image_url, rel: "photo_group"
+            %br
+            = field.input :_destroy, :as => :boolean, :inline_label => t("actions.remove"), :label => false            
+            = field.input :name, :label => human_attribute_name(@product, :name)            
+            = field.input :image, label: false
+            = field.hidden_field :image_cache
+      
+    .new_pictures
+      %label= t('.add_images')
+      = form.simple_fields_for :pictures, @product.pictures.select {|pic| pic.image.url.nil? } do |field|
+        .new_picture
+          = field.file_field :image, label: false
+          = field.label :name, human_attribute_name(field.object, :name)
+          = field.text_field :name
+
   .form-actions
-    - submit_value = view == 'new' ? t('actions.create', :default => 'Create') : t('actions.update', :default => 'Update')
+    - submit_value = @product.new_record? ? t('actions.create', :default => 'Create') : t('actions.update', :default => 'Update')
     = form.button :submit, :value => submit_value, :class => 'btn-primary'
     = link_to t('actions.cancel', :default => 'Cancel'), :back, :class => 'btn'

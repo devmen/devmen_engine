@@ -185,7 +185,9 @@ $(function() {
   $("a[rel=photo_group]").fancybox({
     titlePosition: "over",
     titleFormat: function(title, currentArray, currentIndex, currentOps) {
-      return "<span id='fancybox-title-over'>" + (currentIndex + 1) + " из " + currentArray.length + "</span>"
+      var title_tag = title.length ? '<div class="title">' + title + '</div>' : '';
+      var couter_tag = '<div class="counter">' + (currentIndex + 1) + " из " + currentArray.length + '</div>';
+      return '<div id="fancybox-title-over" class="clearfix">' + title_tag + couter_tag + '</div>';
     }
   });
 
