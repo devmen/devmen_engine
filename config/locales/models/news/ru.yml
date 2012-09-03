@@ -3,7 +3,7 @@ ru:
 
     models:
       news/entry: "Новость"
-      news/entry: Категория
+      news/category: "Категория"
 
     attributes:
       news/entry:

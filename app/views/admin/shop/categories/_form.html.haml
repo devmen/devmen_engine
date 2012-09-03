@@ -9,7 +9,7 @@
     = form.input :description, :label => human_attribute_name(@category, :description),
         :input_html => { :class => 'markitup' }
     = form.input :parent_id, :label => human_attribute_name(@category, :parent_id) do
-      = form.select :parent_id, nested_set_options(::Shop::Category, @category) {|i| "#{'-' * i.level} #{i.name}" },
+      = form.select :parent_id, nested_set_options(::Shop::Category) {|i| "#{'-' * i.level} #{i.name}" },
           :include_blank => true
 
   .form-actions
