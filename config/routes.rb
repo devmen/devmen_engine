@@ -1,9 +1,9 @@
 DevmenEngine::Application.routes.draw do
 
   # News module routes start
-  scope :module => 'shop' do
-    resources :products, :only => [:index, :show]
-    resources :categories, :only => [:index, :show]    
+  scope :module => 'shop' do  
+    resources :products, :only => [:index, :show], as: "products", path: "shop/products"
+    resources :categories, :only => [:index, :show], as: "product_categories", path: "shop/categories"
   end
   namespace :admin do
     scope :module => 'shop' do

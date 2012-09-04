@@ -1,31 +1,3 @@
-%h1 Listing shop_products
-
-%table
-  %tr
-    %th Name
-    %th Description
-    %th Sku
-    %th Price
-    %th Old price
-    %th In stock
-    %th Category
-    %th
-    %th
-    %th
-
-  - @shop_products.each do |shop_product|
-    %tr
-      %td= shop_product.name
-      %td= shop_product.description
-      %td= shop_product.sku
-      %td= shop_product.price
-      %td= shop_product.old_price
-      %td= shop_product.in_stock
-      %td= shop_product.category_id
-      %td= link_to 'Show', shop_product
-      %td= link_to 'Edit', edit_shop_product_path(shop_product)
-      %td= link_to 'Destroy', shop_product, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Product', new_shop_product_path
+%h1= t('.title', :default => 'Products')
+%ul.products
+  = render :partial => 'product', :collection => @products

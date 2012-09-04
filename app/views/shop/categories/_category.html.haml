@@ -1,0 +1,7 @@
+%li
+  .name
+    = link_to category.name, product_category_path(category)
+
+  - unless category.leaf?
+    %ul.nested
+      = render :partial => 'category', :collection => category.children, :as => 'category'

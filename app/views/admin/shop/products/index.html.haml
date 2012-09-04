@@ -29,8 +29,8 @@
         - @products.each do |product|        
           %tr
             %td
-              - if product.pictures.present?
-                - picture = product.pictures.first
+              - picture = product.pictures.first
+              - if picture.present?                
                 = image_tag picture.image_url(:thumb50), size: '50x50', alt: picture.name
             %td= link_to product.name, admin_product_path(product)
             %td= product.sku

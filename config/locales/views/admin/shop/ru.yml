@@ -1,0 +1,22 @@
+ru: 
+  admin: 
+    shop:
+      products:
+        index:
+          title: "Товары"
+        edit:
+          title: "Товар: %{name}"        
+        new:
+          title: "Новый товар"
+        form:
+          images: "Изображения"
+          add_images: "Добавить изображения"
+          slug_hint: "понятный адрес, оставте путым для автоматической генерации"
+
+      categories:
+        index:
+          title: "Категории товаров"
+        edit:
+          title: "Категория: %{name}"        
+        new:
+          title: "Новый категория"      

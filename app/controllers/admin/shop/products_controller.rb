@@ -42,6 +42,10 @@ class Admin::Shop::ProductsController < Admin::BaseController
 
   private
 
+    def collection
+      @products ||= end_of_association_chain.includes(:pictures)
+    end
+
     def collection_path
       admin_products_path
     end
