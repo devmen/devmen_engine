@@ -10,7 +10,9 @@
  *
  *= require_self
  *= require markitup 
+ *= require markitup/style
  *= require fancybox
+ *= require elfinder
  *= require_tree .
 */
 

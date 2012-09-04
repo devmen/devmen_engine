@@ -15,10 +15,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require markitup
+//= require markitup/textile
 //= require fancybox
-//= require ./markitup/textile
-//= require_directory ./elfinder
-//= require_directory .
+//= require elfinder
+//= require_tree .
 
 // Set header Accept: text/javascript for all ajax requests in application
 // jQuery.ajaxSetup({
