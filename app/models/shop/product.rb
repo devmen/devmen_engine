@@ -14,6 +14,7 @@ class Shop::Product < ActiveRecord::Base
 
   default_scope :order => 'products.name'
 
+  scope :by_category, ->(category) { where(:category_id => ::Shop::Category.find(category).self_and_descendants.select(:id)) }
   scope :present_in_stock, -> { where("in_stock > 0") }
 
   private

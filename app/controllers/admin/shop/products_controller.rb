@@ -2,6 +2,8 @@ class Admin::Shop::ProductsController < Admin::BaseController
   inherit_resources
   defaults resource_class: ::Shop::Product, collection_name: "products", instance_name: "product"
 
+  has_scope :by_category
+
   def new
     new! {
       build_new_picture_records

@@ -10,6 +10,17 @@
 }
 
 /* Products styles */
+.products {
+  .btn-toolbar { float: left; margin-top: 5px; }
+  .category_select {
+    float: right;
+    margin: 0 0 9px;
+
+    label { display: inline-block; margin-right: 9px; }
+    select { display: inline-block; }
+  }
+}
+
 .product {
   .pictures {
     margin-bottom: 9px;
