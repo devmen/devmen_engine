@@ -13,9 +13,10 @@
     = form.input :sku, :label => human_attribute_name(@product, :sku) 
     = form.input :price, :label => human_attribute_name(@product, :price) 
     = form.input :old_price, :label => human_attribute_name(@product, :old_price) 
-    = form.input :in_stock, :label => human_attribute_name(@product, :in_stock)
+    = form.input :in_stock, :label => human_attribute_name(@product, :in_stock)    
     = form.input :description, :label => human_attribute_name(@product, :description),
         :input_html => { :class => 'markitup' }
+    = form.input :slug, :label => "#{human_attribute_name(@product, :slug)} (#{t('.slug_hint')})"
 
   .form-inputs
     - pictures = @product.pictures.select {|pic| pic.image.url.present? }

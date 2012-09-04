@@ -17,6 +17,7 @@ ru:
         in_stock: "На складе"
         updated_at: "Обновлено"
         picture: "Изображение"
+        slug: "Слаг"
 
       shop/category:
         parent_id: "Надкатегория"
