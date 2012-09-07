@@ -2,4 +2,4 @@
 %ul.categories
   = render :partial => 'category', :collection => @category.children, :as => 'category'
 %ul.products
-  = render :partial => 'shop/products/product', :collection => @products
+  = render :partial => 'shop/products/product', :collection => @products, :as => 'product'

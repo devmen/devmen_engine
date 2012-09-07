@@ -1,14 +1,15 @@
 %li
   - picture = product.pictures.first
   - if picture.present?        
-    = link_to image_tag(picture.image_url(:thumb50), size: '50x50', alt: picture.name), product_path(product)
+    = link_to image_tag(picture.image_url(:thumb50), size: '50x50', alt: picture.name, :class => 'img-rounded'), product_path(product)
   %h3.name
     = link_to product.name, product_path(product)
   .sku= human_attribute_name(product, :sku) + ": #{product.sku}"
-  .price= human_attribute_name(product, :price) + ": #{product.price}"
-  .old_price= human_attribute_name(product, :old_price) + ": #{product.old_price}"
+  .price= human_attribute_name(product, :price) + ": #{number_to_currency(product.price)}"
+  .old_price= human_attribute_name(product, :old_price) + ": #{number_to_currency(product.old_price)}"
   .in_stock= human_attribute_name(product, :in_stock) + ": #{product.in_stock}"
   .description= teaser(product.description)      
   .link
-    %a{:href => product_path(product)}
-      = t('.more', :default => 'More')
+    %a{href: product_path(product)}
+      = t('.more', default: 'More')
+  = render partial: 'shop/products/cart_button', object: product, as: :product

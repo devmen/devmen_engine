@@ -1,9 +1,12 @@
-DevmenEngine::Application.routes.draw do
+DevmenEngine::Application.routes.draw do  
 
-  # News module routes start
-  scope :module => 'shop' do  
-    resources :products, :only => [:index, :show], as: "products", path: "shop/products"
-    resources :categories, :only => [:index, :show], as: "product_categories", path: "shop/categories"
+  # Shop module routes start
+  scope :module => 'shop', :path => "shop" do  
+    resources :products, :only => [:index, :show], as: "products"
+    resources :categories, :only => [:index, :show], as: "product_categories"
+    resource :cart, :only => [:show, :update], as: "cart"    
+    resources :product_items, :only => [:create], as: "product_items"
+    resource :order, :only => [:new, :create], as: "order"
   end
   namespace :admin do
     scope :module => 'shop' do
@@ -11,7 +14,7 @@ DevmenEngine::Application.routes.draw do
       resources :product_categories, as: "product_categories", controller: "categories"
     end
   end
-  # News module routes end
+  # Shop module routes end
 
   # Realty module routes start
   scope :module => 'realty' do

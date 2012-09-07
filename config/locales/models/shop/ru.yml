@@ -5,6 +5,9 @@ ru:
       shop/product: "Товар"
       shop/category: "Категория"
       shop/picture: "Изображение"
+      shop/cart: "Корзина"
+      shop/product_item: "Товар"
+      shop/order: "Заказ"
 
     attributes:
       shop/product:
@@ -25,5 +28,12 @@ ru:
         description: "Описание"
         updated_at: "Обновлено"
 
-      shop/picture:        
-        name: "Заголовок"        
+      shop/product_item:
+        quantity: "Количество"
+        price: "Цена"
+        amount: "Сумма"
+
+      shop/order:        
+        name: "Фамилия Имя Отчество"
+        email: "Электронная почта (email)"
+        address: "Адрес доставки"

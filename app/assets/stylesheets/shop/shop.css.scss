@@ -1,0 +1,31 @@
+// Place all the styles related to the admin/shop/categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Categories styles */
+.categories {  
+
+}
+
+/* Products styles */
+.products {
+  .cart_button {
+    /*label { display: inline-block; }*/
+  }
+}
+
+/* Product items styles */
+.product_items {
+  .product_item {
+    td { vertical-align: middle; }
+    .quantity input { text-align: right; margin: 0; }
+  }
+}
+
+/* Cart styles */
+.order_form {
+  .form-inputs {
+    input { width: 260px; }
+    textarea { width: 260px; height: 150px; }
+  }
+}

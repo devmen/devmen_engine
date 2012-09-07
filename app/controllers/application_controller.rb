@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include UserSessionHelper
+  include UserSessionHelper  
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
@@ -8,3 +8,6 @@ class ApplicationController < ActionController::Base
   end
   
 end
+
+# Run hook wich could be defined in initializers
+ActiveSupport.run_load_hooks(:application_controller, ApplicationController)

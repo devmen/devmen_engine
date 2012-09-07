@@ -1,0 +1,36 @@
+%h1= t('.title')
+%p.description!= t('.description')
+= simple_form_for @order, :url => order_path, :as => 'order', :html => { :class => 'order_form' } do |form|
+  .form-inputs
+    = form.input :name, :label => human_attribute_name(@order, :name)
+    = form.input :email, :label => human_attribute_name(@order, :email)
+    = form.input :address, :label => human_attribute_name(@order, :address)
+
+  %table.table.product_items
+    %thead
+      %tr
+        %th.product{ :colspan => 2 }= ::Shop::Product.model_name.human
+        %th.price= human_attribute_name(@product_items, :price)
+        %th.quantity= human_attribute_name(@product_items, :quantity)
+        %th.amount= human_attribute_name(@product_items, :amount)        
+    %tbody
+      - total = 0
+      - @product_items.each do |item|
+        - total += item.amount
+        %tr.product_item
+          %td.product{ :colspan => 2 }
+            - picture = item.product.pictures.first
+            - if picture.present?        
+              = link_to image_tag(picture.image_url(:thumb50), size: '50x50', alt: picture.name), product_path(item.product)
+            = link_to item.product.name, product_path(item.product)
+          %td.price= number_to_currency(item.price)
+          %td.quantity= number_to_human(item.quantity, :units => :product_units)            
+          %td.amount= number_to_currency(item.amount)
+      %tr
+        %td{ :colspan => 4 }
+          %b= t('.total')
+        %td= number_to_currency(total)         
+
+  .form-actions
+    = form.button :button, t('.send', :default => 'Send'), :value => 'order', :class => 'btn-primary'
+    = link_to t('actions.cancel', :default => 'Cancel'), :back, :class => 'btn'

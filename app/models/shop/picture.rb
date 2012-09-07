@@ -3,7 +3,7 @@ class Shop::Picture < ActiveRecord::Base
 
   attr_accessible :image, :image_cache, :name, :product_id
 
-  belongs_to :product
+  belongs_to :product, inverse_of: :pictures
 
   mount_uploader :image, PictureUploader
 

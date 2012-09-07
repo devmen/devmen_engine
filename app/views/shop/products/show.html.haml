@@ -1,14 +1,14 @@
 %h3.name
   = @product.name
 .sku= human_attribute_name(@product, :sku) + ": #{@product.sku}"
-.price= human_attribute_name(@product, :price) + ": #{@product.price}"
-.old_price= human_attribute_name(@product, :old_price) + ": #{@product.old_price}"
+.price= human_attribute_name(@product, :price) + ": #{number_to_currency(@product.price)}"
+.old_price= human_attribute_name(@product, :old_price) + ": #{number_to_currency(@product.old_price)}"
 .in_stock= human_attribute_name(@product, :in_stock) + ": #{@product.in_stock}"
 .description!= @product.description
 - if @product.pictures.present?
   .pictures.clearfix
     - @product.pictures.each do |picture|
       .picture
-        = link_to image_tag(picture.image_url(:thumb200)), picture.image_url, rel: "photo_group", :title => picture.name
+        = link_to image_tag(picture.image_url(:thumb200), :class => 'img-rounded'), picture.image_url, rel: "photo_group", :title => picture.name
         %br
         = picture.name

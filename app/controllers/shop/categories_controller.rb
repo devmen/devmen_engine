@@ -2,6 +2,7 @@ class Shop::CategoriesController < InheritedResources::Base
 
   def index
     @categories = Shop::Category.all    
+    current_cart
   end
 
   def show

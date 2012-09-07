@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904124604) do
+ActiveRecord::Schema.define(:version => 20120906092324) do
+
+  create_table "carts", :force => true do |t|
+    t.integer  "product_counter"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "contact_us_entries", :force => true do |t|
     t.string   "name"
@@ -50,6 +56,15 @@ ActiveRecord::Schema.define(:version => 20120904124604) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "orders", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "address"
+    t.string   "num"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "url"
@@ -75,6 +90,21 @@ ActiveRecord::Schema.define(:version => 20120904124604) do
   add_index "product_categories", ["lft"], :name => "index_product_categories_on_lft"
   add_index "product_categories", ["parent_id"], :name => "index_product_categories_on_parent_id"
   add_index "product_categories", ["rgt"], :name => "index_product_categories_on_rgt"
+
+  create_table "product_items", :force => true do |t|
+    t.integer  "quantity"
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.integer  "order_id"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.decimal  "price",      :precision => 10, :scale => 2
+    t.decimal  "amount",     :precision => 10, :scale => 2
+  end
+
+  add_index "product_items", ["cart_id"], :name => "index_product_items_on_cart_id"
+  add_index "product_items", ["order_id"], :name => "index_product_items_on_order_id"
+  add_index "product_items", ["product_id"], :name => "index_product_items_on_product_id"
 
   create_table "product_pictures", :force => true do |t|
     t.string   "image"

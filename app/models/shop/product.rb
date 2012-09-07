@@ -7,7 +7,9 @@ class Shop::Product < ActiveRecord::Base
                   :pictures_attributes
 
   belongs_to :category, inverse_of: :products
-  has_many :pictures, class_name: "Picture"
+  has_many :pictures, inverse_of: :product
+  has_many :product_items, inverse_of: :product
+
   accepts_nested_attributes_for :pictures, :allow_destroy => true, :reject_if => :empty_image_field?
 
   friendly_id :name, :use => [:slugged, :history],
@@ -22,6 +24,8 @@ class Shop::Product < ActiveRecord::Base
   scope :by_category, ->(category) { where(:category_id => ::Shop::Category.find(category).self_and_descendants.select(:id)) }
   scope :present_in_stock, -> { where("in_stock > 0") }
 
+  before_destroy :ensure_not_referenced_by_any_product_item
+
   private
 
     def empty_image_field?(attributes)
@@ -35,4 +39,14 @@ class Shop::Product < ActiveRecord::Base
     def should_generate_new_friendly_id?
       slug.blank?
     end
+
+    def ensure_not_referenced_by_any_product_item
+      if product_items.count.zero?
+        return true
+      else
+        errors.add(:base, 'Product items present' )
+        return false
+      end
+    end
+
 end

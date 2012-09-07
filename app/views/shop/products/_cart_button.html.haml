@@ -1,0 +1,5 @@
+.cart_button
+  = form_tag product_items_path(product_id: product), :class => 'form-inline' do
+    = label_tag :quantity, t('.product_count'), :class => 'inline'
+    = text_field_tag :quantity, 1, :class => 'input-mini'
+    = submit_tag t('.add_to_cart'), :class => 'btn btn-primary'
