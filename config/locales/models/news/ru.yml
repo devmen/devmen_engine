@@ -10,6 +10,7 @@ ru:
         name: "Заголовок"
         date: "Дата"
         text: "Текст"
+        category: Категория
 
       news/category:
         name: Название

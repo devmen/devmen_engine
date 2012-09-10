@@ -2,7 +2,7 @@ module Realty
   class Entry < ActiveRecord::Base
     self.table_name = "realty"
 
-    attr_accessible :name, :price, :address, :description, :photos_attributes
+    attr_accessible :name, :price, :address, :description, :photos_attributes, :category_id
 
     belongs_to :category, class_name: "Category"
     has_many :photos, class_name: "Photo"

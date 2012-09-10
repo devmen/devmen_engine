@@ -11,6 +11,7 @@ ru:
         price: "Цена"
         address: "Адрес"
         description: "Описание"
+        category: Категория
 
       realty/category:
         name: Название

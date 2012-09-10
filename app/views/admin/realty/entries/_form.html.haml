@@ -7,6 +7,7 @@
 
   .form-inputs
     = form.input :name, :label => ::Realty::Entry.human_attribute_name(:name)
+    = form.association :category, collection: ::Realty::Category.all, label: ::Realty::Entry.human_attribute_name(:category)
     = form.input :price, :label => ::Realty::Entry.human_attribute_name(:price)
     = form.input :address, :as => :text, :label => ::Realty::Entry.human_attribute_name(:address), :input_html => { :class => 'markitup', :style => 'height: 100px;' }
     = form.input :description, :as => :text, :label => ::Realty::Entry.human_attribute_name(:description), :input_html => { :class => 'markitup', :style => 'height: 100px;' }
