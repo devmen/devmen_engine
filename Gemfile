@@ -95,9 +95,9 @@ group :development, :test do
   gem "guard-bundler", ">= 0.1.3"
   gem "guard-rails", ">= 0.1.0"
   gem 'guard-rspec', '~> 0.7.3'
-  gem 'guard-livereload', '~> 0.4.2'  
+  gem 'guard-livereload', '~> 0.4.2'
 
-  gem 'database_cleaner'  
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 3.3.0', :require => false
 
   # It's a problem with rails3-generators and factory_girl_rails.

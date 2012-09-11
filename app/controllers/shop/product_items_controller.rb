@@ -1,4 +1,4 @@
-class Shop::ProductItemsController < InheritedResources::Base
+class Shop::ProductItemsController < ApplicationController
 
   def create
     product = ::Shop::Product.find(params[:product_id])

@@ -1,4 +1,4 @@
-class Shop::ProductsController < InheritedResources::Base
+class Shop::ProductsController < ApplicationController
 
   def index
     @products = Shop::Product.includes(:pictures).all
@@ -11,7 +11,7 @@ class Shop::ProductsController < InheritedResources::Base
       redirect_to product_path(@product), :status => :moved_permanently
     else
       @title = @product.name
-    end    
+    end
   end
 
 end

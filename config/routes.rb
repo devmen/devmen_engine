@@ -1,10 +1,10 @@
-DevmenEngine::Application.routes.draw do  
+DevmenEngine::Application.routes.draw do
 
   # Shop module routes start
-  scope :module => 'shop', :path => "shop" do  
+  scope :module => 'shop', :path => "shop" do
     resources :products, :only => [:index, :show], as: "products"
     resources :categories, :only => [:index, :show], as: "product_categories"
-    resource :cart, :only => [:show, :update], as: "cart"    
+    resource :cart, :only => [:show, :update], as: "cart"
     resources :product_items, :only => [:create], as: "product_items"
     resource :order, :only => [:new, :create], as: "order"
   end
@@ -68,7 +68,7 @@ DevmenEngine::Application.routes.draw do
     end
   end
 
-  resources :user_sessions, :only => [:new, :create, :destroy] 
+  resources :user_sessions, :only => [:new, :create, :destroy]
   match '/signin',  :to => 'user_sessions#new'
   match '/signout', :to => 'user_sessions#destroy'
 
@@ -76,9 +76,9 @@ DevmenEngine::Application.routes.draw do
 
   resources :pages, :only => [:index, :show]
 
-  namespace :admin do    
+  namespace :admin do
     resources :users
-    resources :pages, :except => [:index]    
+    resources :pages, :except => [:index]
     match '/elfinder', :to => 'base#elfinder'
     match '/', :to => 'base#index'
     # Handeling routing error for admin namespace, see below
@@ -91,5 +91,5 @@ DevmenEngine::Application.routes.draw do
   match '*page', :to => 'pages#show'
 
   root :to => 'pages#index'
-  
+
 end

@@ -1,12 +1,12 @@
-class Shop::CategoriesController < InheritedResources::Base
+class Shop::CategoriesController < ApplicationController
 
   def index
-    @categories = Shop::Category.all    
+    @categories = Shop::Category.all
     current_cart
   end
 
   def show
-    @category = Shop::Category.find(params[:id])    
+    @category = Shop::Category.find(params[:id])
     @products = Shop::Product.includes(:pictures).by_category(params[:id])
   end
 

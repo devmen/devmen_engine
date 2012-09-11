@@ -3,12 +3,18 @@ modules:
    - news
    - catalog
    - realty
+   - shop
 
 # News module parameters
 news:
   name: "Новости"
 realty:
   name: "Недвижимость"
+shop:
+  name: "Магазин" # use as title in an email message
+  email: "support@example.com" # use in :from field of an email message
+  url: "http://example.com/shop" # base url for shop, use in an email message
+
 # # Modules parameters in fit environment
 # development:
 #   news:

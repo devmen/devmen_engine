@@ -3,7 +3,7 @@
   %table.table.product_items
     %thead
       %tr
-        %th.product{ :colspan => 2 }= ::Shop::Product.model_name.human
+        %th.product{ :colspan => 2 }= t('.product_title')
         %th.price= human_attribute_name(@product_items, :price)
         %th.quantity= human_attribute_name(@product_items, :quantity)
         %th.amount= human_attribute_name(@product_items, :amount)

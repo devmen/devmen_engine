@@ -2,5 +2,5 @@
 ActiveSupport.on_load(:application_controller) do
   ApplicationController.class_eval do
     include Shop::Helper
-  end  
+  end
 end

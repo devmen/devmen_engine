@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %meta(content="text/html; charset=UTF-8" http-equiv="Content-Type")
+    :css
+      th, td { padding: 2px 20px 2px 0px; text-align: left; }
+  %body
+    %p Сообщение с сайта #{link_to(CFG['shop']['url'], CFG['shop']['url'])} - #{CFG['shop']['name']}
+    %p
+      Уважаемый(ая) #{@order.name}, Ваш заказ номер #{@order.num} от #{l(@order.created_at.to_date, :format => :long)} принят.
+      %br
+      Адрес доставки: #{@order.address}
+      %br
+      Список наименований:
+    = render partial: 'shop/product_items', object: @product_items, as: :product_items, locals: { hide_pictures: true }
+    %p
+      Пожалуйста, при обращении к администрации сайта указывайте номер заказа - #{@order.num}.
+      %br
+      Спасибо за покупку!
