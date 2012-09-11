@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810125337) do
+ActiveRecord::Schema.define(:version => 20120911094714) do
 
   create_table "contact_us_entries", :force => true do |t|
     t.string   "name"
@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(:version => 20120810125337) do
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "ancestry"
   end
 
+  add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
   add_index "pages", ["url"], :name => "index_pages_on_url", :unique => true
 
   create_table "realty", :force => true do |t|
