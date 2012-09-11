@@ -1,5 +1,5 @@
 %h1= t('.title', :default => 'Products')
-.products  
+.products
 
   .action-panel.clearfix
     %form.category_select
@@ -26,22 +26,22 @@
           %th= t('actions.title', :default => 'Actions')
 
       %tbody
-        - @products.each do |product|        
+        - @products.each do |product|
           %tr
             %td
               - picture = product.pictures.first
-              - if picture.present?                
-                = image_tag picture.image_url(:thumb50), size: '50x50', alt: picture.name
+              - if picture.present?
+                = image_tag picture.image_url(:thumb, :small), alt: picture.name
             %td= link_to product.name, admin_product_path(product)
             %td= product.sku
             %td= number_to_currency(product.price)
             %td= number_to_currency(product.old_price)
             %td= product.in_stock
             / %td= teaser(product.description)
-            %td= l(product.updated_at.to_date, format: :long)          
+            %td= l(product.updated_at.to_date, format: :long)
             %td
               .btn-group
-                = link_to t('actions.edit', :default => 'Edit'), edit_admin_product_path(product), :class => 'btn btn-mini'              
+                = link_to t('actions.edit', :default => 'Edit'), edit_admin_product_path(product), :class => 'btn btn-mini'
                 %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
                   %span.caret
                 %ul.dropdown-menu
@@ -49,7 +49,7 @@
                     = link_to edit_admin_product_path(product) do
                       %i.icon-pencil
                       = t('actions.edit', :default => 'Edit')
-                  %li 
+                  %li
                     = link_to admin_product_path(product), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
                       %i.icon-trash
                       = t('actions.remove', :default => 'Remove')

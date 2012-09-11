@@ -19,7 +19,7 @@
     .pictures.clearfix
       - @product.pictures.each do |picture|
         .picture
-          = link_to image_tag(picture.image_url(:thumb200)), picture.image_url, rel: "photo_group", :title => picture.name
+          = link_to image_tag(picture.image_url(:thumb)), picture.image_url, rel: "photo_group", :title => picture.name
           %br
           = picture.name
   %p!= @product.description

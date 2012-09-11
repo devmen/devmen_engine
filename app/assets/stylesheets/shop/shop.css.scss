@@ -3,14 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* Categories styles */
-.categories {  
+.categories {
+  margin: 9px 0 18px;
 
+  > li { list-style: none; }
 }
 
 /* Products styles */
 .products {
-  .cart_button {
-    /*label { display: inline-block; }*/
+  margin: 0;
+
+  li {
+    list-style: none;
+
+    .picture { float: left; margin-bottom: 9px; }
+    .picture + .info { margin-left: 158px; }
+    .name { margin-bottom: 9px; }
+    .description { margin-top: 9px; }
+    .old_price { text-decoration: line-through; }
+    .cart_button { margin-top: 9px; }
+  }
+  li + li { margin-top: 18px; }
+}
+
+.product {
+  .name { margin-bottom: 9px; }
+  .description { margin: 9px 0 18px; }
+  .old_price { text-decoration: line-through; }
+  .pictures {
+    margin-bottom: 9px;
+
+    /*.picture { float: left; margin: 0 9px 9px 0; padding: 9px; border: 1px solid #CCC; text-align: center; }*/
+    .picture { float: left; margin: 0 9px 9px 0; text-align: center; }
   }
 }
 

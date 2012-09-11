@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* Categories styles */
-.categories {  
+.categories {
   .name { width: 250px; }
   .description { width: 450px; }
-  .actions { float: right; }  
+  .actions { float: right; }
 }
 
 /* Products styles */
@@ -25,7 +25,7 @@
   .pictures {
     margin-bottom: 9px;
 
-    .picture { float: left; margin: 0 9px 9px 0; padding: 9px; border: 1px solid #CCC; text-align: center; }    
+    .picture { float: left; margin: 0 9px 9px 0; padding: 9px; border: 1px solid #CCC; text-align: center; }
   }
 }
 
@@ -33,7 +33,7 @@
   .pictures {
     margin-bottom: 9px;
 
-    .picture { float: left; margin: 0 9px 9px 0; padding: 9px; border: 1px solid #CCC; }    
+    .picture { float: left; margin: 0 9px 9px 0; padding: 9px; border: 1px solid #CCC; }
   }
 
   .new_pictures {

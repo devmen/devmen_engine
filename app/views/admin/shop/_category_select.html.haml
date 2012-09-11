@@ -3,4 +3,4 @@
     nested_set_options(::Shop::Category, (category if category.present?)) {|i| "#{'-' * i.level} #{i.name}" },
     :include_blank => true
 - else
-  = select_tag field, options_for_select(nested_set_options(::Shop::Category,(category if category.present?)) {|i| "#{'-' * i.level} #{i.name}" } ) 
+  = select_tag field, options_for_select(nested_set_options(::Shop::Category,(category if category.present?)) {|i| "#{'-' * i.level} #{i.name}" } )

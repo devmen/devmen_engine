@@ -1,5 +1,5 @@
 %li.clearfix
-  .list-row.clearfix{ :class => cycle('odd', '') }    
+  .list-row.clearfix{ :class => cycle('odd', '') }
     .list-col.name
       - if category.child?
         - category.level.times do

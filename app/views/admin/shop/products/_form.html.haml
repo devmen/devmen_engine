@@ -9,11 +9,11 @@
       = form.select :category_id,
         nested_set_options(::Shop::Category) {|i| "#{'-' * i.level} #{i.name}" },
         :include_blank => true
-    = form.input :name, :label => human_attribute_name(@product, :name)    
-    = form.input :sku, :label => human_attribute_name(@product, :sku) 
-    = form.input :price, :label => human_attribute_name(@product, :price) 
-    = form.input :old_price, :label => human_attribute_name(@product, :old_price) 
-    = form.input :in_stock, :label => human_attribute_name(@product, :in_stock)    
+    = form.input :name, :label => human_attribute_name(@product, :name)
+    = form.input :sku, :label => human_attribute_name(@product, :sku)
+    = form.input :price, :label => human_attribute_name(@product, :price)
+    = form.input :old_price, :label => human_attribute_name(@product, :old_price)
+    = form.input :in_stock, :label => human_attribute_name(@product, :in_stock)
     = form.input :description, :label => human_attribute_name(@product, :description),
         :input_html => { :class => 'markitup' }
     = form.input :slug, :label => "#{human_attribute_name(@product, :slug)} (#{t('.slug_hint')})"
@@ -25,13 +25,13 @@
         %label= t('.images')
         = form.simple_fields_for :pictures, pictures do |field|
           .picture
-            = link_to image_tag(field.object.image_url(:thumb200)), field.object.image_url, rel: "photo_group"
+            = link_to image_tag(field.object.image_url(:thumb)), field.object.image_url, rel: "photo_group"
             %br
-            = field.input :_destroy, :as => :boolean, :inline_label => t("actions.remove"), :label => false            
-            = field.input :name, :label => human_attribute_name(@product, :name)            
+            = field.input :_destroy, :as => :boolean, :inline_label => t("actions.remove"), :label => false
+            = field.input :name, :label => human_attribute_name(@product, :name)
             = field.input :image, label: false
             = field.hidden_field :image_cache
-      
+
     .new_pictures
       %label= t('.add_images')
       = form.simple_fields_for :pictures, @product.pictures.select {|pic| pic.image.url.nil? } do |field|
