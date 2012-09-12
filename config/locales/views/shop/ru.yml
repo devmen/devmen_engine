@@ -1,4 +1,4 @@
-ru: 
+ru:
   shop:
     products:
       index:
@@ -11,7 +11,7 @@ ru:
 
     categories:
       index:
-        title: "Категории товаров"      
+        title: "Категории товаров"
 
     carts:
       show:
@@ -25,19 +25,29 @@ ru:
         description: |
           Для оформления заказа вам необходимо заполнить соответствующие поля формы и нажать кнопку Отправить.<br/>
           Если вы решили изменить список наименований товаров, нажмите кнопку Отмена.<br/>
-          Выбранные вами наименования указаны ниже.        
-        send: "Отправить"        
+          Выбранные вами наименования указаны ниже.
+        send: "Отправить"
 
     product_items:
       product_title: "Наименование"
       total: "Всего"
 
+    cart:
+      product_counter:
+        one: "наименование"
+        few: "наименования"
+        many: "наименований"
+      cart_text: "В корзине: %{products}"
+      empty_cart_text: "Корзина пуста"
+
     order_mailer:
       order_message:
         product_title: "Наименование"
-        total: "Всего"  
+        total: "Всего"
 
     flash:
+      product_added_to_cart: "%{product_name} был успешно добавлен в корзину"
+      product_adding_to_cart_failed: "%{product_name} добавить в корзину не удалось"
       cart_is_empty: "Ваша корзина пуста."
       cart_is_updated: "Ваша корзина успешно обновлена."
       cart_update_failed: "Вашу корзину обновить не удалось."

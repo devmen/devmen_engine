@@ -33,7 +33,9 @@ ru:
         price: "Цена"
         amount: "Сумма"
 
-      shop/order:        
+      shop/order:
+        num: "Номер"
+        created_at: "Дата создания"
         name: "Фамилия Имя Отчество"
         email: "Электронная почта (email)"
         address: "Адрес доставки"

@@ -6,6 +6,8 @@ class Shop::Order < ActiveRecord::Base
   validates :name, :email, :address, :presence => true
   validates_format_of :email, :with => %r{\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z}i
 
+  default_scope :order => 'orders.created_at desc'
+
   after_create :generate_uniq_number
 
   def add (items)

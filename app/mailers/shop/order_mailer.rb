@@ -1,7 +1,7 @@
 class Shop::OrderMailer < ActionMailer::Base
   helper :application, ::Shop::Helper
 
-  default from: CFG['shop']['email']
+  default from: CFG['shop']['email'], bcc: CFG['shop']['email']
 
   def order_message(order)
     @order = order

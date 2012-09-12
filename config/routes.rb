@@ -12,6 +12,7 @@ DevmenEngine::Application.routes.draw do
     scope :module => 'shop' do
       resources :products
       resources :product_categories, as: "product_categories", controller: "categories"
+      resources :orders, :only => [:index, :show]
     end
   end
   # Shop module routes end

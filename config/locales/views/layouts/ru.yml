@@ -10,9 +10,10 @@ ru:
         shop: Магазин
         product_categories: Категории товаров
         products: Товары
+        orders: Заказы
         new_category: Добавить категорию
         new_product: Добавить товар
 
-    application:      
+    application:
       signout: Выйти
       signin: Войти

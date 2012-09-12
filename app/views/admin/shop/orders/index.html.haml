@@ -1,0 +1,21 @@
+%h1= t('.title', :default => 'Orders')
+.orders
+
+  - if !@orders.empty?
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= human_attribute_name(@orders, :created_at)
+          %th= human_attribute_name(@orders, :num)
+          %th= human_attribute_name(@orders, :name)
+          %th= human_attribute_name(@orders, :email)
+          %th= human_attribute_name(@orders, :address)
+
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td= l(order.created_at, format: :long)
+            %td= link_to order.num, admin_order_path(order)
+            %td= order.name
+            %td= order.email
+            %td= teaser(order.address)

@@ -11,6 +11,8 @@
 
 /* Products styles */
 .products {
+  td { vertical-align: middle; }
+
   .btn-toolbar { float: left; margin-top: 5px; }
   .category_select {
     float: right;

@@ -7,12 +7,12 @@ class Shop::Cart < ActiveRecord::Base
   def add(product, quantity = 1)
     item = product_items.where(:product_id => product.id).first
     if item
-      item.price = item.product.price      
+      item.price = item.product.price
       item.quantity += quantity.to_i
       item.amount = item.price * item.quantity
     else
       amount = product.price * quantity.to_i
-      item = product_items.build(product: product, price: product.price, quantity: quantity, amount: amount)      
+      item = product_items.build(product: product, price: product.price, quantity: quantity, amount: amount)
     end
     item
   end

@@ -10,17 +10,17 @@ class Admin::Shop::ProductsController < Admin::BaseController
     }
   end
 
-  def create    
+  def create
     create! do |success, failure|
       success.html { redirect_to collection_path }
       failure.html do
         build_new_picture_records
         render :new
-      end      
+      end
     end
   end
 
-  def edit    
+  def edit
     edit! {
       3.times { resource.pictures.build }
     }
@@ -32,7 +32,7 @@ class Admin::Shop::ProductsController < Admin::BaseController
       failure.html do
         build_new_picture_records
         render :edit
-      end     
+      end
     end
   end
 
