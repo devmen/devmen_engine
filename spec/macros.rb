@@ -25,7 +25,7 @@ module Macros
     admin = FactoryGirl.create(:admin)
     visit signin_path
     fill_in "user_session[name]", :with => admin.name
-    fill_in "user_session[password]", :with => admin.password        
+    fill_in "user_session[password]", :with => admin.password
     click_button 'user_session_submit'
     admin
   end

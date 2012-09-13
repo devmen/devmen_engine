@@ -15,7 +15,8 @@ class Shop::Product < ActiveRecord::Base
   friendly_id :name, :use => [:slugged, :history],
               :reserved_words => %w(index new session login logout users admin images markitup elfinder)
 
-  validates :name, :description, :price, :presence => true  
+  validates :name, :description, :price, :presence => true
+  validates :name, :length => { :maximum => 100 }
   validates_numericality_of :price, :old_price, :greater_than_or_equal_to => 0, :allow_nil => true
   validates_numericality_of :in_stock, :only_integer => true, :greater_than_or_equal_to => 0, :allow_nil => true
 

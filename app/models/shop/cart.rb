@@ -20,4 +20,5 @@ class Shop::Cart < ActiveRecord::Base
   def release
     product_items.each { |item| item.cart_id = nil }
   end
+
 end

@@ -10,7 +10,7 @@ class Shop::Order < ActiveRecord::Base
 
   after_create :generate_uniq_number
 
-  def add (items)
+  def add(items)
     items.each {|item| product_items << item }
     product_items
   end

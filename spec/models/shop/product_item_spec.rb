@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe Shop::ProductItem do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "have a valid factory" do
+    create(:product_item).should be_valid
+  end
+
+  describe ".associations" do
+    it { should belong_to(:product) }
+    it { should belong_to(:cart) }
+    it { should belong_to(:order) }
+  end
 end
