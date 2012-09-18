@@ -95,6 +95,9 @@ GEM
     em-websocket (0.3.6)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
+    email_spec (1.2.1)
+      mail (~> 2.2)
+      rspec (~> 2.0)
     erubis (2.7.0)
     eventmachine (0.12.10)
     execjs (1.4.0)
@@ -300,6 +303,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   el_finder (~> 1.0.21)
+  email_spec (~> 1.2.1)
   factory_girl_rails (~> 3.3.0)
   faker
   fancybox-rails (~> 0.1.4)

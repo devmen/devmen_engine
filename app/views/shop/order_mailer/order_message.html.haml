@@ -7,7 +7,7 @@
   %body
     %p Сообщение с сайта #{link_to(CFG['shop']['url'], CFG['shop']['url'])} - #{CFG['shop']['name']}
     %p
-      Уважаемый(ая) #{@order.name}, Ваш заказ номер #{@order.num} от #{l(@order.created_at.to_date, :format => :long)} принят.
+      Уважаемый(ая) #{@order.name}, Ваш заказ номер #{@order.num} от #{l(@order.created_at.to_date, format: :long)} принят.
       %br
       Адрес доставки: #{@order.address}
       %br

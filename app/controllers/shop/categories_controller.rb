@@ -2,7 +2,6 @@ class Shop::CategoriesController < ApplicationController
 
   def index
     @categories = Shop::Category.all
-    current_cart
   end
 
   def show

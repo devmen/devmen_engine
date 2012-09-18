@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :product, :class => 'Shop::Product' do
-    name { Faker::Lorem.sentence(2) }
+    name { Faker::Lorem.words.join(' ') }
     description { Faker::Lorem.paragraphs.join }
     sku { Faker::Lorem.numerify('########') }
     price 9.99

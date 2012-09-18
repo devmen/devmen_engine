@@ -116,4 +116,5 @@ end
 
 group :test do
   gem "shoulda", "~> 3.1.1"
+  gem "email_spec", "~> 1.2.1"
 end

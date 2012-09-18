@@ -5,5 +5,7 @@ FactoryGirl.define do
     price 5.5
     quantity 1
     amount 5.5
+
+    association :product, factory: :product
   end
 end

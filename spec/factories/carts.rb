@@ -5,7 +5,7 @@ FactoryGirl.define do
     # association :product_items, factory: product_item
 
     factory :cart_with_products do
-      after(:create) do |cart|
+      before(:create) do |cart|
         3.times { cart.add FactoryGirl.create(:product), rand(1..10) }
       end
     end
