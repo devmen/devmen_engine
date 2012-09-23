@@ -76,6 +76,7 @@ describe Shop::OrdersController do
         it { should deliver_to order.email }
         it { should have_subject I18n.t('order_mail_message', default: "Order number #{order.num}", :num => order.num) }
         it { should have_body_text(/#{order.name}/) }
+        it { should have_body_text(/#{order.address}/) }
         it { should have_body_text(/#{order.num}/) }
         it { should have_body_text(/#{I18n.l(order.created_at.to_date, format: :long)}/) }
         it "contains ordered products" do

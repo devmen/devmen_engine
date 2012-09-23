@@ -1,4 +1,4 @@
-%table.table.product_items
+%table#product_items.table.product_items
   %thead
     %tr
       %th.product{ :colspan => 2 }= t('.product_title')
@@ -7,9 +7,9 @@
       %th.amount= human_attribute_name(product_items, :amount)
   %tbody
     - total = 0
-    - product_items.each do |item|
+    - product_items.each_with_index do |item, index|
       - total += item.amount
-      %tr.product_item
+      %tr.product_item{ :id => "product_item-#{index}" }
         %td.product{ :colspan => 2 }
           - unless local_assigns.has_key?(:hide_pictures) && local_assigns[:hide_pictures].present?
             - picture = item.product.pictures.first
@@ -19,7 +19,7 @@
         %td.price= number_to_currency(item.price)
         %td.quantity= number_to_human(item.quantity, units: :product_units, precision: 0)
         %td.amount= number_to_currency(item.amount)
-    %tr
+    %tr.total_line
       %td{ :colspan => 4 }
         %b= t('.total')
       %td= number_to_currency(total)

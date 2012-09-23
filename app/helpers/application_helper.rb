@@ -13,9 +13,9 @@ module ApplicationHelper
   # Return text converted from format to html
   def to_html(text, format = nil)
     format ||= :textile
-  	if format == :textile      
+  	if format == :textile
       RedCloth.new(text).to_html
-    else      
+    else
       text
     end
   end

@@ -50,6 +50,7 @@ ru:
       product_adding_to_cart_failed: "%{product_name} добавить в корзину не удалось"
       cart_is_empty: "Ваша корзина пуста."
       cart_is_updated: "Ваша корзина успешно обновлена."
+      cart_is_cleared: "Ваша корзина очищена."
       cart_update_failed: "Вашу корзину обновить не удалось."
       order_is_accepted: "Ваш заказ принят. Спасибо за покупку!"
       order_creation_failed: "Ваш заказ не был принят. Пожалуйста, проверьте правильность ваших данных."

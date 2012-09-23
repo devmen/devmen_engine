@@ -1,4 +1,4 @@
-.cart
+#cart.cart
   - if current_cart.product_counter.to_i > 0
     = link_to t('.cart_text', products: "#{current_cart.product_counter} " + t('.product_counter', count: current_cart.product_counter)),
         cart_path

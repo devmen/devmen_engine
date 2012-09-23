@@ -42,4 +42,28 @@ module Macros
   def get_confirm_text
     page.evaluate_script "window.confirmMsg"
   end
+
+  def test_image
+    File.open("#{Rails.root}/spec/factories/test-image.jpg")
+  end
+
+  def store_test_images(models, image_field = :image)
+    PictureUploader.enable_processing = true
+    models = [models] unless models.is_a?(Array)
+    models.each do |model|
+      uploader = model.send(image_field)
+      uploader.store!(test_image)
+    end
+  end
+
+  def remove_test_images(models, image_field = :image)
+    PictureUploader.enable_processing = false
+    models = [models] unless models.is_a?(Array)
+    models.each do |model|
+      uploader = model.send(image_field)
+      dir = uploader.path.gsub(/\/#{uploader.identifier}$/, '')
+      uploader.remove!
+      Dir.rmdir(dir) if Dir.exists?(dir)
+    end
+  end
 end

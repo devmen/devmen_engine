@@ -1,0 +1,3 @@
+= render 'shop/messages'
+:plain
+  $('#cart').replaceWith("#{j render(partial: 'shop/cart', formats: [:html])}");

@@ -16,3 +16,8 @@
 //= require markitup
 //= require markitup-html
 //= require_directory .
+
+$(function() {
+  // Empty message box after delay
+  $('#messages').emptyFadeOut();
+});

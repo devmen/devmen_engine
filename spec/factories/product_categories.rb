@@ -6,7 +6,9 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraphs.join }
 
     factory :category_with_products do
-      association :products, factory: :product
+      after(:create) do |category|
+        create_list(:product, 3, category: category)
+      end
     end
   end
 end

@@ -23,8 +23,8 @@ describe "User sessions" do
       it "should sign a user in and out" do
         visit signin_path
         fill_in "user_session[name]", :with => user.name
-        fill_in "user_session[password]", :with => user.password        
-        # click_button 'user_session_submit'        
+        fill_in "user_session[password]", :with => user.password
+        # click_button 'user_session_submit'
         click_button "Sign in"
         current_url.should == root_url
         # save_and_open_page

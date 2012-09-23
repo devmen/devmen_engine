@@ -1,5 +1,5 @@
 %li.clearfix
-  - picture = product.pictures.first
+  - picture = product.pictures.sort_by{ |p| p.id }.first
   - if picture.present?
     .picture
       = link_to image_tag(picture.image_url(:mini), alt: picture.name, :class => 'img-rounded'), product_path(product)

@@ -1,0 +1,3 @@
+- unless flash.empty?
+  :plain
+    $('#messages').html("#{j render 'admin/messages'}").fadeIn(300).emptyFadeOut();

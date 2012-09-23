@@ -5,7 +5,6 @@ FactoryGirl.define do
     name { Faker::Name.name }
     email { Faker::Internet.email }
     address { Faker::Address.street_address }
-    # num { Faker::Lorem.numerify('########') }
 
     factory :order_with_products do
       before(:create) do |order|
