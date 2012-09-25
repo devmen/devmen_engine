@@ -1,10 +1,10 @@
-%li.clearfix
+%li.clearfix{ :id => "category-#{category.id}" }
   .list-row.clearfix{ :class => cycle('odd', '') }
     .list-col.name
       - if category.child?
         - category.level.times do
           %span.list-row-margin
-      = category.name
+      = link_to category.name, admin_product_category_path(category)
     .list-col.description= teaser(category.description, :length => 60)
     .list-col.actions
       .btn-group
@@ -17,7 +17,8 @@
               %i.icon-pencil
               = t('actions.edit', :default => 'Edit')
           %li
-            = link_to admin_product_category_path(category), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+            %a{ href: admin_product_category_path(category), data: { method: :delete,
+              confirm: category.leaf? ? t('.confirm_for_removing_leaf_category') : t('.confirm_for_removing_not_leaf_category') } }
               %i.icon-trash
               = t('actions.remove', :default => 'Remove')
 

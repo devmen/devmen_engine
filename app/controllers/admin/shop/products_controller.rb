@@ -3,6 +3,7 @@ class Admin::Shop::ProductsController < Admin::BaseController
   defaults resource_class: ::Shop::Product, collection_name: "products", instance_name: "product"
 
   has_scope :by_category
+  has_scope :orphaned, type: :boolean
 
   def new
     new! {

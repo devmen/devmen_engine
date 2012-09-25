@@ -19,10 +19,12 @@ class Shop::Product < ActiveRecord::Base
   validates :name, :length => { :maximum => 100 }
   validates_numericality_of :price, :old_price, :greater_than_or_equal_to => 0, :allow_nil => true
   validates_numericality_of :in_stock, :only_integer => true, :greater_than_or_equal_to => 0, :allow_nil => true
+  validates_uniqueness_of :slug
 
   default_scope :order => 'products.name'
 
   scope :by_category, ->(category) { where(:category_id => ::Shop::Category.find(category).self_and_descendants.select(:id)) }
+  scope :orphaned, -> { where(category_id: nil) }
   scope :present_in_stock, -> { where("in_stock > 0") }
 
   before_destroy :ensure_not_referenced_by_any_product_item

@@ -13,5 +13,13 @@ FactoryGirl.define do
         order.add product_items
       end
     end
+
+    factory :order_with_products_and_pictures do
+      before(:create) do |order|
+        product_items = []
+        2.times { product_items << FactoryGirl.create(:product_item_with_pictures, quantity: rand(1..10)) }
+        order.add product_items
+      end
+    end
   end
 end

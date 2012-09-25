@@ -13,7 +13,7 @@
 
       %tbody
         - @orders.each do |order|
-          %tr
+          %tr{ id: "order-#{order.id}" }
             %td= l(order.created_at, format: :long)
             %td= link_to order.num, admin_order_path(order)
             %td= order.name

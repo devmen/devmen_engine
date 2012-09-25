@@ -5,7 +5,7 @@
       = render 'shared/error_messages', :object => form.object
 
   .form-inputs
-    = form.input :name, :label => human_attribute_name(@category, :name)    
+    = form.input :name, :label => human_attribute_name(@category, :name)
     = form.input :description, :label => human_attribute_name(@category, :description),
         :input_html => { :class => 'markitup' }
     = form.input :parent_id, :label => human_attribute_name(@category, :parent_id) do

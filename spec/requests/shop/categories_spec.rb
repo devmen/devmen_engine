@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Shop::Categories' do
+describe 'Shop::Categories', js: true do
   subject { page }
 
   describe "list of category" do

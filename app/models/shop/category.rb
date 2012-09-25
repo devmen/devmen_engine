@@ -3,7 +3,7 @@ class Shop::Category < ActiveRecord::Base
 
   attr_accessible :parent_id, :name, :description, :depth, :sort
 
-  has_many :products, inverse_of: :category
+  has_many :products, inverse_of: :category, dependent: :nullify
 
   validates :name, presence: true, uniqueness: { scope: :parent_id }, length: { maximum: 100 }
 

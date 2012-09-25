@@ -1,10 +1,11 @@
-%h1= t('.title', :default => 'Products')
+%h1= current_scopes[:orphaned] ? t('.orphan_products_title') : t('.title', :default => 'Products')
 .products
 
   .action-panel.clearfix
-    %form.category_select
-      = label_tag :by_category, "#{human_attribute_name(@products, :category)}:"
-      = select_tag :by_category, options_for_select(nested_set_options(::Shop::Category) {|i| "#{'-' * i.level} #{i.name}" }, params[:by_category] ), :include_blank => true
+    - unless current_scopes[:orphaned]
+      %form.category_select
+        = label_tag :by_category, "#{human_attribute_name(@products, :category)}:"
+        = select_tag :by_category, options_for_select(nested_set_options(::Shop::Category) {|i| "#{'-' * i.level} #{i.name}" }, params[:by_category] ), :include_blank => true
 
     .btn-toolbar
       = link_to new_admin_product_path, :class => 'btn btn-mini' do
@@ -27,7 +28,7 @@
 
       %tbody
         - @products.each do |product|
-          %tr
+          %tr.product{ id: "product-#{product.id}" }
             %td
               - picture = product.pictures.first
               - if picture.present?

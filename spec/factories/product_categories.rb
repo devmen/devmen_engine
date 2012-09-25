@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :product_category, :class => 'Shop::Category' do
-    name { Faker::Lorem.sentence(2) }
+    name { Faker::Lorem.words.join(' ') }
     description { Faker::Lorem.paragraphs.join }
 
     factory :category_with_products do

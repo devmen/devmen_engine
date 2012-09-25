@@ -20,7 +20,8 @@ class Shop::CartsController < ApplicationController
 
     def set_flash_and_respond(success, format = :html)
       if success
-        if params[:button] == 'update'
+        # update the cart
+        unless params[:button] == 'checkout'
           unless @cart.product_items.empty?
             flash.now[:success] = I18n.t('shop.flash.cart_is_updated', default: "Your cart has been successfully updated.")
             render :show
@@ -29,7 +30,8 @@ class Shop::CartsController < ApplicationController
             redirect_to root_path if format == :html
             render js: "window.location.pathname = '#{root_path}'" if format == :js
           end
-        elsif params[:button] == 'checkout'
+        # checkout a new order
+        else
           redirect_to new_order_path if format == :html
           render js: "window.location.pathname = '#{new_order_path}'" if format == :js
         end

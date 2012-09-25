@@ -24,7 +24,7 @@ module ApplicationHelper
   def teaser(text, options = {})
     options.reverse_merge!(:length => 150, :omission => '...')
     format = options.delete(:format) if options[:format]
-    truncate(strip_tags(to_html(text, format)).strip, options)
+    truncate(strip_tags(to_html(text.to_s, format)).strip, options)
   end
 
   def to_yes_no(value)
