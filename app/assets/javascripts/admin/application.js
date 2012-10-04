@@ -15,10 +15,11 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require markitup
+//= require markitup/textile
 //= require fancybox
-//= require ./markitup/textile
-//= require_directory ./elfinder
-//= require_directory .
+//= require elfinder
+//= require ../common
+//= require_tree .
 
 // Set header Accept: text/javascript for all ajax requests in application
 // jQuery.ajaxSetup({
@@ -49,7 +50,7 @@ jQuery.markitup_init = function () {
     type = type || 'html';
     var folders = ['Images', 'Files'];
 
-    function editorCallback(folder, type) {    
+    function editorCallback(folder, type) {
       return function (url) {
         var filename = url.split('/').pop().replace(/\.\w+$/, '');
         var options
@@ -64,7 +65,7 @@ jQuery.markitup_init = function () {
                 placeHolder: filename
               };
             break;
-          case 'textile':    
+          case 'textile':
             if (folder == 'Images')
               options = { replaceWith: '!'+url+'('+filename+')!' };
             else if (folder == 'Files')
@@ -75,17 +76,17 @@ jQuery.markitup_init = function () {
               };
             break;
         };
-        
+
         $.markItUp(options);
       };
     };
 
     function beforeInsert(folder, type) {
       return function(h) {
-        // Initialize elfinder      
+        // Initialize elfinder
         $('<div id="elfinder" />').elfinder({
           url: '/admin/elfinder?folder=' + folder,
-          lang: 'ru',        
+          lang: 'ru',
           dialog: { width: 700, modal: true, title: folder }, // open in dialog window
           closeOnEditorCallback: true, // close after file select
           editorCallback: editorCallback(folder, type)
@@ -99,56 +100,13 @@ jQuery.markitup_init = function () {
 
     return settings;
   };
-  
+
   var settings = elfinderMarkitupSettings(mySettings, 'textile');
   $('.markitup').each(function() {
     if (!$(this).data('markitup')) {
       $(this).data('markitup', true);
       $(this).markItUp(settings);
     }
-  });  
-};
-
-// Empty dom element after fade out
-jQuery.fn.emptyFadeOut = function(duration, delay) {
-  duration = duration || 1000;
-  delay = delay || 5000;
-  $(this).delay(delay).fadeOut(duration, function() {
-    $(this).empty();
-  });
-};
-
-// Add Hover effect to dropdown menus
-function dropdown_hover_add(all) {
-  var menu_selector = all ? '.dropdown-menu' : '.dropdown-hover .dropdown-menu';
-  var toggle_selector = all ? '.dropdown-toggle' : '.dropdown-hover .dropdown-toggle';
-
-  $(document).on('mouseenter', toggle_selector, function() {
-    $(this).siblings(menu_selector).stop(true, true).delay(200).fadeIn(200, function() {
-      $(this).closest('.btn-group').addClass('open');
-    });
-  }).on('mouseleave', toggle_selector, function(event) {
-    var $ddm = $(this).siblings(menu_selector);
-    var $target = $(event.relatedTarget);
-    if (!$ddm.length ||
-      $target[0] != $ddm[0] &&
-      $target.closest(menu_selector)[0] != $ddm[0]
-    )
-      $ddm.stop(true, true).delay(200).fadeOut(200, function() {
-        $(this).closest('.btn-group.open').removeClass('open');
-      });
-  });
-
-  $(document).on('mouseleave', menu_selector, function(event) {
-    var $ddt = $(this).siblings(toggle_selector);
-    var $target = $(event.relatedTarget);
-    if (!$ddt.length ||
-      $target[0] != $ddt[0] &&
-      $target.closest(toggle_selector)[0] != $ddt[0]
-    )
-      $(this).stop(true, true).delay(200).fadeOut(200, function() {
-        $(this).closest('.btn-group.open').removeClass('open');
-      });  
   });
 };
 
@@ -160,9 +118,9 @@ function sidebar_popover_init() {
       return;
     if (!$this.data('popover')) {
       $this.popover({
-        trigger: 'manual',        
-        placement: 'right',        
-        delay: 0        
+        trigger: 'manual',
+        placement: 'right',
+        delay: 0
       });
     };
     $this.delay(1000, 'fx').queue('fx', function() { $(this).popover('show'); $(this).dequeue(); });
@@ -180,12 +138,14 @@ $(function() {
   $('#messages:has(:first-child)').show().emptyFadeOut();
 
   dropdown_hover_add(true);
-  sidebar_popover_init(); 
+  sidebar_popover_init();
 
   $("a[rel=photo_group]").fancybox({
     titlePosition: "over",
     titleFormat: function(title, currentArray, currentIndex, currentOps) {
-      return "<span id='fancybox-title-over'>" + (currentIndex + 1) + " из " + currentArray.length + "</span>"
+      var title_tag = title.length ? '<div class="title">' + title + '</div>' : '';
+      var couter_tag = '<div class="counter">' + (currentIndex + 1) + " из " + currentArray.length + '</div>';
+      return '<div id="fancybox-title-over" class="clearfix">' + title_tag + couter_tag + '</div>';
     }
   });
 

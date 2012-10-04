@@ -7,7 +7,14 @@ ru:
         edit_profile: Профиль
         signout: Выйти
         signin: Войти
+        shop: Магазин
+        product_categories: Категории товаров
+        products: Товары
+        orphan_products: Товары без категории
+        orders: Заказы
+        new_category: Добавить категорию
+        new_product: Добавить товар
 
-    application:      
+    application:
       signout: Выйти
       signin: Войти

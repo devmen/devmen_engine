@@ -1,0 +1,18 @@
+.product
+  %h3.name
+    = @product.name
+  .sku= human_attribute_name(@product, :sku) + ": #{@product.sku}"
+  .in_stock= human_attribute_name(@product, :in_stock) + ": #{@product.in_stock.to_i > 0 ? t('yes') : t('no')}"
+  - if @product.old_price.to_i > 0
+    .old_price= human_attribute_name(@product, :old_price) + ": #{number_to_currency(@product.old_price)}"
+  .price= human_attribute_name(@product, :price) + ": #{number_to_currency(@product.price)}"
+  .description!= @product.description
+  - if @product.pictures.present?
+    .pictures.clearfix
+      - @product.pictures.each do |picture|
+        .picture
+          = link_to image_tag(picture.image_url(:thumb), :class => 'img-rounded'), picture.image_url, rel: "photo_group", :title => picture.name
+          %br
+          = picture.name
+
+  = render partial: 'shop/products/cart_button', object: @product, as: :product

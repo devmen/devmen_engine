@@ -11,12 +11,6 @@ module News
 
     default_scope :order => ['news.date desc', 'news.id desc']
 
-    def teaser(options={})
-      options = { :length => 150, :omission => '...' } if options.empty?
-      helpers = ActionController::Base.helpers
-      helpers.truncate(helpers.strip_tags(ApplicationHelper.to_html(self.text)).strip, options)
-    end
-
     class << self
 
       def list(count = 5)

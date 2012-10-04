@@ -1,0 +1,33 @@
+ru:
+  admin:
+    shop:
+      products:
+        index:
+          title: "Товары"
+          orphan_products_title: "Товары без категорий"
+        edit:
+          title: "Товар: %{name}"
+        new:
+          title: "Новый товар"
+        form:
+          images: "Изображения"
+          add_images: "Добавить изображения"
+          slug_hint: "понятный адрес, оставте путым для автоматической генерации"
+
+      categories:
+        index:
+          title: "Категории товаров"
+        edit:
+          title: "Категория: %{name}"
+        new:
+          title: "Новый категория"
+        row:
+          confirm_for_removing_leaf_category: "Вы уверены?\nДля всех товаров этой категории, категория станет пустой."
+          confirm_for_removing_not_leaf_category: "Вы уверены?\nВсе дочерние категории будут удалены!\nДля всех товаров этой и дочерних категории, категория станет пустой."
+
+
+      orders:
+        index:
+          title: "Заказы"
+        show:
+          title: "Заказ номер %{num}"

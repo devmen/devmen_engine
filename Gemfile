@@ -19,7 +19,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'twitter-bootstrap-rails', '~> 2.0.8'
+  gem 'twitter-bootstrap-rails', '~> 2.1.3'
 end
 
 gem 'jquery-rails'
@@ -59,6 +59,8 @@ gem "has_scope"
 gem "carrierwave", "~> 0.6.2"
 gem "mini_magick", "~> 3.4"
 gem "fancybox-rails", "~> 0.1.4"
+gem 'awesome_nested_set', '~> 2.1.4'
+gem "friendly_id", "~> 4.0.8"
 gem "ancestry", "~> 1.3.0"
 
 gem 'russian', '~> 0.6.0'
@@ -94,9 +96,9 @@ group :development, :test do
   gem "guard-bundler", ">= 0.1.3"
   gem "guard-rails", ">= 0.1.0"
   gem 'guard-rspec', '~> 0.7.3'
-  gem 'guard-livereload', '~> 0.4.2'  
+  gem 'guard-livereload', '~> 0.4.2'
 
-  gem 'database_cleaner'  
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 3.3.0', :require => false
 
   # It's a problem with rails3-generators and factory_girl_rails.
@@ -115,4 +117,5 @@ end
 
 group :test do
   gem "shoulda", "~> 3.1.1"
+  gem "email_spec", "~> 1.2.1"
 end

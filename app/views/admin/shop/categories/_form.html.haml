@@ -1,0 +1,18 @@
+= simple_form_for [:admin, @category], :url => @category.new_record? ? admin_product_categories_path : admin_product_category_path(@category),
+  :html => { :class => 'product_category_form well' } do |form|
+  - if Rails.env.development?
+    .form-errors
+      = render 'shared/error_messages', :object => form.object
+
+  .form-inputs
+    = form.input :name, :label => human_attribute_name(@category, :name)
+    = form.input :description, :label => human_attribute_name(@category, :description),
+        :input_html => { :class => 'markitup' }
+    = form.input :parent_id, :label => human_attribute_name(@category, :parent_id) do
+      = form.select :parent_id, nested_set_options(::Shop::Category) {|i| "#{'-' * i.level} #{i.name}" },
+          :include_blank => true
+
+  .form-actions
+    - submit_value = @category.new_record? ? t('actions.create', :default => 'Create') : t('actions.update', :default => 'Update')
+    = form.button :submit, :value => submit_value, :class => 'btn-primary'
+    = link_to t('actions.cancel', :default => 'Cancel'), :back, :class => 'btn'

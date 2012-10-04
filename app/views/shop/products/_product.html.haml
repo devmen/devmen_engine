@@ -1,0 +1,19 @@
+%li.clearfix
+  - picture = product.pictures.sort_by{ |p| p.id }.first
+  - if picture.present?
+    .picture
+      = link_to image_tag(picture.image_url(:mini), alt: picture.name, :class => 'img-rounded'), product_path(product)
+  .info.clearfix
+    %h3.name
+      = link_to product.name, product_path(product)
+    .sku= human_attribute_name(product, :sku) + ": #{product.sku}"
+    .in_stock= human_attribute_name(product, :in_stock) + ": #{product.in_stock.to_i > 0 ? t('yes') : t('no')}"
+    - if product.old_price.to_i > 0
+      .old_price= human_attribute_name(product, :old_price) + ": #{number_to_currency(product.old_price)}"
+    .price= human_attribute_name(product, :price) + ": #{number_to_currency(product.price)}"
+  .description
+    = teaser(product.description)
+    %a{href: product_path(product)}
+      = t('.more', default: 'More')
+
+  = render partial: 'shop/products/cart_button', object: product, as: :product

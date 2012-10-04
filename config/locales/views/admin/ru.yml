@@ -16,8 +16,9 @@ ru:
     show: Показать
     edit: Изменить
     update: Обновить
+    save: Сохранить
     remove: Удалить
-    cancel: Отменить
+    cancel: Отменить    
 
   # Confirmation questions
   confirm:

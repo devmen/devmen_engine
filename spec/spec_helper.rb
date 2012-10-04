@@ -7,6 +7,7 @@ require 'capybara/rspec'
 # In Gemfile use :require => false for factort_girl, otherwise getting double require error
 require 'factory_girl_rails'
 require "authlogic/test_case"
+require "email_spec"
 require File.dirname(__FILE__) + "/macros"
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -35,11 +36,16 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation    
-  end
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :truncation
+  # end
 
   config.before(:each) do
+    if Capybara.current_driver == :webkit || Capybara.current_driver == :selenium
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
     DatabaseCleaner.start
   end
 
@@ -49,8 +55,24 @@ RSpec.configure do |config|
 
   config.include(Macros)
   config.include FactoryGirl::Syntax::Methods
+  # config.include(EmailSpec::Helpers)
+  # config.include(EmailSpec::Matchers)
+
+  # include module macroses
+  MODULES.each do |m|
+    module_macros = "#{m.camelize}::Macros".constantize rescue nil
+    config.include(module_macros) if module_macros
+  end
 
   Capybara.default_wait_time = 5
   Capybara.javascript_driver = :webkit
+
+  # redefine store_dir method for uploader
+  class PictureUploader
+    alias_method :orig_store_dir, :store_dir
+    def store_dir
+      "uploads/tmp/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
+  end
 
 end

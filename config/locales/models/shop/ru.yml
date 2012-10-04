@@ -1,0 +1,41 @@
+ru:
+  activerecord:
+
+    models:
+      shop/product: "Товар"
+      shop/category: "Категория"
+      shop/picture: "Изображение"
+      shop/cart: "Корзина"
+      shop/product_item: "Товар"
+      shop/order: "Заказ"
+
+    attributes:
+      shop/product:
+        category: "Категория"
+        name: "Название"
+        description: "Описание"
+        sku: "Артикул"
+        price: "Цена"
+        old_price: "Старая цена"
+        in_stock: "На складе"
+        updated_at: "Обновлено"
+        picture: "Изображение"
+        slug: "Слаг"
+
+      shop/category:
+        parent_id: "Надкатегория"
+        name: "Название"
+        description: "Описание"
+        updated_at: "Обновлено"
+
+      shop/product_item:
+        quantity: "Количество"
+        price: "Цена"
+        amount: "Сумма"
+
+      shop/order:
+        num: "Номер"
+        created_at: "Дата создания"
+        name: "Фамилия Имя Отчество"
+        email: "Электронная почта (email)"
+        address: "Адрес доставки"

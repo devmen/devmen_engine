@@ -1,0 +1,60 @@
+ru:
+  shop:
+    products:
+      index:
+        title: "Товары"
+      product:
+        more: "Подробнее"
+      cart_button:
+        add_to_cart: "В корзину"
+        product_count: "Количество"
+
+    categories:
+      index:
+        title: "Категории товаров"
+
+    carts:
+      show:
+        product_title: "Наименование"
+        checkout: "Оформить заказ"
+        total: "Всего"
+
+    orders:
+      new:
+        title: "Новый заказ"
+        description: |
+          Для оформления заказа вам необходимо заполнить соответствующие поля формы и нажать кнопку Отправить.<br/>
+          Если вы решили изменить список наименований товаров, нажмите кнопку Отмена.<br/>
+          Выбранные вами наименования указаны ниже.
+        send: "Отправить"
+
+    product_items:
+      product_title: "Наименование"
+      total: "Всего"
+
+    cart:
+      product_counter:
+        one: "наименование"
+        few: "наименования"
+        many: "наименований"
+      cart_text: "В корзине: %{products}"
+      empty_cart_text: "Корзина пуста"
+
+    order_mailer:
+      order_message:
+        product_title: "Наименование"
+        total: "Всего"
+
+    flash:
+      product_added_to_cart: "%{product_name} был успешно добавлен в корзину"
+      product_adding_to_cart_failed: "%{product_name} добавить в корзину не удалось"
+      cart_is_empty: "Ваша корзина пуста."
+      cart_is_updated: "Ваша корзина успешно обновлена."
+      cart_is_cleared: "Ваша корзина очищена."
+      cart_update_failed: "Вашу корзину обновить не удалось."
+      order_is_accepted: "Ваш заказ принят. Спасибо за покупку!"
+      order_creation_failed: "Ваш заказ не был принят. Пожалуйста, проверьте правильность ваших данных."
+
+  product_units:
+    unit: "шт."
+    thousand: "шт."

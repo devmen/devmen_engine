@@ -8,7 +8,7 @@
 
   - News::Entry.list.each do |news_entry|
     %li#news_entry_link.sidebar-link{:id => news_entry.id, :class => @news_entry == news_entry && 'current',
-        :data => {:content => news_entry.teaser,
+        :data => {:content => teaser(news_entry.text),
           :title => news_entry.date,
         },
       }

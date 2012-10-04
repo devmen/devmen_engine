@@ -1,5 +1,22 @@
 DevmenEngine::Application.routes.draw do
 
+  # Shop module routes start
+  scope :module => 'shop', :path => "shop" do
+    resources :products, :only => [:index, :show], as: "products"
+    resources :categories, :only => [:index, :show], as: "product_categories"
+    resource :cart, :only => [:show, :update], as: "cart"
+    resources :product_items, :only => [:create], as: "product_items"
+    resource :order, :only => [:new, :create], as: "order"
+  end
+  namespace :admin do
+    scope :module => 'shop' do
+      resources :products
+      resources :product_categories, as: "product_categories", controller: "categories"
+      resources :orders, :only => [:index, :show]
+    end
+  end
+  # Shop module routes end
+
   # Realty module routes start
   scope :module => 'realty' do
     resources :realty, :only => [:index, :show], :controller => 'entries'
@@ -52,7 +69,7 @@ DevmenEngine::Application.routes.draw do
     end
   end
 
-  resources :user_sessions, :only => [:new, :create, :destroy] 
+  resources :user_sessions, :only => [:new, :create, :destroy]
   match '/signin',  :to => 'user_sessions#new'
   match '/signout', :to => 'user_sessions#destroy'
 
@@ -60,9 +77,9 @@ DevmenEngine::Application.routes.draw do
 
   resources :pages, :only => [:index, :show]
 
-  namespace :admin do    
+  namespace :admin do
     resources :users
-    resources :pages, :except => [:index]    
+    resources :pages, :except => [:index]
     match '/elfinder', :to => 'base#elfinder'
     match '/', :to => 'base#index'
     # Handeling routing error for admin namespace, see below
@@ -75,5 +92,5 @@ DevmenEngine::Application.routes.draw do
   match '*page', :to => 'pages#show'
 
   root :to => 'pages#index'
-  
+
 end

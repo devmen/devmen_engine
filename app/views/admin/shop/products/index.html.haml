@@ -1,0 +1,56 @@
+%h1= current_scopes[:orphaned] ? t('.orphan_products_title') : t('.title', :default => 'Products')
+.products
+
+  .action-panel.clearfix
+    - unless current_scopes[:orphaned]
+      %form.category_select
+        = label_tag :by_category, "#{human_attribute_name(@products, :category)}:"
+        = select_tag :by_category, options_for_select(nested_set_options(::Shop::Category) {|i| "#{'-' * i.level} #{i.name}" }, params[:by_category] ), :include_blank => true
+
+    .btn-toolbar
+      = link_to new_admin_product_path, :class => 'btn btn-mini' do
+        %i.icon-plus-sign
+        = t('actions.add', :default => 'Add')
+
+  - if !@products.empty?
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= human_attribute_name(@products, :picture)
+          %th= human_attribute_name(@products, :name)
+          %th= human_attribute_name(@products, :sku)
+          %th= human_attribute_name(@products, :price)
+          %th= human_attribute_name(@products, :old_price)
+          %th= human_attribute_name(@products, :in_stock)
+          / %th= human_attribute_name(@products, :description)
+          %th= human_attribute_name(@products, :updated_at)
+          %th= t('actions.title', :default => 'Actions')
+
+      %tbody
+        - @products.each do |product|
+          %tr.product{ id: "product-#{product.id}" }
+            %td
+              - picture = product.pictures.first
+              - if picture.present?
+                = image_tag picture.image_url(:thumb, :small), alt: picture.name
+            %td= link_to product.name, admin_product_path(product)
+            %td= product.sku
+            %td= number_to_currency(product.price)
+            %td= number_to_currency(product.old_price)
+            %td= product.in_stock
+            / %td= teaser(product.description)
+            %td= l(product.updated_at.to_date, format: :long)
+            %td
+              .btn-group
+                = link_to t('actions.edit', :default => 'Edit'), edit_admin_product_path(product), :class => 'btn btn-mini'
+                %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to edit_admin_product_path(product) do
+                      %i.icon-pencil
+                      = t('actions.edit', :default => 'Edit')
+                  %li
+                    = link_to admin_product_path(product), :confirm => t('confirm.sure', :default => 'Are you sure?'), :method => :delete do
+                      %i.icon-trash
+                      = t('actions.remove', :default => 'Remove')

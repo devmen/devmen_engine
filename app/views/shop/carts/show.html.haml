@@ -1,0 +1,37 @@
+%h1= ::Shop::Cart.model_name.human
+= simple_form_for @cart, :url => cart_path, :as => 'cart', :html => { :class => 'cart_form' }, :remote => true do |form|
+  %table#product_items.table.product_items
+    %thead
+      %tr
+        %th.product{ :colspan => 2 }= t('.product_title')
+        %th.price= human_attribute_name(@product_items, :price)
+        %th.quantity= human_attribute_name(@product_items, :quantity)
+        %th.amount= human_attribute_name(@product_items, :amount)
+        %th.actions= t('actions.remove')
+    %tbody
+      - total = index = 0
+      = form.simple_fields_for :product_items, @product_items do |row|
+        - item = row.object
+        - total += item.amount
+        %tr.product_item{ :id => "product_item-#{index}" }
+          %td.product{ :colspan => 2 }
+            - picture = item.product.pictures.first
+            - if picture.present?
+              = link_to image_tag(picture.image_url(:thumb, :small), alt: picture.name), product_path(item.product)
+            = link_to item.product.name, product_path(item.product)
+          %td.price= number_to_currency(item.price)
+          %td.quantity
+            = row.text_field :quantity, :class => 'input-mini'
+            = number_to_human(item.quantity, :units => :product_units, :format => '%u')
+          %td.amount= number_to_currency(item.amount)
+          %td.actions
+            = row.check_box :_destroy
+        - index += 1
+      %tr.total_line
+        %td{ :colspan => 4 }
+          %b= t('.total')
+        %td{ :colspan => 2 }= number_to_currency(total)
+
+  .form-actions
+    = form.button :button, t('.checkout', :default => 'Check out'), :value => 'checkout', :class => 'btn-primary'
+    = form.button :button, t('actions.update', :default => 'Update'), :value => 'update'

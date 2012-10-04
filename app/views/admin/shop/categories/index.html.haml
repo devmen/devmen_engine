@@ -1,0 +1,16 @@
+%h1= t('.title', :default => 'Product categories')
+
+.btn-toolbar
+  = link_to new_admin_product_category_path, :class => 'btn btn-mini' do
+    %i.icon-plus-sign
+    = t('actions.add', :default => 'Add')
+
+- if @categories.present?
+  .categories.list.list-striped
+    .list-head.clearfix
+      .list-col.name= human_attribute_name(@categories, :name)
+      .list-col.description= human_attribute_name(@categories, :description)
+      .list-col.actions= t('actions.title', :default => 'Actions')
+
+    %ul.sortable_list
+      = render :partial => 'row', :collection => @categories.select{ |c| c.parent_id.nil?}, :as => 'category'

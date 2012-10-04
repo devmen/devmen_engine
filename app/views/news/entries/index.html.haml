@@ -4,7 +4,7 @@
     %li
       %h3.name= news_entry.name
       .date= news_entry.date
-      .text= news_entry.teaser
+      .text= teaser(news_entry.text)
       .link
         %a{:href => news_path(news_entry)}
           = t('.more', :default => 'More')

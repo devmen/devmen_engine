@@ -38,6 +38,14 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_fill => [234, 157]
+
+    version :small do
+      process :resize_to_fill => [50, 50]
+    end
+  end
+
+  version :mini do
+    process :resize_to_limit => [140, nil]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -53,3 +61,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
 end
+
+# To support cyrillic letters
+CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/

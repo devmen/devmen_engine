@@ -1,5 +1,25 @@
 ru:
 
+  # Date and Time formats
+  date:
+    formats:
+      default: "%d.%m.%y"
+      short: "%d.%m"
+      long: "%d.%m.%Y"
+  time:
+    formats:
+      default: "%d.%m.%y %H:%M"
+      short: "%d.%m %H:%M"
+      long: "%d.%m.%Y %H:%M"
+      time: "%H:%M"
+
+  # Currency format
+  # number:
+  #   currency:
+  #     format:
+  #       format: "%n %u"
+  #       unit: "руб."
+
   # Inherited Resourced gem translations
   flash:
     actions:

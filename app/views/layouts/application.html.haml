@@ -15,6 +15,8 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
 
   %body
+    - if Rails.env.development? && params[:debug]
+      != debug session
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
@@ -25,9 +27,9 @@
           %a.brand(href="#") DevmenEngine
           .container.nav-collapse
             %ul.nav
-              - if current_user                
+              - if current_user
                 %li= link_to t('.signout', :default => 'Sign out'), signout_path, :method => :delete
-              - else              
+              - else
                 %li= link_to t('.signin', :default => 'Sign in'), signin_path
 
     .container
@@ -40,13 +42,15 @@
             = yield
           .span3
             .well.sidebar-nav
+              - if CFG['shop']
+                = render 'shop/cart'
               %h3 Sidebar
               %ul.nav.nav-list
                 %li.nav-header Sidebar
                 %li= link_to "Link 1", "/path1"
                 %li= link_to "Link 2", "/path2"
                 %li= link_to "Link 3", "/path3"
-    
+
       %footer
         %p &copy; Company 2012
     /
@@ -54,4 +58,3 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
-

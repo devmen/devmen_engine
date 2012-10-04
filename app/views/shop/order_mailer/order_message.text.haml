@@ -1,0 +1,25 @@
+Сообщение с сайта #{CFG['shop']['url']} - #{CFG['shop']['name']}
+= "\n"
+
+Уважаемый(ая) #{@order.name}, Ваш заказ номер #{@order.num} от #{l(@order.created_at.to_date, :format => :long)} принят.
+Адрес доставки: #{@order.address}
+Список наименований:
+= '-' * 100
+#{"%-40s" % t('.product_title')} |
+#{"%-20s" % human_attribute_name(@product_items, :price)} |
+#{"%-20s" % human_attribute_name(@product_items, :quantity)} |
+#{"%-20s" % human_attribute_name(@product_items, :amount)} |
+- total = 0
+- @product_items.each do |item|
+  - total += item.amount
+  #{"%-40s" % item.product.name} |
+  #{"%-20s" % number_to_currency(item.price)} |
+  #{"%-20s" % number_to_human(item.quantity, :units => :product_units) } |
+  #{"%-20s" % number_to_currency(item.amount)} |
+
+= '-' * 100
+#{"%-70s" % t('.total')} |
+#{"%-20s" % number_to_currency(total)} |
+= "\n"
+Пожалуйста, при обращении к администрации сайта указывайте номер заказа - #{@order.num}.
+Спасибо за покупку!

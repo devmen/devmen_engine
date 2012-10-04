@@ -1,0 +1,3 @@
+%h1= t('.title', :default => 'Product categories')
+%ul.categories
+  = render :partial => 'category', :collection => @categories.select{ |c| c.parent_id.nil? }, :as => 'category'

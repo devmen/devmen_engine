@@ -58,7 +58,7 @@ module DevmenEngine
 
     # Generators by default
     config.generators do |g|
-      g.test_framework :rspec, :views => false, :fixture => true
+      g.test_framework :rspec, :views => false, :helpers => false, :fixture => true
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.template_engine :haml
     end

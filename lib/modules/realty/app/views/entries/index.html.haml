@@ -5,8 +5,7 @@
       %h3.name= realty_entry.name
       .number= realty_entry.price
       .text= realty_entry.address
-      .text= realty_entry.description
-      -#.text= realty_entry.teaser
+      .text= realty_entry.description      
       .link
         %a{:href => realty_path(realty_entry)}
           = t('.more', :default => 'More')

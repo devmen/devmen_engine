@@ -1,0 +1,6 @@
+= render 'shop/cart'
+:plain
+  $('#product_items').replaceWith(function() {
+    var $content = $("#{j render(template: 'shop/carts/show', formats: [:html])}");
+    return $content.find('#product_items');
+  });

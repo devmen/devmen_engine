@@ -1,0 +1,8 @@
+%h1= t('.title', num: @order.num)
+.order
+  %p= human_attribute_name(@order, :created_at) + ': ' + l(@order.created_at, format: :long)
+  %p= human_attribute_name(@order, :name) + ': ' + @order.name
+  %p= human_attribute_name(@order, :email) + ': ' + @order.email
+  %p= human_attribute_name(@order, :address) + ': ' + @order.address
+
+  = render partial: 'shop/product_items', object: @order.product_items, as: :product_items

@@ -1,0 +1,27 @@
+%li.clearfix{ :id => "category-#{category.id}" }
+  .list-row.clearfix{ :class => cycle('odd', '') }
+    .list-col.name
+      - if category.child?
+        - category.level.times do
+          %span.list-row-margin
+      = link_to category.name, admin_product_category_path(category)
+    .list-col.description= teaser(category.description, :length => 60)
+    .list-col.actions
+      .btn-group
+        = link_to t('actions.edit', :default => 'Edit'), edit_admin_product_category_path(category), :class => 'btn btn-mini'
+        %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown")
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            = link_to edit_admin_product_category_path(category) do
+              %i.icon-pencil
+              = t('actions.edit', :default => 'Edit')
+          %li
+            %a{ href: admin_product_category_path(category), data: { method: :delete,
+              confirm: category.leaf? ? t('.confirm_for_removing_leaf_category') : t('.confirm_for_removing_not_leaf_category') } }
+              %i.icon-trash
+              = t('actions.remove', :default => 'Remove')
+
+  - unless category.leaf?
+    %ul.nested
+      = render(:partial => 'row', :collection => category.children, :as => 'category')

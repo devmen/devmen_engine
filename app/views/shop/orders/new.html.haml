@@ -1,0 +1,13 @@
+%h1= t('.title')
+%p.description!= t('.description')
+= simple_form_for @order, :url => order_path, :as => 'order', :html => { :class => 'order_form' } do |form|
+  .form-inputs
+    = form.input :name, :label => human_attribute_name(@order, :name)
+    = form.input :email, :label => human_attribute_name(@order, :email)
+    = form.input :address, :label => human_attribute_name(@order, :address)
+
+  = render partial: 'shop/product_items', object: @product_items, as: :product_items
+
+  .form-actions
+    = form.button :button, t('.send', :default => 'Send'), :value => 'order', :class => 'btn-primary'
+    = link_to t('actions.cancel', :default => 'Cancel'), :back, :class => 'btn'

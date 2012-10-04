@@ -3,7 +3,7 @@ ru:
 
     models:
       realty/entry: "Недвижимость"
-      realty/category: Категория
+      realty/category: "Категория"
 
     attributes:
       realty/entry:

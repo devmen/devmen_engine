@@ -19,8 +19,7 @@
       - @realty.each do |realty_entry|
         %tr
           %td= link_to realty_entry.name, admin_realty_entry_path(realty_entry)
-          %td= realty_entry.price
-          -#%td= realty_entry.teaser
+          %td= realty_entry.price          
           %td
             .btn-group
               = link_to t('actions.edit', :default => 'Edit'), edit_admin_realty_entry_path(realty_entry), :class => 'btn btn-mini'
