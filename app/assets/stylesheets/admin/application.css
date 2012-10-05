@@ -9,7 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require markitup 
+ *= require bootstrap_and_overrides
+ *= require markitup
  *= require markitup/style
  *= require fancybox
  *= require elfinder
@@ -47,7 +48,7 @@
 .page_links .page_link:hover .page_link_actions { display: block; }
 /*.page_links .page_link_actions li { float: left; }
 .page_links .page_link_actions li + li { margin-left: 5px; }*/
-.page_links .page_link_actions a { 
+.page_links .page_link_actions a {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
@@ -58,7 +59,7 @@
 .sidebar-links .sidebar-link.current > a { color: black; }
 .sidebar-links .sidebar-link_actions { display: none; list-style: none; padding: 0; margin: 0; }
 .sidebar-links .sidebar-link:hover .sidebar-link_actions { display: block; }
-.sidebar-links .sidebar-link_actions a { 
+.sidebar-links .sidebar-link_actions a {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
@@ -98,7 +99,7 @@ table.table th, td { min-width: 100px; }
 /* Use table style for nested list */
 .list .list-col {
   float: left;
-  min-width: 100px;  
+  min-width: 100px;
   line-height: 18px;
   padding: 8px;
   text-align: left;
@@ -117,7 +118,7 @@ table.table th, td { min-width: 100px; }
 
 .list .list-row-margin {
   display: inline-block;
-  width: 25px;  
+  width: 25px;
 }
 
 .list ul { margin-left: 0; }
