@@ -22,7 +22,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") DevmenEngine
+          = link_to "DevmenEngine", admin_path, class: "brand"
           - if current_user
             .btn-group.pull-right
               = link_to '#', :class => 'btn dropdown-toggle', :data => {:toggle => "dropdown"} do
