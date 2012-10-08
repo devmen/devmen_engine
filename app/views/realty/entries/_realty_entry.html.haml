@@ -1,0 +1,9 @@
+.well
+  %h3.name= realty_entry.name
+  .number= number_to_currency realty_entry.price
+  .text= simple_format realty_entry.address
+  .text= simple_format realty_entry.description
+  - if current_page?(realty_index_path)
+    .link
+      %a{:href => realty_path(realty_entry)}
+        = t('realty.entries.index.more', :default => 'More')

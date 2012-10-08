@@ -13,7 +13,7 @@ module ApplicationHelper
   # Return text converted from format to html
   def to_html(text, format = nil)
     format ||= :textile
-  	if format == :textile
+    if format == :textile
       RedCloth.new(text).to_html
     else
       text
@@ -41,9 +41,9 @@ module ApplicationHelper
   def haml_tag_if(condition, *args, &block)
     if condition
       haml_tag *args, &block
-     else
-       yield
-     end
+    else
+      yield
+    end
   end
 
   def method_missing(meth, *args, &block)

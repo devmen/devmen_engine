@@ -1,11 +1,3 @@
 %h1= t('.title', :default => 'Realty')
-%ul.realty
-  - @realty.each do |realty_entry|
-    %li
-      %h3.name= realty_entry.name
-      .number= realty_entry.price
-      .text= realty_entry.address
-      .text= realty_entry.description      
-      .link
-        %a{:href => realty_path(realty_entry)}
-          = t('.more', :default => 'More')
+- @realty.each do |realty_entry|
+  = render 'realty_entry', realty_entry: realty_entry
