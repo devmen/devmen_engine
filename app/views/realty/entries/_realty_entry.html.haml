@@ -1,6 +1,11 @@
 .well
   %h3.name= realty_entry.name
   .number= number_to_currency realty_entry.price
+  - if realty_entry.photos.present?
+    %p
+      - realty_entry.photos.each do |photo|
+        = link_to image_tag(photo.image_url(:thumb)), photo.image_url, rel: "photo_group_#{dom_id(realty_entry)}"
+
   .text= simple_format realty_entry.address
   .text= simple_format realty_entry.description
   - if current_page?(realty_index_path)

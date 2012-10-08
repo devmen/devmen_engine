@@ -11,13 +11,24 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require markitup
 //= require markitup-html
+//= require fancybox
 //= require_directory .
 
 $(function() {
   // Empty message box after delay
   $('#messages').emptyFadeOut();
+
+  $("a[rel^=photo_group]").fancybox({
+    titlePosition: "over",
+    titleFormat: function(title, currentArray, currentIndex, currentOps) {
+      var title_tag = title.length ? '<div class="title">' + title + '</div>' : '';
+      var couter_tag = '<div class="counter">' + (currentIndex + 1) + " из " + currentArray.length + '</div>';
+      return '<div id="fancybox-title-over" class="clearfix">' + title_tag + couter_tag + '</div>';
+    }
+  });
 });
