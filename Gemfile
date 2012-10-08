@@ -6,6 +6,7 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg', '~> 0.13.2'
+gem "thin"
 
 
 # Gems used only for assets and not required
@@ -113,6 +114,7 @@ group :development, :test do
   gem 'ruby-debug19'
   gem 'faker'
   gem 'hirb'
+  gem "pry-rails"
 end
 
 group :test do
