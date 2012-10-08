@@ -1,3 +1,4 @@
-%h1= @news_entry.name
-.date= @news_entry.date
-.text!= to_html(@news_entry.text)
+.well
+  %h1= @news_entry.name
+  .date= @news_entry.date
+  .text!= to_html(@news_entry.text)
