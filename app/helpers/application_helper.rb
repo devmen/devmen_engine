@@ -46,6 +46,14 @@ module ApplicationHelper
      end
   end
 
+  def method_missing(meth, *args, &block)
+    if meth.to_s =~ /^module_(.+)\?$/
+      CFG[$1].present?
+    else
+      super
+    end
+  end
+
 end
 
 class Float

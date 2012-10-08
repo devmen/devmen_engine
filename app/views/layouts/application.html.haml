@@ -27,6 +27,9 @@
           %a.brand(href="#") DevmenEngine
           .container.nav-collapse
             %ul.nav
+              - if module_news?
+                %li= link_to CFG['news']['name'], news_index_path
+            %ul.nav.pull-right
               - if current_user
                 %li= link_to t('.signout', :default => 'Sign out'), signout_path, :method => :delete
               - else
@@ -42,7 +45,7 @@
             = yield
           .span3
             .well.sidebar-nav
-              - if CFG['shop']
+              - if module_shop?
                 = render 'shop/cart'
               %h3 Sidebar
               %ul.nav.nav-list
