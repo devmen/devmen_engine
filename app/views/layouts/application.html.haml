@@ -28,9 +28,20 @@
           .container.nav-collapse
             %ul.nav
               - if module_news?
-                %li= link_to CFG['news']['name'], news_index_path
+                %li{class: active_class_for(news_index_path)}
+                  = link_to CFG['news']['name'], news_index_path
               - if module_realty?
-                %li= link_to CFG["realty"]["name"], realty_index_path
+                %li{class: active_class_for(realty_index_path)}
+                  = link_to CFG["realty"]["name"], realty_index_path
+              - if module_shop?
+
+                %li.dropdown
+                  = link_to "#", class: "dropdown-toggle", :"data-toggle" => "dropdown" do
+                    = CFG["shop"]["name"]
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li= link_to t("shop.categories.index.title"), product_categories_path
+                    %li= link_to t("shop.products.index.title"), products_path
             %ul.nav.pull-right
               - if current_user
                 %li= link_to t('.signout', :default => 'Sign out'), signout_path, :method => :delete
@@ -49,12 +60,6 @@
             .well.sidebar-nav
               - if module_shop?
                 = render 'shop/cart'
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
 
       %footer
         %p &copy; Company 2012

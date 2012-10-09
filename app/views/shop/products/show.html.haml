@@ -6,7 +6,7 @@
   - if @product.old_price.to_i > 0
     .old_price= human_attribute_name(@product, :old_price) + ": #{number_to_currency(@product.old_price)}"
   .price= human_attribute_name(@product, :price) + ": #{number_to_currency(@product.price)}"
-  .description!= @product.description
+  .description!= simple_format to_html @product.description
   - if @product.pictures.present?
     .pictures.clearfix
       - @product.pictures.each do |picture|

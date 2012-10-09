@@ -31,7 +31,7 @@ ru:
         error: "%{resource_name} не может быть обновлен."
       destroy:
         success: "%{resource_name} успешно удален."
-        error: "%{resource_name} не может быть удален."    
+        error: "%{resource_name} не может быть удален."
 
     admin:
       pages:

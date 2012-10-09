@@ -54,6 +54,10 @@ module ApplicationHelper
     end
   end
 
+  def active_class_for(path)
+    "active" if current_page?(path)
+  end
+
 end
 
 class Float
