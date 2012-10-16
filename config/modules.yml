@@ -4,6 +4,7 @@ modules:
    - catalog
    - realty
    - shop
+   - demo
 
 # News module parameters
 news:
@@ -15,6 +16,9 @@ shop:
   from_email: "support@example.com" # site support email
   bcc_email: "manager@example.com" # email for "blind copy"
   url: "http://example.com/shop" # base url for shop, use in an email message
+
+demo:
+  name: "Демо версия"
 
 # # Modules parameters in fit environment
 # development:
