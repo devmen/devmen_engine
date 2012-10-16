@@ -4,6 +4,7 @@ modules:
    - catalog
    - realty
    - shop
+   - contact_us
    - demo
 
 # News module parameters
@@ -16,7 +17,8 @@ shop:
   from_email: "support@example.com" # site support email
   bcc_email: "manager@example.com" # email for "blind copy"
   url: "http://example.com/shop" # base url for shop, use in an email message
-
+contact_us:
+  name: 'Связаться с нами'
 demo:
   name: "Демо версия"
 
