@@ -4,3 +4,7 @@ ru:
       index:
         title: Новости
         more: Подробнее
+        all: Все новости
+    categories:
+      index:
+        title: Категории новостей

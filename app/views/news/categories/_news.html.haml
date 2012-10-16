@@ -1,0 +1,10 @@
+%h1= t('news.entries.index.title', :default => 'News')
+- @news.each do |news_entry|
+  .well
+    %h3.name= news_entry.name
+    .date= news_entry.date
+    .text= teaser(news_entry.text)
+    .link
+      %a{:href => news_path(news_entry)}
+        = t('news.entries.index.more', :default => 'More')
+= paginate @news

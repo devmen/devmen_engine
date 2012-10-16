@@ -17,6 +17,7 @@ module Realty
     validates_numericality_of :price, :only_integer => true, :greater_than => 0
 
     default_scope :order => ['realty.created_at desc', 'realty.id desc']
+    scope :by_category, ->(category) { where(:category_id => category) }
 
     class << self
       def list(count = 5)

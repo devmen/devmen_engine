@@ -1,0 +1,6 @@
+%h1= t('.title', :default => 'Realty Categories')
+%ul.categories
+  - @categories.each do |category|
+    %li
+      .name
+        = link_to category.name, realty_category_path(category)

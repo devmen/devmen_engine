@@ -11,6 +11,7 @@ module News
     validates :name, :length => { :maximum => 100 }
 
     default_scope :order => ['news.date desc', 'news.id desc']
+    scope :by_category, ->(category) { where(:category_id => category) }
 
     class << self
 

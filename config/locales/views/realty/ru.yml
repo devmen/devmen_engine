@@ -4,3 +4,7 @@ ru:
       index:
         title: Недвижимость
         more: Подробнее
+        all: Вся недвижимость
+    categories:
+      index:
+        title: Категории недвижимости

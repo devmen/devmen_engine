@@ -20,6 +20,7 @@ DevmenEngine::Application.routes.draw do
   # Realty module routes start
   scope :module => 'realty' do
     resources :realty, :only => [:index, :show], :controller => 'entries'
+    resources :realty_categories, as: "realty_categories", controller: "categories"
   end
   namespace :admin do
     scope :module => 'realty' do
@@ -34,6 +35,7 @@ DevmenEngine::Application.routes.draw do
   # News module routes start
   scope :module => 'news' do
     resources :news, :only => [:index, :show], :controller => 'entries'
+    resources :news_categories, as: "news_categories", controller: "categories"
   end
   namespace :admin do
     scope :module => 'news' do

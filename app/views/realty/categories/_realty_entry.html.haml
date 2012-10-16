@@ -1,0 +1,5 @@
+%h1= t('realty.entries.index.title', :default => 'Realty')
+- @realty.each do |realty_entry|
+  = render 'realty/entries/realty_entry', realty_entry: realty_entry
+
+= paginate @realty
