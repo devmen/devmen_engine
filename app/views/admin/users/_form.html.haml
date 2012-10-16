@@ -6,21 +6,19 @@
   .form-inputs
     = form.input :name, :label => User.human_attribute_name(:name)
     = form.input :email, :label => User.human_attribute_name(:email)
-    = form.input :password, :label => User.human_attribute_name(:password)
+
+    - unless module_demo? && @user.role?(:admin)
+      = form.input :password, :label => User.human_attribute_name(:password)
 
     - if can? :manage, User
       .roles.control-group.optional
         %label.control-label= User.human_attribute_name(:roles)
         .controls
-          = form.collection_check_boxes(:roles, User::ROLES.map {|role| [role, User.role_name(role)] }, :first, :last, |
-              { |
-                :checked => @user.roles, |              
-                :item_wrapper_tag => nil |              
-              } |
-            ) do |b| |
-              b.label(:class => 'checkbox inline') { b.check_box + b.text } |        
-            end |
+          = form.collection_check_boxes :roles,
+                                        User.collection_of_roles, :first, :last,
+                                        { checked: @user.roles, item_wrapper_tag: nil } do |b|
+            - b.label(class: 'checkbox inline') { b.check_box + b.text }
 
-  .form-actions    
+  .form-actions
     = form.button :submit, :value => submit_value, :class => 'btn-primary'
     = link_to t('.cancel', :default => 'Cancel'), :back, :class => 'btn'
