@@ -5,7 +5,7 @@ if ['development', 'test'].include? Rails.env
   Page.destroy_all
   5.times do |i|
     attrs = {
-      :name => Faker::Lorem.words(rand(2..3)).join(' ').capitalize,      
+      :name => Faker::Lorem.words(rand(2..3)).join(' ').capitalize,
       :body => "<h1>#{Faker::Lorem.sentence}</h1><p>#{Faker::Lorem.paragraphs(rand(3..10)).join(' ')}</p>"
     }
     attrs[:url] = Faker::Lorem.words(rand(2..3)).join('-').downcase if i.odd?
