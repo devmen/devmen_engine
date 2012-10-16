@@ -1,7 +1,7 @@
 class Shop::ProductsController < ApplicationController
 
   def index
-    @products = Shop::Product.includes(:pictures).all
+    @products = Shop::Product.includes(:pictures).page(params[:page])
   end
 
   def show

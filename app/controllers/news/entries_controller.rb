@@ -1,7 +1,7 @@
 class News::EntriesController < ApplicationController
-  
+
   def index
-    @news = News::Entry.all
+    @news = News::Entry.page(params[:page])
   end
 
   def show
@@ -12,5 +12,5 @@ class News::EntriesController < ApplicationController
     end
     @title = @news_entry.name
   end
-  
+
 end

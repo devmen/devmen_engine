@@ -1,3 +1,5 @@
 %h1= t('.title', :default => 'Products')
 %ul.products
   = render :partial => 'product', :collection => @products
+
+= paginate @products

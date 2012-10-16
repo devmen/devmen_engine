@@ -7,3 +7,5 @@
     .link
       %a{:href => news_path(news_entry)}
         = t('.more', :default => 'More')
+
+= paginate @news

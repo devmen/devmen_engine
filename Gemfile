@@ -38,6 +38,7 @@ gem "fancybox-rails", "~> 0.1.4"
 gem 'awesome_nested_set', '~> 2.1.4'
 gem "friendly_id", "~> 4.0.8"
 gem "ancestry", "~> 1.3.0"
+gem "kaminari", "~> 0.14.1"
 
 gem 'russian', '~> 0.6.0'
 

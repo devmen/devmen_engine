@@ -2,6 +2,8 @@ module Realty
   class Entry < ActiveRecord::Base
     self.table_name = "realty"
 
+    paginates_per 5
+
     attr_accessible :name, :price, :address, :description, :photos_attributes, :category_id
 
     belongs_to :category, class_name: "Category"

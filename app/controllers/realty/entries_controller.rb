@@ -1,7 +1,7 @@
 class Realty::EntriesController < ApplicationController
-  
+
   def index
-    @realty = Realty::Entry.all
+    @realty = Realty::Entry.page(params[:page])
   end
 
   def show
@@ -12,5 +12,5 @@ class Realty::EntriesController < ApplicationController
     end
     @title = @realty_entry.name
   end
-  
+
 end
