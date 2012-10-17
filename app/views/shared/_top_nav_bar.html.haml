@@ -52,6 +52,6 @@
           - if current_user
             - if current_user.role?(:admin)
               %li= link_to t(:admin_panel), admin_path
-            %li= link_to t('.signout', :default => 'Sign out'), signout_path, :method => :delete
+            %li= link_to t(:sign_in), signout_path, :method => :delete
           - else
-            %li= link_to t('.signin', :default => 'Sign in'), signin_path
+            %li= link_to t(:sign_out), signin_path
