@@ -87,3 +87,4 @@ ru:
   send: Отправить
   use_following_credentials: "Для авторизации используйте логин '%{login}' и пароль '%{password}'"
   admin_panel: Панель администратора
+  sitemap: Карта сайта

@@ -8,18 +8,38 @@
             %ul
               - @pages.each do |page|
                 %li= link_to page.name, page.url
+              - if module_feedback?
+                %li= link_to CFG['feedback']['reviews']['name'], new_review_path
+                %li= link_to CFG['feedback']['contact_us']['name'], new_contact_u_path
         - if Realty.present?
           %li
             = link_to t("realty.entries.index.title"), realty_index_path
-            - if @realties.present?
-              %ul
-                - @realties.each do |realty|
-                  %li= link_to realty.name, realty_path(realty)
+            %ul
+              - @realty_categories.each do |category|
+                %li
+                  = link_to category.name, realty_category_path(category.id)
+                  %ul
+                    - category.realties.order("created_at DESC").each do |entry|
+                      %li= link_to entry.name, realty_path(entry)
+
         - if News.present?
           %li
             = link_to t("news.entries.index.title"), news_index_path
-            - if @news.present?
-              %ul
-                - @news.each do |entry|
-                  %li= link_to entry.name, news_path(entry)
+            %ul
+              - @news_categories.each do |category|
+                %li
+                  = link_to category.name, news_category_path(category.id)
+                  %ul
+                    - category.news.order("created_at DESC").each do |entry|
+                      %li= link_to entry.name, news_path(entry)
 
+        - if Shop.present?
+          %li
+            = link_to t("shop.categories.index.title"), product_categories_path
+            %ul
+              = render :partial => 'shop/categories/category', :collection => @product_categories.select{ |c| c.parent_id.nil? }, :as => 'category'
+          %li
+            = link_to t("shop.products.index.title"), products_path
+            %ul
+              - @products.each do |product|
+                %li= link_to product.name, product_path(product)

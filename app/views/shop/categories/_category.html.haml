@@ -4,4 +4,4 @@
 
   - unless category.leaf?
     %ul.nested
-      = render :partial => 'category', :collection => category.children, :as => 'category'
+      = render :partial => 'shop/categories/category', :collection => category.children, :as => 'category'
