@@ -40,6 +40,7 @@ gem "friendly_id", "~> 4.0.8"
 gem "ancestry", "~> 1.3.0"
 gem "kaminari", "~> 0.14.1"
 gem "whenever", "~> 0.7.3", require: false
+gem 'faker'
 
 gem 'russian', '~> 0.6.0'
 
@@ -89,7 +90,6 @@ group :development, :test do
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
   gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
   gem 'ruby-debug19'
-  gem 'faker'
   gem 'hirb'
   gem "pry-rails"
 end
