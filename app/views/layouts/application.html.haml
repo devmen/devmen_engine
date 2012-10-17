@@ -54,7 +54,7 @@
                     %li= link_to t("shop.categories.index.title"), product_categories_path
                     %li= link_to t("shop.products.index.title"), products_path
 
-              - if module_feedback? && !(current_user && current_user.role? == :admin)
+              - if module_feedback?
                 %li.dropdown
                   = link_to "#", class: "dropdown-toggle", :"data-toggle" => "dropdown" do
                     = CFG['feedback']['name']
