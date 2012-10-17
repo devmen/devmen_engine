@@ -29,7 +29,10 @@ namespace :demo do
     task users: :environment do
       puts "== Filling with users ".ljust(72, "=")
       ActiveRecord::Base.connection.execute("TRUNCATE users")
-      User.create name: 'admin', password: 'admin', email: 'admin@devmen.ru', roles: ['admin']
+      login = CFG["demo"]["admin"]["login"] rescue 'admin'
+      password = CFG["demo"]["admin"]["password"] rescue 'admin'
+      email = CFG["demo"]["admin"]["email"] rescue 'admin@devmen.ru'
+      User.create name: login, password: password, email: email, roles: ['admin']
     end
 
     desc "Fill the demo data with news"

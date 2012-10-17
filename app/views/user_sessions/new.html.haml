@@ -1,4 +1,8 @@
 %h1= t('.title', :default => 'Sign in')
+- if module_demo?
+  %h5
+    = t(:use_following_credentials, login: CFG["demo"]["admin"]["login"],
+                                    password: CFG["demo"]["admin"]["password"])
 
 = simple_form_for @user_session, :url => user_sessions_path, :html => { :class => 'signin_form well' } do |form|
 

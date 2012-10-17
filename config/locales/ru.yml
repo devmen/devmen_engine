@@ -85,3 +85,4 @@ ru:
   "no": "Нет"
 
   send: Отправить
+  use_following_credentials: "Для авторизации используйте логин '%{login}' и пароль '%{password}'"
