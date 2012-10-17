@@ -2,9 +2,10 @@
   .content
     .post
       %h3= t(:contact_us)
-      = simple_form_for @contact_us, url: contact_us_path, method: :post do |form|
+      = simple_form_for @contact_us, url: contact_us_path, html: { class: "form-horizontal" }, defaults: { input_html: { class: "input-xxlarge" } } do |form|
         = form.input :name
         = form.input :email
         = form.input :phone
-        = form.input :content
-        = form.button :submit
+        = form.input :content, input_html: { rows: 10 }
+        .form-actions
+          = form.button :submit, t(:send)

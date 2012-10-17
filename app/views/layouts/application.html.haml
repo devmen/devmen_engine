@@ -33,10 +33,8 @@
                     = CFG['news']['name']
                     %b.caret
                   %ul.dropdown-menu
-                    %li{class: active_class_for(news_categories_path)}
-                      = link_to t("news.categories.index.title"), news_categories_path
-                    %li{class: active_class_for(news_index_path)}
-                      = link_to t("news.entries.index.all"), news_index_path
+                    %li= link_to t("news.categories.index.title"), news_categories_path
+                    %li= link_to t("news.entries.index.all"), news_index_path
 
               - if module_realty?
                 %li.dropdown
@@ -44,10 +42,8 @@
                     = CFG['realty']['name']
                     %b.caret
                   %ul.dropdown-menu
-                    %li{class: active_class_for(realty_categories_path)}
-                      = link_to t("realty.categories.index.title"), realty_categories_path
-                    %li{class: active_class_for(realty_index_path)}
-                      = link_to t("realty.entries.index.all"), realty_index_path
+                    %li= link_to t("realty.categories.index.title"), realty_categories_path
+                    %li= link_to t("realty.entries.index.all"), realty_index_path
 
               - if module_shop?
                 %li.dropdown
@@ -64,17 +60,10 @@
                     = CFG['feedback']['name']
                     %b.caret
                   %ul.dropdown-menu
-                    %li{class: active_class_for(new_review_path)}
-                      = link_to CFG['feedback']['reviews']['name'], new_review_path
-
-                    %li{class: active_class_for(new_contact_u_path)}
-                      = link_to CFG['feedback']['contact_us']['name'], new_contact_u_path
-
-                    %li{class: active_class_for( "#{root_url}contacts" )}
-                      = link_to CFG['feedback']['contacts']['name'], "#{root_url}contacts"
-
-                    %li{class: active_class_for( "#{root_url}about_us" )}
-                      = link_to CFG['feedback']['about_us']['name'], "#{root_url}about"
+                    %li= link_to CFG['feedback']['reviews']['name'], new_review_path
+                    %li= link_to CFG['feedback']['contact_us']['name'], new_contact_u_path
+                    %li= link_to CFG['feedback']['contacts']['name'], "#{root_url}contacts"
+                    %li= link_to CFG['feedback']['about_us']['name'], "#{root_url}about"
 
             %ul.nav.pull-right
               - if current_user
