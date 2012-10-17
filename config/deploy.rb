@@ -16,7 +16,7 @@ default_run_options[:pty] = true
 set :repository,  "git@github.com:devmen/devmen_engine.git"
 set :scm, :git
 set :rails_env, "production"
-set :branch, "demo"
+set :branch, "master"
 # set :deploy_via,  :remote_cache
 set :deploy_via,  :copy
 set :keep_releases, 5
