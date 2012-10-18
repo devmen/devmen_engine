@@ -20,8 +20,10 @@
 //= require_directory .
 
 $(function() {
-  // Empty message box after delay
-  $('#messages').emptyFadeOut();
+
+  $(".flash").live("click", function() {
+    $(this).remove();
+  });
 
   $("a[rel^=photo_group]").fancybox({
     titlePosition: "over",

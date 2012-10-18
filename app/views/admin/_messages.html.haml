@@ -1,4 +1,4 @@
 - flash.each do |key, value|
-  .flash.alert{:class => "alert-#{key}"}
+  .flash.alert.navbar-fixed-top{:class => "alert-#{key}"}
     %a.close{:href => "#", :data => {:dismiss => "alert"}} ×
     = value

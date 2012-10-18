@@ -13,9 +13,9 @@ $(document).ready(function() {
       return;
     if (!$this.data('popover')) {
       $this.popover({
-        trigger: 'manual',        
-        placement: 'right',        
-        delay: 0        
+        trigger: 'manual',
+        placement: 'right',
+        delay: 0
       });
     };
     $this.delay(1000, 'fx').queue('fx', function() { $(this).popover('show'); $(this).dequeue(); });
