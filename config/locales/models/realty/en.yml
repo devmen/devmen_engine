@@ -1,0 +1,18 @@
+
+en:
+  activerecord:
+
+    models:
+      realty/entry: Real estate
+      realty/category: Category
+
+    attributes:
+      realty/entry:
+        name: Name
+        price: Price
+        address: Address
+        description: Description
+        category: Category
+
+      realty/category:
+        name: Name

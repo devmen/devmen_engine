@@ -1,0 +1,60 @@
+
+en:
+  shop:
+    products:
+      index:
+        title: Goods
+      product:
+        more: more
+      cart_button:
+        add_to_cart: Add to cart
+        product_count: Count
+
+    categories:
+      index:
+        title: "Products' categories"
+
+    carts:
+      show:
+        product_title: Title
+        checkout: Proceed to Checkout
+        total: Total
+
+    orders:
+      new:
+        title: New order
+        description: "To place an order you need to fill in the appropriate fields and click Submit. <br/>
+          If you decide to change the list of product names, click Cancel. <br/>
+          Your selected items are listed below."
+        send: Send
+
+    product_items:
+      product_title: Title
+      total: Total
+
+    cart:
+      product_counter:
+        one: "name"
+        few: "name"
+        many: "names"
+      cart_text: "Cart: %{products}"
+      empty_cart_text: "The cart is empty"
+
+    order_mailer:
+      order_message:
+        product_title: "Name"
+        total: "Total"
+
+    flash:
+      product_added_to_cart: "%{product_name} was successfully added to the cart"
+      product_adding_to_cart_failed: "Failed to add %{product_name} to the cart"
+      cart_is_empty: "Your cart is empty."
+      cart_is_updated: "Your cart was updated."
+      cart_is_cleared: "Your cart was cleared."
+      cart_update_failed: "Cannot update your cart."
+      order_is_accepted: "Your order was accepted. Thank you!"
+      order_creation_failed: "Cannot accept your order. Please, check your data."
+
+  product_units:
+    unit: "pcs."
+    thousand: "pcs."

@@ -1,0 +1,21 @@
+
+en:
+  modules:
+    news:
+      name: "News"
+    realty:
+      name: "Realty"
+    shop:
+      name: "Store"
+    demo:
+      name: "Demo"
+    feedback:
+      name: 'Feedback'
+      contact_us:
+        name: 'Contact Us'
+      about_us:
+        name: 'About'
+      contacts:
+        name: 'Our contacts'
+      reviews:
+        name: 'Review'

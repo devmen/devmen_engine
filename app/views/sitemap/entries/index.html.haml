@@ -9,8 +9,8 @@
               - @pages.each do |page|
                 %li= link_to page.name, page.url
               - if module_feedback?
-                %li= link_to CFG['feedback']['reviews']['name'], new_review_path
-                %li= link_to CFG['feedback']['contact_us']['name'], new_contact_u_path
+                %li= link_to t("modules.#{CFG['feedback']['reviews']['name']}"), new_review_path
+                %li= link_to t("modules.#{CFG['feedback']['contact_us']['name']}"), new_contact_u_path
         - if Realty.present?
           %li
             = link_to t("realty.entries.index.title"), realty_index_path

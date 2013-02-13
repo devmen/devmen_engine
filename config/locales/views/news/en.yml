@@ -1,0 +1,11 @@
+
+en:
+  news:
+    entries:
+      index:
+        title: News
+        more: More
+        all: All news
+    categories:
+      index:
+        title: News categories

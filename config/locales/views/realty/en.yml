@@ -1,0 +1,11 @@
+
+en:
+  realty:
+    entries:
+      index:
+        title: Real estate
+        more: More
+        all: All realties
+    categories:
+      index:
+        title: Realty categories

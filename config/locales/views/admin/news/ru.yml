@@ -5,7 +5,7 @@ ru:
         form:
           name: "Заголовок"
           date: "Дата"
-          text: "Текст"          
+          text: "Текст"
 
         index:
           title: Новости

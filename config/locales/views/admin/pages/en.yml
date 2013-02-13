@@ -1,0 +1,17 @@
+
+en:
+  admin:
+    pages:
+      form:
+        name: "Name"
+        url: "Address"
+        content: "Content"
+        create: "Create"
+        update: "Update"
+        cancel: "Cancel"
+
+      new:
+        title: New page
+
+      edit:
+        title: "%{page_name}"

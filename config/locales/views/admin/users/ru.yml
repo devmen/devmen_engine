@@ -2,7 +2,7 @@ ru:
   admin:
     users:
       index:
-        title: Пользователи        
+        title: Пользователи
         actions: Действия
 
       form:
@@ -12,6 +12,6 @@ ru:
         title: "Новый пользователь"
         create: "Создать"
 
-      edit:        
+      edit:
         update: "Обновить"
 

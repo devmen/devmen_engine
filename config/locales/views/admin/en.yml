@@ -1,0 +1,28 @@
+en:
+  # Admin partials
+  admin:
+    pages:
+      title: Pages
+      actions:
+        add: Add
+        edit: Edit
+        remove: Remove
+
+  # Common actions
+  actions:
+    title: Actions
+    add: Add
+    create: Create
+    show: Show
+    edit: Edit
+    update: Update
+    save: Save
+    remove: Remove
+    cancel: Cancel
+
+  # Confirmation questions
+  confirm:
+    sure: Are you sure?
+
+  news_categories: News categories
+  realty_categories: Realty categories

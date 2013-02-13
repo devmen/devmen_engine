@@ -1,0 +1,18 @@
+
+en:
+  admin:
+    users:
+      index:
+        title: Users
+        actions: Actions
+
+      form:
+        cancel: "Cancel"
+
+      new:
+        title: "New user"
+        create: "Create"
+
+      edit:
+        update: "Update"
+

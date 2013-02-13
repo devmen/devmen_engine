@@ -1,0 +1,27 @@
+
+en:
+  activerecord:
+    # errors:
+      # user:
+      #   url_or_id: "Должна быть ссылка на группу или id группы"
+      # page:
+
+    models:
+      user: User
+      page: Page
+
+    attributes:
+      user:
+        name: Login
+        email: Email
+        password: Password
+        roles: Roles
+        role_values:
+          admin: Administrator
+          manager: Manager
+
+      page:
+        name: Name
+        url: Url
+        body: Content
+        parent_id: Parent page

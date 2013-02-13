@@ -9,30 +9,30 @@ modules:
 
 # News module parameters
 news:
-  name: "Новости"
+  name: "news.name"
 realty:
-  name: "Недвижимость"
+  name: "realty.name"
 shop:
-  name: "Магазин" # use as title in an email message
+  name: "shop.name" # use as title in an email message
   from_email: "support@example.com" # site support email
   bcc_email: "manager@example.com" # email for "blind copy"
   url: "http://example.com/shop" # base url for shop, use in an email message
 demo:
-  name: "Демо версия"
+  name: "demo.name"
   admin:
     login: "admin"
     password: "admin"
     email: "admin@devmen.ru"
 feedback:
-  name: 'Обратная связь'
+  name: 'feedback.name'
   contact_us:
-    name: 'Связаться с нами'
+    name: 'feedback.contact_us.name'
   about_us:
-    name: 'О нас'
+    name: 'feedback.about_us.name'
   contacts:
-    name: 'Наши контакты'
+    name: 'feedback.contacts.name'
   reviews:
-    name: 'Оставить отзыв'
+    name: 'feedback.reviews.name'
 # # Modules parameters in fit environment
 # development:
 #   news:

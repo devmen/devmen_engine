@@ -1,0 +1,18 @@
+
+en:
+  activerecord:
+
+    models:
+      news/entry: News article
+      news/category: Category
+
+    attributes:
+      news/entry:
+        name: Title
+        date: Date
+        text: Content
+        category: Category
+
+      news/category:
+        name: Name
+

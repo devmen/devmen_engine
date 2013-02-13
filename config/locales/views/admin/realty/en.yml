@@ -1,0 +1,33 @@
+
+en:
+  admin:
+    realty:
+      entries:
+        form:
+          name: "Name"
+          price: "Price"
+          address: "Address"
+          description: "Description"
+
+        index:
+          title: Realty
+
+        new:
+          title: Add
+
+        edit:
+          title: "%{realty_entry_name}"
+
+      categories:
+        index:
+          title: Realty categories
+
+        new:
+          title: New category
+
+        edit:
+          title: Edit category
+
+      # Realty partial
+      realty:
+        title: Realty

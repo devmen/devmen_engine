@@ -1,0 +1,42 @@
+
+en:
+  activerecord:
+
+    models:
+      shop/product: Product
+      shop/category: Category
+      shop/picture: Picture
+      shop/cart: Cart
+      shop/product_item: Product item
+      shop/order: Order
+
+    attributes:
+      shop/product:
+        category: Category
+        name: Name
+        description: Description
+        sku: SKU
+        price: Price
+        old_price: Old price
+        in_stock: In stock
+        updated_at: updated_at
+        picture: Picture
+        slug: Slug
+
+      shop/category:
+        parent_id: Parent category
+        name: Name
+        description: Description
+        updated_at: Updated at
+
+      shop/product_item:
+        quantity: Quantity
+        price: Price
+        amount: Amount
+
+      shop/order:
+        num: Num.
+        created_at: Created at
+        name: Full name
+        email: Email
+        address: Delivery address

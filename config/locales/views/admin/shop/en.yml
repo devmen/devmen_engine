@@ -1,0 +1,34 @@
+
+en:
+  admin:
+    shop:
+      products:
+        index:
+          title: Products
+          orphan_products_title: "Not categorized products"
+        edit:
+          title: "Product: %{name}"
+        new:
+          title: "New product"
+        form:
+          images: "Images"
+          add_images: "Add images"
+          slug_hint: "leave blank for auto generate"
+
+      categories:
+        index:
+          title: "Products' categories"
+        edit:
+          title: "Category: %{name}"
+        new:
+          title: "New category"
+        row:
+          confirm_for_removing_leaf_category: "Are you sure?\nFor all products in this category, the category will be empty."
+          confirm_for_removing_not_leaf_category: "Are you sure?\nAll child categories will be destroyed\nFor all products in this category, the category will be empty."
+
+
+      orders:
+        index:
+          title: "Orders"
+        show:
+          title: "Order #%{num}"

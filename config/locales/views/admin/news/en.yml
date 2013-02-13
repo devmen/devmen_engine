@@ -1,0 +1,31 @@
+
+en:
+  admin:
+    news:
+      entries:
+        form:
+          name: "Title"
+          date: "Date"
+          text: "text"
+
+        index:
+          title: News
+
+        new:
+          title: New artile
+
+        edit:
+          title: "%{news_entry_name}"
+      categories:
+        index:
+          title: News categories
+
+        new:
+          title: New category
+
+        edit:
+          title: Edit category
+
+      # News partial
+      news:
+        title: News

@@ -58,5 +58,9 @@ module ApplicationHelper
     "active" if current_page?(path)
   end
 
+  def available_locales
+    I18n.available_locales.reject { |l| l == I18n.locale }
+  end
+
 end
 

@@ -1,0 +1,9 @@
+
+en:
+  review_name: Name
+  review_content: Feedback
+  reviews: "Customers' reviews"
+  new_review: "New review"
+  review_was_sent: Your feedback was send to the moderation. Thank you.
+  make_visible: Make visible
+  make_invisible: Make invisible

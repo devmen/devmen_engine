@@ -1,0 +1,21 @@
+
+ru:
+  modules:
+    news:
+      name: "Новости"
+    realty:
+      name: "Недвижимость"
+    shop:
+      name: "Магазин"
+    demo:
+      name: "Демо версия"
+    feedback:
+      name: 'Обратная связь'
+      contact_us:
+        name: 'Связаться с нами'
+      about_us:
+        name: 'О нас'
+      contacts:
+        name: 'Наши контакты'
+      reviews:
+        name: 'Оставить отзыв'

@@ -11,7 +11,7 @@
           - if module_news?
             %li.dropdown
               = link_to "#", class: "dropdown-toggle", :"data-toggle" => "dropdown" do
-                = CFG['news']['name']
+                = t("modules.#{CFG['news']['name']}")
                 %b.caret
               %ul.dropdown-menu
                 %li= link_to t("news.categories.index.title"), news_categories_path
@@ -20,7 +20,7 @@
           - if module_realty?
             %li.dropdown
               = link_to "#", class: "dropdown-toggle", :"data-toggle" => "dropdown" do
-                = CFG['realty']['name']
+                = t("modules.#{CFG['realty']['name']}")
                 %b.caret
               %ul.dropdown-menu
                 %li= link_to t("realty.categories.index.title"), realty_categories_path
@@ -29,7 +29,7 @@
           - if module_shop?
             %li.dropdown
               = link_to "#", class: "dropdown-toggle", :"data-toggle" => "dropdown" do
-                = CFG["shop"]["name"]
+                = t("modules.#{CFG["shop"]["name"]}")
                 %b.caret
               %ul.dropdown-menu
                 %li= link_to t("shop.categories.index.title"), product_categories_path
@@ -38,18 +38,21 @@
           - if module_feedback?
             %li.dropdown
               = link_to "#", class: "dropdown-toggle", :"data-toggle" => "dropdown" do
-                = CFG['feedback']['name']
+                = t("modules.#{CFG['feedback']['name']}")
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to CFG['feedback']['reviews']['name'], new_review_path
+                %li= link_to t("modules.#{CFG['feedback']['reviews']['name']}"), new_review_path
                 %li= link_to t(:reviews), reviews_path
-                %li= link_to CFG['feedback']['contact_us']['name'], new_contact_u_path
-                %li= link_to CFG['feedback']['contacts']['name'], "#{root_url}contacts"
-                %li= link_to CFG['feedback']['about_us']['name'], "#{root_url}about"
+                %li= link_to t("modules.#{CFG['feedback']['contact_us']['name']}"), new_contact_u_path
+                %li= link_to t("modules.#{CFG['feedback']['contacts']['name']}"), "#{root_url}contacts"
+                %li= link_to t("modules.#{CFG['feedback']['about_us']['name']}"), "#{root_url}about"
 
           %li= link_to t(:sitemap), sitemap_index_path
 
         %ul.nav.pull-right
+          %li
+            - available_locales.each do |locale|
+              %li= link_to locale.to_s.capitalize, url_for(locale: locale)
           - if current_user
             - if current_user.role?(:admin)
               %li= link_to t(:admin_panel), admin_path

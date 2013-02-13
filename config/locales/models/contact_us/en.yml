@@ -1,0 +1,14 @@
+
+en:
+  activerecord:
+    errors:
+      messages:
+        valid_email: Should be valid email address.
+    attributes:
+      contact_us/entry:
+        name: Name
+        email: Email
+        phone: Phone
+        content: Message
+        submit: Submit
+        created_at: Created at

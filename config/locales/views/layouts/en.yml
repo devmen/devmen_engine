@@ -1,0 +1,20 @@
+en:
+  layouts:
+    admin:
+      application:
+        all_users: Users
+        add_user: Add user
+        edit_profile: Profile
+        signout: Sign out
+        signin: Sign in
+        shop: Store
+        product_categories: "Products' categories"
+        products: Products
+        orphan_products: "Not categororized products"
+        orders: Orders
+        new_category: Add category
+        new_product: Add product
+
+    application:
+      signout: Sign out
+      signin: Sign in
