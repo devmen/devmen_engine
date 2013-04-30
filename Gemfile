@@ -50,6 +50,8 @@ gem 'markitup-rails', '~> 0.2.1'
 gem "el_finder", "~> 1.0.21"
 gem "RedCloth", "~> 4.2.9"
 
+gem 'newrelic_rpm'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'capybara', '~> 1.1.2'
