@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem "json", "~> 1.7.7"
+gem "json", "~> 2.3.1"
 
 gem 'pg', '~> 0.13.2'
 gem "thin"
